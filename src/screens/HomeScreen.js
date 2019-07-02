@@ -63,12 +63,14 @@ export default class HomeScreen extends React.Component {
                             showsHorizontalScrollIndicator={false}
                             keyExtractor={(item, index) => "brand-" + index}
                             renderItem={({ item ,index}) => (
-                                <Card style={[styles.hotBrandCard,{marginLeft:index%3!=0?wp(3.5):0}]}>
+                                <TouchableOpacity onPress={()=>this.props.navigation.navigate('Brands')}>
+                                    <Card style={[styles.hotBrandCard,{marginLeft:index%3!=0?wp(3.5):0}]}>
                                     <CardView footer={(<View style={{ height: wp(5), width: wp(20), backgroundColor: 'white', justifyContent: 'center' }}><Text style={{ textAlign: 'center' }}>MEN</Text></View>)}>
                                         <View style={{ height: wp(28), width: wp(28), backgroundColor: '#EEEEEE' }} />
                                     </CardView>
                                     <CardBody><View style={{ width: wp(30) }}><Text style={{ textAlign: 'center' }}>Shit</Text></View></CardBody>
                                 </Card>
+                                </TouchableOpacity>
                             )}
                         />
                     </View>

@@ -26,7 +26,8 @@ const BagAndWishListButtons=({navigation})=>(
 const styles=StyleSheet.create({
     container:{
         flexDirection:'row',
-        alignItems:'center'
+        alignItems:'center',
+        marginRight:20
     },
     viewButton:{
         marginLeft:sp(3),
