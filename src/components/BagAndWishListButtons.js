@@ -1,5 +1,5 @@
 import React from 'react'
-import {View,Text,TouchableWithoutFeedback,StyleSheet} from 'react-native'
+import {View,Text,TouchableOpacity,StyleSheet} from 'react-native'
 import Icons from '../icons'
 import { withNavigation ,Header} from 'react-navigation'
 import { sp } from '../untils';
@@ -7,19 +7,19 @@ import { sp } from '../untils';
 const BUTTON_SIZE= Header.HEIGHT*0.6
 const BagAndWishListButtons=({navigation})=>(
     <View style={styles.container}>
-        <TouchableWithoutFeedback
+        <TouchableOpacity
         >
             <View style={styles.viewButton}>
                 <Icons.Heart width={BUTTON_SIZE} height={BUTTON_SIZE}/>
             </View>
-        </TouchableWithoutFeedback>
-        <TouchableWithoutFeedback
+        </TouchableOpacity>
+        <TouchableOpacity
             onPress={()=>navigation.navigate("BagAndWishList")}
         >
             <View style={styles.viewButton}>
                 <Icons.ShoppingBag width={BUTTON_SIZE} height={BUTTON_SIZE}/>
             </View>
-        </TouchableWithoutFeedback>
+        </TouchableOpacity>
     </View>
 )
 
