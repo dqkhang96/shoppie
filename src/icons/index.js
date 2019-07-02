@@ -41,9 +41,11 @@ import Dress from './Dress'
 import Right from './Right'
 import Home from './Home'
 import List from './List'
+import Bag from './Bag'
+import Profile from './Profile'
 
 const Icons={BackgroundColor,Checked,Blockquote,Temperature,Location,Gift,Dress,Right,List,
-                Back,Up,Circle,Percel,
+                Back,Up,Circle,Percel,Bag,Profile,
                 Remove,AddImage,More,ListNumber,Link,Document,Home,
                 Check,StrickeThrough,UnderLine,AddEdit,
                 Normal,Event,Position,Menu,AddEvent,Recorder,Camera,Trash,Edit,Down,LeftArrow,

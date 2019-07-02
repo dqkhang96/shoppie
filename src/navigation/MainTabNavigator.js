@@ -38,11 +38,23 @@ HomeStack.navigationOptions = ({ navigation }) => {
     tabBarVisible,
     tabBarLabel: () => null,
     tabBarIcon: (
-        <Icons.Home width={sp(5)} height={sp(5)} />
+      <Icons.Home width={sp(5)} height={sp(5)} />
     ),
   }
 };
 
+const SearchStack = createStackNavigator({
+  Category:CategoryScreen
+})
+SearchStack.navigationOptions = ({ navigation }) => {
+  return ({
+    tabBarLabel: () => null,
+    tabBarIcon: (
+      <Icons.Search width={sp(5)} height={sp(5)} />
+    )
+  }
+  )
+}
 const CategoryStack = createStackNavigator(
   {
     Categories: CategoriesScreen,
@@ -53,18 +65,40 @@ const CategoryStack = createStackNavigator(
 CategoryStack.navigationOptions = {
   tabBarLabel: () => null,
   tabBarIcon: (
-    
-      <Icons.List width={sp(5)} height={sp(5)} />
-    
+
+    <Icons.List width={sp(5)} height={sp(5)} />
+
   ),
 };
 
-CategoryStack.path = '';
+const ProfileStack = createStackNavigator(
+  {
+    BagAndWishList:BagAndWishListScreen
+  }
+)
 
+ProfileStack.navigationOptions={
+  tabBarLabel:()=>null,
+  tabBarIcon:(<Icons.Profile width={sp(5)} height={sp(5)}/>)
+}
+
+const ShoppingBagStack = createStackNavigator(
+  {
+    Bag:BagAndWishListScreen
+  }
+)
+
+ShoppingBagStack.navigationOptions={
+  tabBarLabel:()=>null,
+  tabBarIcon:(<Icons.Bag width={sp(5)} height={sp(5)}/>)
+}
 
 const ParentStack = createBottomTabNavigator({
   HomeStack,
+  SearchStack,
   CategoryStack,
+  ShoppingBagStack,
+  ProfileStack,
 })
 ParentStack.navigationOptions = {
 
