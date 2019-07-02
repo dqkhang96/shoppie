@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform } from 'react-native';
+import { Platform, View } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator, createDrawerNavigator, DrawerItems } from 'react-navigation';
 import { ScrollView, Text } from 'react-native'
 import HomeScreen from '../screens/HomeScreen';
@@ -9,12 +9,11 @@ import CategoryScreen from '../screens/CategoryScreen'
 import TopwearScreen from '../screens/TopwearScreen'
 import BrandsScreen from '../screens/BrandsScreen'
 import BagAndWishListScreen from '../screens/BagAndWishListScreen'
+import { sp } from '../untils'
 import Icons from '../icons'
-import { sp } from '../untils';
-
 
 const HomeStack = createStackNavigator({
- 
+
 
   Home: {
     screen: HomeScreen,
@@ -26,7 +25,7 @@ const HomeStack = createStackNavigator({
   Category: CategoryScreen,
   BagAndWishList: BagAndWishListScreen,
   Brands: BrandsScreen,
-  
+
 });
 
 HomeStack.navigationOptions = ({ navigation }) => {
@@ -37,11 +36,25 @@ HomeStack.navigationOptions = ({ navigation }) => {
 
   return {
     tabBarVisible,
-    tabBarLabel: 'Home',
-    tabBarIcon: (<Icons.Home height ={15} width={15}  ></Icons.Home>)
+    tabBarLabel: () => null,
+    tabBarIcon: (
+      <Icons.Home width={sp(5)} height={sp(5)} />
+    ),
   }
 };
 
+const SearchStack = createStackNavigator({
+  Category:CategoryScreen
+})
+SearchStack.navigationOptions = ({ navigation }) => {
+  return ({
+    tabBarLabel: () => null,
+    tabBarIcon: (
+      <Icons.Search width={sp(5)} height={sp(5)} />
+    )
+  }
+  )
+}
 const CategoryStack = createStackNavigator(
   {
     Categories: CategoriesScreen,
@@ -50,29 +63,55 @@ const CategoryStack = createStackNavigator(
 );
 
 CategoryStack.navigationOptions = {
-  tabBarLabel: 'Category',
-  tabBarIcon: (<Icons.Search height ={15} width={15}></Icons.Search>)
-  
+  tabBarLabel: () => null,
+  tabBarIcon: (
+
+    <Icons.List width={sp(5)} height={sp(5)} />
+
+  ),
 };
 
-CategoryStack.path = '';
+const ProfileStack = createStackNavigator(
+  {
+    BagAndWishList:BagAndWishListScreen
+  }
+)
+
+ProfileStack.navigationOptions={
+  tabBarLabel:()=>null,
+  tabBarIcon:(<Icons.Profile width={sp(5)} height={sp(5)}/>)
+}
+
+const ShoppingBagStack = createStackNavigator(
+  {
+    Bag:BagAndWishListScreen
+  }
+)
+
+ShoppingBagStack.navigationOptions={
+  tabBarLabel:()=>null,
+  tabBarIcon:(<Icons.Bag width={sp(5)} height={sp(5)}/>)
+}
 
 const ParentStack = createBottomTabNavigator({
   HomeStack,
+  SearchStack,
   CategoryStack,
+  ShoppingBagStack,
+  ProfileStack,
 })
-ParentStack.navigationOptions = { 
+ParentStack.navigationOptions = {
 
 }
 const tabNavigator = createDrawerNavigator({
   ParentStack,
 }, {
-    contentComponent: props =>(
+    contentComponent: props => (
       <ScrollView>
         <DrawerItems {...props} />
         <Text>Your Own Footer Area After</Text>
       </ScrollView>),
-      drawerWidth:100
+    drawerWidth: 100
 
   })
 

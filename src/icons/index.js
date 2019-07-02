@@ -1,35 +1,24 @@
 import BackgroundColor from './BackgroundColor'
 
 import ListNumber from './ListNumber'
-import Redo from './Redo'
-import Save from './Save'
 import StrickeThrough from './StrickeThrough' 
 import UnderLine from './UnderLine'
-import Undo from './Undo'
 import Checked from './Checked'
-import TextColor from './TextColor'
 import Blockquote from './Blockquote'
 import Link from './Link'
-import TextStyle from './TextStyle'
 import Normal from './Normal'
 import Event from './Event'
 import Position from './Position'
 import Temperature from './Temperature'
 import Remove from './Remove'
-import Audio from './Audio'
-import Play from './Play'
 import Menu from './Menu'
 import Cancel from './Cancel'
 import AddImage from './AddImage'
-import AddAudio from './AddAudio'
 import AddEvent from './AddEvent'
 import More from './More'
 import Check from './Check'
 import Recorder from './Recorder'
-import AudioFile from './AudioFile'
 import Camera from './Camera'
-import PhotoLibrary from './PhotoLibrary'
-import Pause from './Pause'
 import Trash from './Trash'
 import Edit from './Edit'
 import AddEdit from './AddEdit'
@@ -50,12 +39,16 @@ import Percel from './Percel'
 import Gift from './Gift'
 import Dress from './Dress'
 import Right from './Right'
+import Home from './Home'
+import List from './List'
+import Bag from './Bag'
+import Profile from './Profile'
 
-const Icons={BackgroundColor,Checked,Blockquote,Temperature,Location,Gift,Dress,Right,
-                TextColor,TextStyle,Redo,Save,Pause,Back,Up,Circle,Percel,
-                Remove,AddImage,More,ListNumber,Link,PhotoLibrary,Document,
-                Audio,AddAudio,Check,AudioFile,StrickeThrough,UnderLine,AddEdit,
-                Normal,Event,Position,Play,Menu,AddEvent,Recorder,Camera,Trash,Edit,Down,LeftArrow,
-                Sort,Filter,ShoppingBag,Search,Heart,ArrowRight,Cancel,Undo}
+const Icons={BackgroundColor,Checked,Blockquote,Temperature,Location,Gift,Dress,Right,List,
+                Back,Up,Circle,Percel,Bag,Profile,
+                Remove,AddImage,More,ListNumber,Link,Document,Home,
+                Check,StrickeThrough,UnderLine,AddEdit,
+                Normal,Event,Position,Menu,AddEvent,Recorder,Camera,Trash,Edit,Down,LeftArrow,
+                Sort,Filter,ShoppingBag,Search,Heart,ArrowRight,Cancel}
 
 export default Icons
