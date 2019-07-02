@@ -1,10 +1,10 @@
 import {combineReducers} from 'redux';
 import currentIndexReducer from './currentIndexReducer';
-import stepsColorReducer from './stepsColorReducer';
 import inputFocusReducer from './inputFocusReducer';
+import userReducer from './userReducer';
 
 export default combineReducers({
   currentIndex: currentIndexReducer,
-  stepsColor: stepsColorReducer,
+  user: userReducer,
   inputFocus: inputFocusReducer,
 });

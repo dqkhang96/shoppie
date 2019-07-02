@@ -15,8 +15,6 @@ import Icons from '../icons'
 import Profile from '../navigation/SideMenu/Profile'
 
 const HomeStack = createStackNavigator({
-
-  
   Home: {
     screen: HomeScreen,
   },

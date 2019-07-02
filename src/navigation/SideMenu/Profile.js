@@ -13,25 +13,36 @@ import ReferDrawerCoponent from './ReferDrawerCoponent.js'
 import SettingDrawerComponent from './SettingDrawerComponent'
 import LogoutDrawerComponent from './LogoutDrawerComponent'
 
+//import redux
+import * as actions from '../../actions/index';
+import { connect } from 'react-redux';
+
 const CustomDrawerContentComponent = (props) => (
   <View style={{ justifyContent: 'space-between', flex: 1 }}>
     <ScrollView>
       <SafeAreaView style={styles.container} forceInset={{ top: '20', horizontal: 'never' }}>
-        <TouchableOpacity onPress={() => props.navigation.navigate('Login')} >
-          <Image style={{ height: 50, width: 50, borderRadius: 25, marginLeft: 15 }}
-            source={require('../../image/radio.png')}
-          />
-          <View
-            style={styles.pencil}>
-            <EvilIcons name='pencil'
-              size={15}
+        {props.user.isLogin == false
+          ? <TouchableOpacity onPress={() => props.navigation.navigate('Login')} style={styles.loginButton} >
+            <Text style={{fontSize: 25, color: 'black'}}>Login</Text>
+          </TouchableOpacity>
+          : <TouchableOpacity onPress={() => props.navigation.navigate('Login')} >
+            <Image style={{ height: 50, width: 50, borderRadius: 25, marginLeft: 15 }}
+              source={require('../../image/radio.png')}
             />
-          </View>
-          <View style={styles.name} >
-            <Text style={{ fontWeight: "bold", fontSize: 15 }}>Thắng Nguyễn</Text>
-            <Text>canhbuomphieudu98@gmail.com</Text>
-          </View>
-        </TouchableOpacity>
+            <View
+              style={styles.pencil}>
+              <EvilIcons name='pencil'
+                size={15}
+              />
+            </View>
+            <View style={styles.name} >
+              <Text style={{ fontWeight: "bold", fontSize: 15 }}>Thắng Nguyễn</Text>
+              <Text>canhbuomphieudu98@gmail.com</Text>
+            </View>
+          </TouchableOpacity>
+        }
+
+
         <View style={{ width: '100%', borderBottomWidth: 0.8, borderColor: 'gray', marginTop: 5 }}></View>
         <View style={{ justifyContent: 'space-between', flexDirection: 'column' }}>
           <View>
@@ -64,15 +75,21 @@ const CustomDrawerContentComponent = (props) => (
       </SafeAreaView>
     </ScrollView>
     <View style={{ paddingHorizontal: 10, marginBottom: 10 }}>
-      <TouchableOpacity><LogoutDrawerComponent></LogoutDrawerComponent></TouchableOpacity>
+      {props.user.isLogin == false
+        ? <View />
+        : <TouchableOpacity><LogoutDrawerComponent></LogoutDrawerComponent></TouchableOpacity>
+      }
     </View>
   </View>
 );
 
-export default withNavigation(CustomDrawerContentComponent)
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  loginButton: {
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   pencil: {
     position: 'absolute',
@@ -94,3 +111,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF'
   }
 });
+
+const mapStateToProps = state => ({
+  user: state.user,
+});
+
+export default connect(mapStateToProps, actions)(withNavigation(CustomDrawerContentComponent))
