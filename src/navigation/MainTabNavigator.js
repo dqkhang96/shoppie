@@ -15,7 +15,7 @@ import Profile from '../navigation/SideMenu/Profile'
 
 const HomeStack = createStackNavigator({
 
-
+  BagAndWishList: BagAndWishListScreen,
   Home: {
     screen: HomeScreen,
   },
@@ -24,7 +24,6 @@ const HomeStack = createStackNavigator({
   },
   Topwear: TopwearScreen,
   Category: CategoryScreen,
-  BagAndWishList: BagAndWishListScreen,
   Brands: BrandsScreen,
 
 });
