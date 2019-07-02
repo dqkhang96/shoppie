@@ -12,7 +12,7 @@ import { GoogleSignin, statusCodes } from 'react-native-google-signin';
 
 GoogleSignin.configure({
   scopes: ['https://www.googleapis.com/auth/plus.login', 'https://www.googleapis.com/auth/plus.me'],
-  webClientId: '690731803269-jc3c4e6q9kmn1n1bvdardvuqjv0f80g1.apps.googleusercontent.com',
+  webClientId: '690731803269-gt8khpmlv90jkq8rdf8i8ds7744hf85s.apps.googleusercontent.com',
 });
 
 class LoginGoogleButton extends Component {
@@ -27,9 +27,10 @@ class LoginGoogleButton extends Component {
       stateStorage.user.avatar = userInfo.user.photo;
       stateStorage.user.accessToken = userInfo.user.idToken;
 
+      alert(userInfo.user.email)
       this.props.navigation.navigate('ProfileScreen');
     } catch (err) {
-      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+      if (err.code === statusCodes.SIGN_IN_CANCELLED) {
         // user cancelled the login flow
       }
       else {
