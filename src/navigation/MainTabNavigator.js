@@ -15,8 +15,7 @@ import BagAndWishListScreen from '../screens/BagAndWishListScreen'
 
 const HomeStack = createStackNavigator({
  
-  BagAndWishList: BagAndWishListScreen,
-  Brands: BrandsScreen,
+
   Home: {
     screen: HomeScreen,
   },
@@ -25,7 +24,8 @@ const HomeStack = createStackNavigator({
   },
   Topwear: TopwearScreen,
   Category: CategoryScreen,
-
+  BagAndWishList: BagAndWishListScreen,
+  Brands: BrandsScreen,
   
 });
 
