@@ -9,8 +9,9 @@ import CategoryScreen from '../screens/CategoryScreen'
 import TopwearScreen from '../screens/TopwearScreen'
 import BrandsScreen from '../screens/BrandsScreen'
 import BagAndWishListScreen from '../screens/BagAndWishListScreen'
-import { sp } from '../untils'
+import { sp, wp } from '../untils'
 import Icons from '../icons'
+import Profile from '../navigation/SideMenu/Profile'
 
 const HomeStack = createStackNavigator({
 
@@ -106,12 +107,8 @@ ParentStack.navigationOptions = {
 const tabNavigator = createDrawerNavigator({
   ParentStack,
 }, {
-    contentComponent: props => (
-      <ScrollView>
-        <DrawerItems {...props} />
-        <Text>Your Own Footer Area After</Text>
-      </ScrollView>),
-    drawerWidth: 100
+    contentComponent: Profile,
+    drawerWidth: wp(75)
 
   })
 

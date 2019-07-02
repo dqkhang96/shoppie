@@ -2,7 +2,7 @@ import React from 'react'
 import Swiper from '../components/Swiper'
 import CircleView from '../components/CircleView'
 import Card, { CardBody, CardView } from '../components/Card'
-import { ScrollView, FlatList, View, StyleSheet, Text } from 'react-native';
+import { ScrollView, FlatList, View, StyleSheet, Text, } from 'react-native';
 import { wp, WIDTH_SCREEN } from '../untils'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import ButtonMenu from '../components/ButtonMenu'
