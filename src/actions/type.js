@@ -1,0 +1,17 @@
+export const ENABLE1 = 'enable1';
+export const ENABLE2 = 'enable2';
+export const ENABLE3 = 'enable3';
+export const ENABLE4 = 'enable4';
+export const ENABLE5 = 'enable5';
+export const TO1STEP = 'to1step';
+export const TO2STEP = 'to2step';
+export const TONEXTSTEP = 'tonextstep';
+export const TOBACKSTEP = 'tobackstep';
+export const FOCUSEMAIL = 'focusemail';
+export const FOCUSPASSWORD = 'focuspassword';
+export const FOCUSNAME = 'focusname';
+export const FOCUSMOBILE = 'focusmobile';
+export const NOTFOCUSEMAIL = 'notfocusemail';
+export const NOTFOCUSPASSWORD = 'notfocuspassword';
+export const NOTFOCUSNAME = 'notfocusname';
+export const NOTFOCUSMOBILE = 'notfocusmobile';

@@ -14,10 +14,10 @@ import SettingDrawerComponent from './SettingDrawerComponent'
 import LogoutDrawerComponent from './LogoutDrawerComponent'
 
 const CustomDrawerContentComponent = (props) => (
-  <View style={{justifyContent:'space-between',flex:1}}>
+  <View style={{ justifyContent: 'space-between', flex: 1 }}>
     <ScrollView>
       <SafeAreaView style={styles.container} forceInset={{ top: '20', horizontal: 'never' }}>
-        <TouchableOpacity onPress={() => props.navigation.navigate('User')} >
+        <TouchableOpacity onPress={() => props.navigation.navigate('Login')} >
           <Image style={{ height: 50, width: 50, borderRadius: 25, marginLeft: 15 }}
             source={require('../../image/radio.png')}
           />
@@ -40,7 +40,7 @@ const CustomDrawerContentComponent = (props) => (
                 <MenDrawerComponent />
               </TouchableOpacity>
               <TouchableOpacity onPress={() => props.navigation.navigate('Category')} >
-                  <WomenDrawerComponent></WomenDrawerComponent>
+                <WomenDrawerComponent></WomenDrawerComponent>
               </TouchableOpacity>
               <TouchableOpacity onPress={() => props.navigation.navigate('Category')}>
                 <KidDrawerComponent></KidDrawerComponent>
@@ -63,7 +63,7 @@ const CustomDrawerContentComponent = (props) => (
 
       </SafeAreaView>
     </ScrollView>
-    <View style={{paddingHorizontal:10,marginBottom:10}}>
+    <View style={{ paddingHorizontal: 10, marginBottom: 10 }}>
       <TouchableOpacity><LogoutDrawerComponent></LogoutDrawerComponent></TouchableOpacity>
     </View>
   </View>

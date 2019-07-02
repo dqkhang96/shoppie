@@ -9,13 +9,14 @@ import CategoryScreen from '../screens/CategoryScreen'
 import TopwearScreen from '../screens/TopwearScreen'
 import BrandsScreen from '../screens/BrandsScreen'
 import BagAndWishListScreen from '../screens/BagAndWishListScreen'
+import LoginScreen from '../screens/Login';
 import { sp, wp } from '../untils'
 import Icons from '../icons'
 import Profile from '../navigation/SideMenu/Profile'
 
 const HomeStack = createStackNavigator({
 
-
+  
   Home: {
     screen: HomeScreen,
   },
@@ -26,7 +27,9 @@ const HomeStack = createStackNavigator({
   Category: CategoryScreen,
   BagAndWishList: BagAndWishListScreen,
   Brands: BrandsScreen,
-
+  Login: {
+    screen: LoginScreen,
+  },
 });
 
 HomeStack.navigationOptions = ({ navigation }) => {
