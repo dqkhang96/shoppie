@@ -1,20 +1,19 @@
 import React from 'react';
-import { Platform } from 'react-native';
+import { Platform, View } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator, createDrawerNavigator, DrawerItems } from 'react-navigation';
 import { ScrollView, Text } from 'react-native'
-import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
-import SettingsScreen from '../screens/SettingsScreen';
 import CategoriesScreen from '../screens/CategoriesScreen'
 import ProductScreen from '../screens/ProductScreen'
 import CategoryScreen from '../screens/CategoryScreen'
 import TopwearScreen from '../screens/TopwearScreen'
 import BrandsScreen from '../screens/BrandsScreen'
 import BagAndWishListScreen from '../screens/BagAndWishListScreen'
-
+import { sp } from '../untils'
+import Icons from '../icons'
 
 const HomeStack = createStackNavigator({
- 
+
 
   Home: {
     screen: HomeScreen,
@@ -26,7 +25,7 @@ const HomeStack = createStackNavigator({
   Category: CategoryScreen,
   BagAndWishList: BagAndWishListScreen,
   Brands: BrandsScreen,
-  
+
 });
 
 HomeStack.navigationOptions = ({ navigation }) => {
@@ -37,16 +36,9 @@ HomeStack.navigationOptions = ({ navigation }) => {
 
   return {
     tabBarVisible,
-    tabBarLabel: 'Home',
-    tabBarIcon: ({ focused }) => (
-      <TabBarIcon
-        focused={focused}
-        name={
-          Platform.OS === 'ios'
-            ? `ios-information-circle${focused ? '' : '-outline'}`
-            : 'md-information-circle'
-        }
-      />
+    tabBarLabel: () => null,
+    tabBarIcon: (
+        <Icons.Home width={sp(5)} height={sp(5)} />
     ),
   }
 };
@@ -59,46 +51,33 @@ const CategoryStack = createStackNavigator(
 );
 
 CategoryStack.navigationOptions = {
-  tabBarLabel: 'Category',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
+  tabBarLabel: () => null,
+  tabBarIcon: (
+    
+      <Icons.List width={sp(5)} height={sp(5)} />
+    
   ),
 };
 
 CategoryStack.path = '';
 
-const SettingsStack = createStackNavigator(
-  {
-    Settings: SettingsScreen,
-  }
-);
-
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
-  ),
-};
-
-SettingsStack.path = '';
 
 const ParentStack = createBottomTabNavigator({
   HomeStack,
   CategoryStack,
-  SettingsStack,
 })
-ParentStack.navigationOptions = { 
+ParentStack.navigationOptions = {
 
 }
 const tabNavigator = createDrawerNavigator({
   ParentStack,
 }, {
-    contentComponent: props =>(
+    contentComponent: props => (
       <ScrollView>
         <DrawerItems {...props} />
         <Text>Your Own Footer Area After</Text>
       </ScrollView>),
-      drawerWidth:100
+    drawerWidth: 100
 
   })
 
