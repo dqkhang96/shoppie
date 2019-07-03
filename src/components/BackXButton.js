@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {
   View,
-  Platform,
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
@@ -15,14 +14,11 @@ export default class BackXButton extends Component {
 
   render() {
     return (
-      Platform.OS == 'android'
-        ? <View style={styles.backXButtonContainer} />
-        : <View style={styles.backXButtonContainer}>
-          <TouchableOpacity onPress={this.onBack}>
-            <Ionicons name='ios-close' size={25} />
-          </TouchableOpacity>
-
-        </View>
+      <View style={styles.backXButtonContainer}>
+        <TouchableOpacity onPress={this.onBack}>
+          <Ionicons name='ios-close' size={25} />
+        </TouchableOpacity>
+      </View>
     );
   }
 }

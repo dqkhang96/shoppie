@@ -17,6 +17,7 @@ export default class LoginScreen extends Component {
   static navigationOptions = {
     header: null,
   }
+  
   onLogin = async () => {
 
   }

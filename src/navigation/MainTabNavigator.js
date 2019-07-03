@@ -9,10 +9,11 @@ import CategoryScreen from '../screens/CategoryScreen'
 import TopwearScreen from '../screens/TopwearScreen'
 import BrandsScreen from '../screens/BrandsScreen'
 import BagAndWishListScreen from '../screens/BagAndWishListScreen'
+import ProfileScreen from '../screens/Profile'
 import LoginScreen from '../screens/Login';
 import { sp, wp } from '../untils'
 import Icons from '../icons'
-import Profile from '../navigation/SideMenu/Profile'
+import CustomDrawerContentComponent from './SideMenu/CustomDrawerContentComponent'
 
 const HomeStack = createStackNavigator({
   Home: {
@@ -28,12 +29,15 @@ const HomeStack = createStackNavigator({
   Login: {
     screen: LoginScreen,
   },
+  Profile: {
+    screen: ProfileScreen,
+  }
 });
 
 HomeStack.navigationOptions = ({ navigation }) => {
   let tabBarVisible = true
   const routeName = navigation.state.routes[navigation.state.index].routeName
-  if ((routeName == 'Product')||(routeName=='Login'))
+  if ((routeName == 'Product') || (routeName == 'Login') || (routeName == 'Profile'))
     tabBarVisible = false
 
   return {
@@ -75,7 +79,7 @@ CategoryStack.navigationOptions = {
 
 const ProfileStack = createStackNavigator(
   {
-    BagAndWishList: BagAndWishListScreen
+    Profile: ProfileScreen,
   }
 )
 
@@ -108,7 +112,7 @@ ParentStack.navigationOptions = {
 const tabNavigator = createDrawerNavigator({
   ParentStack,
 }, {
-    contentComponent: () => <Profile />,
+    contentComponent: () => <CustomDrawerContentComponent />,
     drawerWidth: wp(75)
 
   })

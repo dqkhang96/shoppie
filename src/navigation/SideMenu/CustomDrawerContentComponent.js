@@ -13,16 +13,28 @@ import ReferDrawerCoponent from './ReferDrawerCoponent.js'
 import SettingDrawerComponent from './SettingDrawerComponent'
 import LogoutDrawerComponent from './LogoutDrawerComponent'
 
-//import Facebook Login
+// Import Facebook Login
 import { AccessToken, LoginManager, GraphRequest, GraphRequestManager, LoginButton } from 'react-native-fbsdk';
-// import GG Login
+// Import GG Login
 import { GoogleSignin, statusCodes } from 'react-native-google-signin';
 
-//import redux
+// Import redux
 import * as actions from '../../actions/index';
 import { connect } from 'react-redux';
 
 class CustomDrawerContentComponent extends Component {
+  async componentWillMount() {
+    const isGGSignedIn = await GoogleSignin.isSignedIn();
+    const isFBSignedIn = await AccessToken.getCurrentAccessToken();;
+
+    if (isGGSignedIn) {
+      await GoogleSignin.hasPlayServices();
+      const userInfo = await GoogleSignin.signIn();
+
+      await this.props.logInGG(userInfo.user);
+    }
+  }
+
   onLogOut = async () => {
     const isGGSignedIn = await GoogleSignin.isSignedIn();
     if (isGGSignedIn) {
@@ -46,6 +58,7 @@ class CustomDrawerContentComponent extends Component {
             }
           });
       await new GraphRequestManager().addRequest(signOutRequest).start();
+      alert(this.props.user.accessToken)
       this.props.logOut();
     }
   }
@@ -56,7 +69,7 @@ class CustomDrawerContentComponent extends Component {
         ? <TouchableOpacity onPress={() => this.props.navigation.navigate('Login')} style={styles.loginButton} >
           <Text style={{ fontSize: 25, color: 'black' }}>Login</Text>
         </TouchableOpacity>
-        : <TouchableOpacity onPress={() => { }} >
+        : <TouchableOpacity onPress={() => this.props.navigation.navigate('Profile')} >
           <Image style={{ height: 50, width: 50, borderRadius: 25, marginLeft: 15 }}
             source={{ uri: this.props.user.avatar }}
           />

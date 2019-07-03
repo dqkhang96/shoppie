@@ -24,6 +24,7 @@ class LoginGoogleButton extends Component {
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
 
+      // Call the Login Google action of Redux
       await this.props.logInGG(userInfo.user);
 
       this.props.navigation.goBack();

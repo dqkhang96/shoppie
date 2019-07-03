@@ -23,10 +23,10 @@ class LoginFacebookButton extends Component {
         alert(`Login was cancelled!`);
       } else {
         let resultToken = await AccessToken.getCurrentAccessToken();
-
         let res = await fetch(`https://graph.facebook.com/me?fields=id,name,email,picture.type(large)&access_token=${resultToken.accessToken}`)
         let resultUserInfoJSON = await res.json();
 
+        // Call the Login Facebook action of Redux
         await this.props.logInFB(resultUserInfoJSON, resultToken.accessToken);
 
         this.props.navigation.goBack();
