@@ -9,6 +9,7 @@ import CategoryScreen from '../screens/CategoryScreen'
 import TopwearScreen from '../screens/TopwearScreen'
 import BrandsScreen from '../screens/BrandsScreen'
 import BagAndWishListScreen from '../screens/BagAndWishListScreen'
+import LoginScreen from '../screens/Login';
 import { sp, wp } from '../untils'
 import Icons from '../icons'
 import Profile from '../navigation/SideMenu/Profile'
@@ -26,8 +27,9 @@ const HomeStack = createStackNavigator({
   Topwear: TopwearScreen,
   Category: CategoryScreen,
   Brands: BrandsScreen,
-  
-
+  Login: {
+    screen: LoginScreen,
+  },
 });
 
 HomeStack.navigationOptions = ({ navigation }) => {
@@ -47,7 +49,7 @@ HomeStack.navigationOptions = ({ navigation }) => {
 };
 
 const SearchStack = createStackNavigator({
-  Category:CategoryScreen
+  Category: CategoryScreen
 })
 SearchStack.navigationOptions = ({ navigation }) => {
   return ({
@@ -76,7 +78,7 @@ CategoryStack.navigationOptions = {
 
 const ProfileStack = createStackNavigator(
   {
-    BagAndWishList:BagAndWishListScreen
+    BagAndWishList: BagAndWishListScreen
   }
 )
 
@@ -87,7 +89,7 @@ ProfileStack.navigationOptions={
 
 const ShoppingBagStack = createStackNavigator(
   {
-    Bag:BagAndWishListScreen
+    Bag: BagAndWishListScreen
   }
 )
 
@@ -111,7 +113,7 @@ ParentStack.navigationOptions = {
 const tabNavigator = createDrawerNavigator({
   ParentStack,
 }, {
-    contentComponent: Profile,
+    contentComponent: () => <Profile />,
     drawerWidth: wp(75)
 
   })
