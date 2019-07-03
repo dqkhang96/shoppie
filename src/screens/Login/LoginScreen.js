@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {
   StyleSheet,
-  KeyboardAvoidingView,
   Keyboard,
   View,
   TouchableWithoutFeedback,
@@ -15,6 +14,9 @@ import ColoredButton from '../../components/ColoredButton';
 import { ScrollView } from 'react-native-gesture-handler';
 
 export default class LoginScreen extends Component {
+  static navigationOptions = {
+    header: null,
+  }
   onLogin = async () => {
 
   }
@@ -35,7 +37,7 @@ export default class LoginScreen extends Component {
               <GoToForgotPasswordButton />
               <GoToRegisterButton />
 
-              </View>
+            </View>
           </TouchableWithoutFeedback>
         </ScrollView>
       </View>
