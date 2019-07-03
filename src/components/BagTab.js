@@ -5,9 +5,11 @@ import Icons from '../icons'
 import { sp, wp } from '../untils'
 import ButtonGradient from './ButtonGradient';
 import CheckDelivery from './CheckDelivery'
+import {withNavigation} from 'react-navigation'
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
-export default class BagTab extends React.Component {
+ class BagTab extends React.Component {
 
     _renderCoupons() {
         return (
@@ -66,10 +68,15 @@ export default class BagTab extends React.Component {
                 </View>
                 {this._renderOrderSummary()}
             </ScrollView>
+            <View style={{flexDirection:'row'}}>
+                <View style={{width:wp(30),justifyContent:'center'}}><Text style={{textAlign:'center'}}>Rs .5700</Text></View>
+                <ButtonGradient style={{height:40 ,width:wp(70)}} fromColor={'#08D6CC'} toColor={'#00BBE1'} title={'Place Order'}
+                onPress={()=>this.props.navigation.navigate('Payment')}/>
+            </View>
         </View>)
     }
 }
-
+export default withNavigation(BagTab)
 const styles = StyleSheet.create({
     container: {
         flex: 1

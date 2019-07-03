@@ -1,10 +1,10 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text,TouchableOpacity } from 'react-native'
 import { Svg ,Defs, Stop, Rect  ,LinearGradient } from 'react-native-svg'
 
-
-export default ButtonGradient = ({fromColor, toColor ,title,style}) => (
-    <View
+export default ButtonGradient = ({fromColor, toColor ,title,style ,onPress}) => (
+   <TouchableOpacity onPress={onPress}>
+        <View
         style={[{
             justifyContent:'center',
             alignItems:'center'
@@ -42,4 +42,5 @@ export default ButtonGradient = ({fromColor, toColor ,title,style}) => (
             }}
         >{title}</Text>
     </View>
+   </TouchableOpacity>
 )

@@ -12,10 +12,10 @@ import BagAndWishListScreen from '../screens/BagAndWishListScreen'
 import { sp, wp } from '../untils'
 import Icons from '../icons'
 import Profile from '../navigation/SideMenu/Profile'
+import PaymentScreen from '../screens/PaymentScreen'
 
 const HomeStack = createStackNavigator({
 
-  
   Home: {
     screen: HomeScreen,
     BagAndWishList: BagAndWishListScreen,
@@ -86,7 +86,8 @@ ProfileStack.navigationOptions={
 
 const ShoppingBagStack = createStackNavigator(
   {
-    Bag:BagAndWishListScreen
+    Bag:BagAndWishListScreen,
+    Payment: PaymentScreen,
   }
 )
 
