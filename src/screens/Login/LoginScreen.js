@@ -12,6 +12,7 @@ import GoToRegisterButton from './GoToRegisterButton';
 import LoginIconsContainer from './LoginIconsContainer';
 import LoginInputFormsContainer from './LoginInputFormsContainer';
 import ColoredButton from '../../components/ColoredButton';
+import { ScrollView } from 'react-native-gesture-handler';
 
 export default class LoginScreen extends Component {
   onLogin = async () => {
@@ -20,24 +21,24 @@ export default class LoginScreen extends Component {
 
   render() {
     return (
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <KeyboardAvoidingView
-          style={styles.container}
-          behavior="position" enabled
-          keyboardVerticalOffset={-90}
-        >
-          <LoginIconsContainer />
+      <View style={{ flex: 1 }}>
+        <ScrollView>
+          <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+            <View>
+              <LoginIconsContainer />
 
-          <LoginInputFormsContainer />
+              <LoginInputFormsContainer />
 
-          <View style={styles.buttonContainer} >
-            <ColoredButton title='Login' method={this.onLogin} />
-          </View>
-          <GoToForgotPasswordButton />
-          <GoToRegisterButton />
+              <View style={styles.buttonContainer} >
+                <ColoredButton title='Login' method={this.onLogin} />
+              </View>
+              <GoToForgotPasswordButton />
+              <GoToRegisterButton />
 
-        </KeyboardAvoidingView>
-      </TouchableWithoutFeedback>
+              </View>
+          </TouchableWithoutFeedback>
+        </ScrollView>
+      </View>
     );
   }
 }
