@@ -10,5 +10,6 @@ export const NOTFOCUSEMAIL = 'notfocusemail';
 export const NOTFOCUSPASSWORD = 'notfocuspassword';
 export const NOTFOCUSNAME = 'notfocusname';
 export const NOTFOCUSMOBILE = 'notfocusmobile';
-export const LOGIN = 'login';
+export const LOGINFB = 'loginfb';
+export const LOGINGG = 'logingg';
 export const LOGOUT = 'logout';

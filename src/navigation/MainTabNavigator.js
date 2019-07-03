@@ -46,7 +46,7 @@ HomeStack.navigationOptions = ({ navigation }) => {
 };
 
 const SearchStack = createStackNavigator({
-  Category:CategoryScreen
+  Category: CategoryScreen
 })
 SearchStack.navigationOptions = ({ navigation }) => {
   return ({
@@ -75,24 +75,24 @@ CategoryStack.navigationOptions = {
 
 const ProfileStack = createStackNavigator(
   {
-    BagAndWishList:BagAndWishListScreen
+    BagAndWishList: BagAndWishListScreen
   }
 )
 
-ProfileStack.navigationOptions={
-  tabBarLabel:()=>null,
-  tabBarIcon:(<Icons.Profile width={sp(5)} height={sp(5)}/>)
+ProfileStack.navigationOptions = {
+  tabBarLabel: () => null,
+  tabBarIcon: (<Icons.Profile width={sp(5)} height={sp(5)} />)
 }
 
 const ShoppingBagStack = createStackNavigator(
   {
-    Bag:BagAndWishListScreen
+    Bag: BagAndWishListScreen
   }
 )
 
-ShoppingBagStack.navigationOptions={
-  tabBarLabel:()=>null,
-  tabBarIcon:(<Icons.Bag width={sp(5)} height={sp(5)}/>)
+ShoppingBagStack.navigationOptions = {
+  tabBarLabel: () => null,
+  tabBarIcon: (<Icons.Bag width={sp(5)} height={sp(5)} />)
 }
 
 const ParentStack = createBottomTabNavigator({
@@ -108,7 +108,7 @@ ParentStack.navigationOptions = {
 const tabNavigator = createDrawerNavigator({
   ParentStack,
 }, {
-    contentComponent: Profile,
+    contentComponent: () => <Profile />,
     drawerWidth: wp(75)
 
   })

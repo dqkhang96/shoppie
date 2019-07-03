@@ -13,75 +13,122 @@ import ReferDrawerCoponent from './ReferDrawerCoponent.js'
 import SettingDrawerComponent from './SettingDrawerComponent'
 import LogoutDrawerComponent from './LogoutDrawerComponent'
 
+//import Facebook Login
+import { AccessToken, LoginManager, GraphRequest, GraphRequestManager, LoginButton } from 'react-native-fbsdk';
+// import GG Login
+import { GoogleSignin, statusCodes } from 'react-native-google-signin';
+
 //import redux
 import * as actions from '../../actions/index';
 import { connect } from 'react-redux';
 
-const CustomDrawerContentComponent = (props) => (
-  <View style={{ justifyContent: 'space-between', flex: 1 }}>
-    <ScrollView>
-      <SafeAreaView style={styles.container} forceInset={{ top: '20', horizontal: 'never' }}>
-        {props.user.isLogin == false
-          ? <TouchableOpacity onPress={() => props.navigation.navigate('Login')} style={styles.loginButton} >
-            <Text style={{fontSize: 25, color: 'black'}}>Login</Text>
-          </TouchableOpacity>
-          : <TouchableOpacity onPress={() => props.navigation.navigate('Login')} >
-            <Image style={{ height: 50, width: 50, borderRadius: 25, marginLeft: 15 }}
-              source={require('../../image/radio.png')}
+class CustomDrawerContentComponent extends Component {
+  onLogOut = async () => {
+    const isGGSignedIn = await GoogleSignin.isSignedIn();
+    if (isGGSignedIn) {
+      await GoogleSignin.revokeAccess();
+      await GoogleSignin.signOut();
+      this.props.logOut();
+    }
+    else {
+      let signOutRequest =
+        new GraphRequest(
+          "me/permissions/",
+          {
+            accessToken: this.props.user.accessToken,
+            httpMethod: 'DELETE'
+          },
+          (error, result) => {
+            if (error) {
+              console.log('Error fetching data: ' + error.toString());
+            } else {
+              LoginManager.logOut();
+            }
+          });
+      await new GraphRequestManager().addRequest(signOutRequest).start();
+      this.props.logOut();
+    }
+  }
+
+  renderInfo() {
+    return (
+      this.props.user.isLogin == false
+        ? <TouchableOpacity onPress={() => this.props.navigation.navigate('Login')} style={styles.loginButton} >
+          <Text style={{ fontSize: 25, color: 'black' }}>Login</Text>
+        </TouchableOpacity>
+        : <TouchableOpacity onPress={() => { }} >
+          <Image style={{ height: 50, width: 50, borderRadius: 25, marginLeft: 15 }}
+            source={{ uri: this.props.user.avatar }}
+          />
+          <View
+            style={styles.pencil}>
+            <EvilIcons name='pencil'
+              size={15}
             />
-            <View
-              style={styles.pencil}>
-              <EvilIcons name='pencil'
-                size={15}
-              />
-            </View>
-            <View style={styles.name} >
-              <Text style={{ fontWeight: "bold", fontSize: 15 }}>Thắng Nguyễn</Text>
-              <Text>canhbuomphieudu98@gmail.com</Text>
-            </View>
-          </TouchableOpacity>
-        }
-
-
-        <View style={{ width: '100%', borderBottomWidth: 0.8, borderColor: 'gray', marginTop: 5 }}></View>
-        <View style={{ justifyContent: 'space-between', flexDirection: 'column' }}>
-          <View>
-            <View style={{ paddingHorizontal: 10 }}>
-              <TouchableOpacity onPress={() => props.navigation.navigate('Category')}  >
-                <MenDrawerComponent />
-              </TouchableOpacity>
-              <TouchableOpacity onPress={() => props.navigation.navigate('Category')} >
-                <WomenDrawerComponent></WomenDrawerComponent>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={() => props.navigation.navigate('Category')}>
-                <KidDrawerComponent></KidDrawerComponent>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={() => props.navigation.navigate('Category')}>
-                <AccessoriesDrawerComponent></AccessoriesDrawerComponent>
-              </TouchableOpacity>
-            </View>
-            <View style={{ width: '100%', borderBottomWidth: 0.8, borderColor: 'gray', marginTop: 5 }}></View>
-            <View style={{ paddingHorizontal: 10 }}>
-              <TouchableOpacity><OderDrawerComponent></OderDrawerComponent></TouchableOpacity>
-              <TouchableOpacity><WishlistDrawerComponent></WishlistDrawerComponent></TouchableOpacity>
-              <TouchableOpacity><GiftDawerComponent></GiftDawerComponent></TouchableOpacity>
-              <TouchableOpacity><ReferDrawerCoponent></ReferDrawerCoponent></TouchableOpacity>
-              <TouchableOpacity><SettingDrawerComponent></SettingDrawerComponent></TouchableOpacity>
-            </View>
-            <View style={{ width: '100%', borderBottomWidth: 0.8, borderColor: 'gray', marginTop: 5 }}></View>
           </View>
-        </View>
+          <View style={styles.name} >
+            <Text style={{ fontWeight: "bold", fontSize: 15 }}>{this.props.user.name}</Text>
+            <Text>{this.props.user.email}</Text>
+          </View>
+        </TouchableOpacity>
+    )
+  }
 
-      </SafeAreaView>
-    </ScrollView>
-    <View style={{ paddingHorizontal: 10, marginBottom: 10 }}>
-      {props.user.isLogin == false
-        ? <View />
-        : <TouchableOpacity><LogoutDrawerComponent></LogoutDrawerComponent></TouchableOpacity>
-      }
-    </View>
-  </View>
-);
+  renderLogOutButton() {
+    return (
+      this.props.user.isLogin == false
+        ? <View style={{ paddingHorizontal: 10, marginBottom: 10 }} />
+        : <View style={{ paddingHorizontal: 10, marginBottom: 10 }}>
+          <TouchableOpacity onPress={this.onLogOut}>
+            <LogoutDrawerComponent />
+          </TouchableOpacity>
+        </View>)
+  }
+
+  render() {
+    return (
+      <View style={{ justifyContent: 'space-between', flex: 1 }}>
+        <ScrollView>
+          <SafeAreaView style={styles.container} forceInset={{ top: '20', horizontal: 'never' }}>
+            {this.renderInfo()}
+
+            <View style={{ width: '100%', borderBottomWidth: 0.8, borderColor: 'gray', marginTop: 5 }}></View>
+            <View style={{ justifyContent: 'space-between', flexDirection: 'column' }}>
+              <View>
+                <View style={{ paddingHorizontal: 10 }}>
+                  <TouchableOpacity onPress={() => this.props.navigation.navigate('Category')}  >
+                    <MenDrawerComponent />
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={() => this.props.navigation.navigate('Category')} >
+                    <WomenDrawerComponent></WomenDrawerComponent>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={() => this.props.navigation.navigate('Category')}>
+                    <KidDrawerComponent></KidDrawerComponent>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={() => this.props.navigation.navigate('Category')}>
+                    <AccessoriesDrawerComponent></AccessoriesDrawerComponent>
+                  </TouchableOpacity>
+                </View>
+                <View style={{ width: '100%', borderBottomWidth: 0.8, borderColor: 'gray', marginTop: 5 }}></View>
+                <View style={{ paddingHorizontal: 10 }}>
+                  <TouchableOpacity><OderDrawerComponent></OderDrawerComponent></TouchableOpacity>
+                  <TouchableOpacity><WishlistDrawerComponent></WishlistDrawerComponent></TouchableOpacity>
+                  <TouchableOpacity><GiftDawerComponent></GiftDawerComponent></TouchableOpacity>
+                  <TouchableOpacity><ReferDrawerCoponent></ReferDrawerCoponent></TouchableOpacity>
+                  <TouchableOpacity><SettingDrawerComponent></SettingDrawerComponent></TouchableOpacity>
+                </View>
+                <View style={{ width: '100%', borderBottomWidth: 0.8, borderColor: 'gray', marginTop: 5 }}></View>
+              </View>
+            </View>
+
+          </SafeAreaView>
+        </ScrollView>
+
+        {this.renderLogOutButton()}
+      </View>
+    )
+  }
+}
 
 const styles = StyleSheet.create({
   container: {

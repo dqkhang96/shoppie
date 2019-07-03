@@ -5,10 +5,13 @@ import {
   StyleSheet,
 } from 'react-native';
 import { withNavigation } from 'react-navigation';
-import stateStorage from '../config/stateStorage';
 
 // import GG Login
 import { GoogleSignin, statusCodes } from 'react-native-google-signin';
+
+//import redux
+import * as actions from '../actions/index';
+import { connect } from 'react-redux';
 
 GoogleSignin.configure({
   scopes: ['https://www.googleapis.com/auth/plus.login', 'https://www.googleapis.com/auth/plus.me'],
@@ -21,14 +24,9 @@ class LoginGoogleButton extends Component {
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
 
-      stateStorage.user.id = userInfo.user.id;
-      stateStorage.user.name = userInfo.user.name;
-      stateStorage.user.email = userInfo.user.email;
-      stateStorage.user.avatar = userInfo.user.photo;
-      stateStorage.user.accessToken = userInfo.user.idToken;
+      await this.props.logInGG(userInfo.user);
 
-      alert(userInfo.user.email)
-      this.props.navigation.navigate('ProfileScreen');
+      this.props.navigation.goBack();
     } catch (err) {
       if (err.code === statusCodes.SIGN_IN_CANCELLED) {
         // user cancelled the login flow
@@ -70,4 +68,8 @@ const styles = StyleSheet.create({
   },
 })
 
-export default withNavigation(LoginGoogleButton);
+const mapStateToProps = state => ({
+  user: state.user,
+});
+
+export default connect(mapStateToProps,actions)(withNavigation(LoginGoogleButton));

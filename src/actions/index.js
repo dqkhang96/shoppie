@@ -2,7 +2,7 @@ import {
   TO1STEP, TO2STEP, TOBACKSTEP, TONEXTSTEP,
   FOCUSEMAIL, FOCUSPASSWORD, FOCUSMOBILE, FOCUSNAME,
   NOTFOCUSEMAIL, NOTFOCUSPASSWORD, NOTFOCUSMOBILE, NOTFOCUSNAME, 
-  LOGIN, LOGOUT,
+  LOGINFB, LOGINGG, LOGOUT,
 } from './type';
 
 export const to1step = () => ({ type: TO1STEP });
@@ -19,5 +19,13 @@ export const notFocusPassword = () => ({ type: NOTFOCUSPASSWORD });
 export const notFocusName = () => ({ type: NOTFOCUSNAME });
 export const notFocusMobile = () => ({ type: NOTFOCUSMOBILE });
 
-export const logIn = () => ({type: LOGIN});
+export const logInFB = (USER, TOKEN) => ({
+  type: LOGINFB,
+  user: USER,
+  token: TOKEN,
+});
+export const logInGG = (USER) => ({
+  type: LOGINGG,
+  user: USER,
+});
 export const logOut = () => ({type: LOGOUT});
