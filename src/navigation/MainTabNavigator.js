@@ -9,31 +9,32 @@ import CategoryScreen from '../screens/CategoryScreen'
 import TopwearScreen from '../screens/TopwearScreen'
 import BrandsScreen from '../screens/BrandsScreen'
 import BagAndWishListScreen from '../screens/BagAndWishListScreen'
+import LoginScreen from '../screens/Login';
 import { sp, wp } from '../untils'
 import Icons from '../icons'
 import Profile from '../navigation/SideMenu/Profile'
 import PaymentScreen from '../screens/PaymentScreen'
 
 const HomeStack = createStackNavigator({
-
   Home: {
     screen: HomeScreen,
-    BagAndWishList: BagAndWishListScreen,
   },
   Product: {
     screen: ProductScreen,
   },
   Topwear: TopwearScreen,
   Category: CategoryScreen,
+  BagAndWishList: BagAndWishListScreen,
   Brands: BrandsScreen,
-  
-
+  Login: {
+    screen: LoginScreen,
+  },
 });
 
 HomeStack.navigationOptions = ({ navigation }) => {
   let tabBarVisible = true
   const routeName = navigation.state.routes[navigation.state.index].routeName
-  if (routeName == 'Product')
+  if ((routeName == 'Product')||(routeName=='Login'))
     tabBarVisible = false
 
   return {
@@ -46,7 +47,7 @@ HomeStack.navigationOptions = ({ navigation }) => {
 };
 
 const SearchStack = createStackNavigator({
-  Category:CategoryScreen
+  Category: CategoryScreen
 })
 SearchStack.navigationOptions = ({ navigation }) => {
   return ({
@@ -75,25 +76,25 @@ CategoryStack.navigationOptions = {
 
 const ProfileStack = createStackNavigator(
   {
-    BagAndWishList:BagAndWishListScreen
+    BagAndWishList: BagAndWishListScreen
   }
 )
 
-ProfileStack.navigationOptions={
-  tabBarLabel:()=>null,
-  tabBarIcon:(<Icons.Profile width={sp(5)} height={sp(5)}/>)
+ProfileStack.navigationOptions = {
+  tabBarLabel: () => null,
+  tabBarIcon: (<Icons.Profile width={sp(5)} height={sp(5)} />)
 }
 
 const ShoppingBagStack = createStackNavigator(
   {
-    Bag:BagAndWishListScreen,
-    Payment: PaymentScreen,
+    Bag: BagAndWishListScreen,
+    Payment:PaymentScreen
   }
 )
 
-ShoppingBagStack.navigationOptions={
-  tabBarLabel:()=>null,
-  tabBarIcon:(<Icons.Bag width={sp(5)} height={sp(5)}/>)
+ShoppingBagStack.navigationOptions = {
+  tabBarLabel: () => null,
+  tabBarIcon: (<Icons.Bag width={sp(5)} height={sp(5)} />)
 }
 
 const ParentStack = createBottomTabNavigator({
@@ -109,7 +110,7 @@ ParentStack.navigationOptions = {
 const tabNavigator = createDrawerNavigator({
   ParentStack,
 }, {
-    contentComponent: Profile,
+    contentComponent: () => <Profile />,
     drawerWidth: wp(75)
 
   })

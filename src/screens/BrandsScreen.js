@@ -4,15 +4,9 @@ import BannerBrand from '../components/BannerBrand'
 import Card,{CardBody,CardView} from '../components/Card'
 import { wp, sp } from '../untils';
 import Banner from '../components/Banner'
-import ButtonMenu from '../components/ButtonMenu.js'
-import BagAndWishListButtons from '../components/BagAndWishListButtons.js'
+
 
 export default class BrandsScreen extends React.Component{
-    static navigationOptions={
-        title : 'Brands',
-        headerLeft : <ButtonMenu ></ButtonMenu>,
-        headerRight:<BagAndWishListButtons></BagAndWishListButtons>
-    }
 
 
     _renderMostBrands(){
