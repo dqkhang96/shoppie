@@ -1,11 +1,11 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
-import {  sp, WIDTH_SCREEN } from '../untils';
-import Svgs from '../svgs'
+import { wp, sp ,WIDTH_SCREEN} from '../untils';
+
 export default Banner = (props) => (
     <View style={styles.banner}>
         <View style={styles.backgroundBanner}>
-            <Svgs.BackgroundCategory height={WIDTH_SCREEN * 0.5 / 1.7} width={WIDTH_SCREEN} />
+            <Svgs.BackgroundCategory height={sp(30)} width={wp(100)} />
         </View>
         <View style={styles.contentBanner}>
             <Text style={styles.lageTextBanner}>Winter wear Special</Text>
@@ -16,19 +16,18 @@ export default Banner = (props) => (
 
 const styles = StyleSheet.create({
     banner: {
-        height: WIDTH_SCREEN * 0.5 / 1.7,
+        height: sp(30),
         width: WIDTH_SCREEN,
-        backgroundColor: 'red',
     },
     backgroundBanner: {
         position: 'absolute',
         top: 0,
         left: 0,
-        height: WIDTH_SCREEN * 0.5 / 1.7,
+        height: sp(30),
         width: WIDTH_SCREEN
     },
     contentBanner: {
-        height: WIDTH_SCREEN * 0.5 / 1.7,
+        height: sp(30),
         width: WIDTH_SCREEN,
         justifyContent: 'center'
     },

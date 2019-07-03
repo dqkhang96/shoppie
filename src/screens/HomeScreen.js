@@ -6,14 +6,11 @@ import { ScrollView, FlatList, View, StyleSheet, Text, } from 'react-native';
 import { wp, WIDTH_SCREEN } from '../untils'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import ButtonMenu from '../components/ButtonMenu'
-import BagAndWishListButtons from '../components/BagAndWishListButtons.js'
 
 export default class HomeScreen extends React.Component {
     static navigationOptions = {
         title: 'Shoppiee',
-        headerLeft:<ButtonMenu/>,
-        headerRight:<BagAndWishListButtons></BagAndWishListButtons>
-
+        headerLeft:<ButtonMenu/>
     };
 
     render() {
@@ -63,14 +60,12 @@ export default class HomeScreen extends React.Component {
                             showsHorizontalScrollIndicator={false}
                             keyExtractor={(item, index) => "brand-" + index}
                             renderItem={({ item ,index}) => (
-                                <TouchableOpacity onPress={()=>this.props.navigation.navigate('Brands')}>
-                                    <Card style={[styles.hotBrandCard,{marginLeft:index%3!=0?wp(3.5):0}]}>
+                                <Card style={[styles.hotBrandCard,{marginLeft:index%3!=0?wp(3.5):0}]}>
                                     <CardView footer={(<View style={{ height: wp(5), width: wp(20), backgroundColor: 'white', justifyContent: 'center' }}><Text style={{ textAlign: 'center' }}>MEN</Text></View>)}>
                                         <View style={{ height: wp(28), width: wp(28), backgroundColor: '#EEEEEE' }} />
                                     </CardView>
                                     <CardBody><View style={{ width: wp(30) }}><Text style={{ textAlign: 'center' }}>Shit</Text></View></CardBody>
                                 </Card>
-                                </TouchableOpacity>
                             )}
                         />
                     </View>

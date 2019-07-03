@@ -15,17 +15,15 @@ import Icons from '../icons'
 import Profile from '../navigation/SideMenu/Profile'
 
 const HomeStack = createStackNavigator({
-
-  
   Home: {
     screen: HomeScreen,
-    BagAndWishList: BagAndWishListScreen,
   },
   Product: {
     screen: ProductScreen,
   },
   Topwear: TopwearScreen,
   Category: CategoryScreen,
+  BagAndWishList: BagAndWishListScreen,
   Brands: BrandsScreen,
   Login: {
     screen: LoginScreen,
@@ -81,9 +79,9 @@ const ProfileStack = createStackNavigator(
   }
 )
 
-ProfileStack.navigationOptions={
-  tabBarLabel:()=>null,
-  tabBarIcon:(<Icons.Profile width={sp(5)} height={sp(5)}/>)
+ProfileStack.navigationOptions = {
+  tabBarLabel: () => null,
+  tabBarIcon: (<Icons.Profile width={sp(5)} height={sp(5)} />)
 }
 
 const ShoppingBagStack = createStackNavigator(
@@ -92,9 +90,9 @@ const ShoppingBagStack = createStackNavigator(
   }
 )
 
-ShoppingBagStack.navigationOptions={
-  tabBarLabel:()=>null,
-  tabBarIcon:(<Icons.Bag width={sp(5)} height={sp(5)}/>)
+ShoppingBagStack.navigationOptions = {
+  tabBarLabel: () => null,
+  tabBarIcon: (<Icons.Bag width={sp(5)} height={sp(5)} />)
 }
 
 const ParentStack = createBottomTabNavigator({

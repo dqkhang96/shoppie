@@ -1,7 +1,7 @@
 import React from 'react'
 import { Text, View } from 'react-native'
 import { Svg ,Defs, Stop, Rect  ,LinearGradient } from 'react-native-svg'
-import { sp ,wp} from '../untils'
+import { sp } from '../untils'
 import Icons from '../icons'
 
 export default class CategoryItem extends React.Component {
@@ -18,10 +18,10 @@ export default class CategoryItem extends React.Component {
                 }}>
                     <Svg
                         height={sp(35)}
-                        width={wp(100)}
+                        width={sp(100)}
                     >
                         <Defs>
-                            <LinearGradient id="grad" x1={0} y1={sp(35)} x2={wp(100)} y2="0">
+                            <LinearGradient id="grad" x1={0} y1={sp(35)} x2={sp(35)} y2="0">
                                 <Stop offset="0" stopColor={fromColor} stopOpacity="1" />
                                 <Stop offset="1" stopColor={toColor} stopOpacity="0.6" />
                             </LinearGradient>
@@ -29,7 +29,7 @@ export default class CategoryItem extends React.Component {
                         <Rect
                             x={0}
                             y={0}
-                            width={wp(100)}
+                            width={sp(100)}
                             height={sp(35)}
                             fill="url(#grad)"
                         />
