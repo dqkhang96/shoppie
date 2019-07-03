@@ -10,7 +10,12 @@ import TopwearScreen from '../screens/TopwearScreen'
 import BrandsScreen from '../screens/BrandsScreen'
 import BagAndWishListScreen from '../screens/BagAndWishListScreen'
 import ProfileScreen from '../screens/Profile'
-import LoginScreen from '../screens/Login';
+import LoginScreen from '../screens/Login'
+import RegisterScreen from '../screens/Register'
+import ForgotPasswordScreen from '../screens/ForgotPassword'
+import OnboardingScreen from '../screens/Onboarding'
+import VerifyMobileScreen from '../screens/VerifyMobile'
+import NotificationScreen from '../screens/Notification'
 import { sp, wp } from '../untils'
 import Icons from '../icons'
 import CustomDrawerContentComponent from './SideMenu/CustomDrawerContentComponent'
@@ -31,7 +36,22 @@ const HomeStack = createStackNavigator({
   },
   Profile: {
     screen: ProfileScreen,
-  }
+  },
+  Notification: {
+    screen: NotificationScreen,
+  },
+  Verify: {
+    screen: VerifyMobileScreen,
+  },
+  Onboard: {
+    screen: OnboardingScreen,
+  },
+  ForgotPassword: {
+    screen: ForgotPasswordScreen,
+  },
+  Register: {
+    screen: RegisterScreen,
+  },
 });
 
 HomeStack.navigationOptions = ({ navigation }) => {
