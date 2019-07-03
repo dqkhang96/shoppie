@@ -17,7 +17,7 @@ import { connect } from 'react-redux';
 class LoginFacebookButton extends Component {
   onLoginFB = async () => {
     try {
-      let resultLogin = await LoginManager.logInWithPermissions(['public_profile']);
+      let resultLogin = await LoginManager.logInWithPermissions(['public_profile','email']);
 
       if (resultLogin.isCancelled) {
         alert(`Login was cancelled!`);
