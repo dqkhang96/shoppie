@@ -20,7 +20,7 @@ export default ButtonGradient = ({fromColor, toColor ,title,style}) => (
                 width={style.width}
             >
                 <Defs>
-                    <LinearGradient id="grad" x1={0} y1={0} x2={style.height} y2={style.width}>
+                    <LinearGradient id="grad" x1={0} y1={0} y2={style.height} x2={style.width}>
                         <Stop offset="0" stopColor={fromColor} stopOpacity="1" />
                         <Stop offset="1" stopColor={toColor} stopOpacity="1" />
                     </LinearGradient>
