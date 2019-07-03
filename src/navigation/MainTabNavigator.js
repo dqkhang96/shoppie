@@ -15,17 +15,15 @@ import Icons from '../icons'
 import Profile from '../navigation/SideMenu/Profile'
 
 const HomeStack = createStackNavigator({
-
-  
   Home: {
     screen: HomeScreen,
-    BagAndWishList: BagAndWishListScreen,
   },
   Product: {
     screen: ProductScreen,
   },
   Topwear: TopwearScreen,
   Category: CategoryScreen,
+  BagAndWishList: BagAndWishListScreen,
   Brands: BrandsScreen,
   Login: {
     screen: LoginScreen,
@@ -41,10 +39,9 @@ HomeStack.navigationOptions = ({ navigation }) => {
   return {
     tabBarVisible,
     tabBarLabel: () => null,
-    tabBarIcon: ({tintColor,focused})=>(
-      <Icons.Home width={sp(5)} height={sp(5)} fill={tintColor} active={focused}/>
+    tabBarIcon: (
+      <Icons.Home width={sp(5)} height={sp(5)} />
     ),
-    tabBarOptions:{activeTintColor:"#08D6CC"}
   }
 };
 
@@ -54,10 +51,9 @@ const SearchStack = createStackNavigator({
 SearchStack.navigationOptions = ({ navigation }) => {
   return ({
     tabBarLabel: () => null,
-    tabBarIcon:  ({tintColor,focused})=>(
-      <Icons.Search width={sp(5)} height={sp(5)}  fill={tintColor} active={focused}/>
-    ),
-    tabBarOptions:{activeTintColor:"#08D6CC"}
+    tabBarIcon: (
+      <Icons.Search width={sp(5)} height={sp(5)} />
+    )
   }
   )
 }
@@ -70,10 +66,11 @@ const CategoryStack = createStackNavigator(
 
 CategoryStack.navigationOptions = {
   tabBarLabel: () => null,
-  tabBarIcon: ({tintColor,focused})=>(
-    <Icons.List width={sp(5)} height={sp(5)} fill={tintColor} active={focused} />)
-  ,
-  tabBarOptions:{activeTintColor:"#08D6CC"}
+  tabBarIcon: (
+
+    <Icons.List width={sp(5)} height={sp(5)} />
+
+  ),
 };
 
 const ProfileStack = createStackNavigator(
@@ -82,9 +79,9 @@ const ProfileStack = createStackNavigator(
   }
 )
 
-ProfileStack.navigationOptions={
-  tabBarLabel:()=>null,
-  tabBarIcon: ({tintColor,focused})=>(<Icons.Profile width={sp(5)} height={sp(5)} fill={tintColor} active={focused}/>)
+ProfileStack.navigationOptions = {
+  tabBarLabel: () => null,
+  tabBarIcon: (<Icons.Profile width={sp(5)} height={sp(5)} />)
 }
 
 const ShoppingBagStack = createStackNavigator(
@@ -93,11 +90,9 @@ const ShoppingBagStack = createStackNavigator(
   }
 )
 
-ShoppingBagStack.navigationOptions={
-  tabBarLabel:()=>null,
-  tabBarIcon: ({tintColor,focused})=>
-    (<Icons.Bag width={sp(5)} height={sp(5)} fill={tintColor} active={focused}/>),
-  tabBarOptions:{activeTintColor:"#08D6CC"}
+ShoppingBagStack.navigationOptions = {
+  tabBarLabel: () => null,
+  tabBarIcon: (<Icons.Bag width={sp(5)} height={sp(5)} />)
 }
 
 const ParentStack = createBottomTabNavigator({
