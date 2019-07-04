@@ -14,15 +14,23 @@ import BackXButton from '../../components/BackXButton';
 import ColoredButton from '../../components/ColoredButton';
 
 export default class RegisterScreen extends Component {
+  static navigationOptions = {
+    header: null,
+  }
+
   onSignup = async () => {
 
+  }
+
+  onBack = () => {
+    this.props.navigation.goBack();
   }
 
   render() {
     return (
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <ScrollView style={styles.container}>
-          <BackXButton />
+          <BackXButton onBack={this.onBack} />
           <RegisterIconsContainer />
 
           <RegisterInputFormsContainer />

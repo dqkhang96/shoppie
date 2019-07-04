@@ -57,7 +57,9 @@ const HomeStack = createStackNavigator({
 HomeStack.navigationOptions = ({ navigation }) => {
   let tabBarVisible = true
   const routeName = navigation.state.routes[navigation.state.index].routeName
-  if ((routeName == 'Product') || (routeName == 'Login') || (routeName == 'Profile'))
+  if ((routeName == 'Product') || (routeName == 'Login') || (routeName == 'Profile')
+    || (routeName == 'Notification') || (routeName == 'Onboard') || (routeName == 'ForgotPassword')
+    || (routeName == 'RegisterScreen'))
     tabBarVisible = false
 
   return {

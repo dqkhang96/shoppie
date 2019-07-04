@@ -10,7 +10,7 @@ import { withNavigation } from 'react-navigation';
 
 class GoToLoginButton extends Component {
   onGoToLogin = async () => {
-    this.props.navigation.navigate('LoginScreen');
+    this.props.navigation.navigate('Login');
   }
 
   render() {

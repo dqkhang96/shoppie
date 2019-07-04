@@ -10,7 +10,7 @@ import { withNavigation } from 'react-navigation';
 
 class GoToRegisterButton extends Component {
   onRegister = () => {
-    this.props.navigation.navigate('RegisterScreen');
+    this.props.navigation.navigate('Register');
   }
 
   render() {

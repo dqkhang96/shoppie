@@ -15,6 +15,10 @@ import ContinueButton from './ContinueButton';
 import ColoredButton from '../../components/ColoredButton';
 
 class NotificationScreen extends Component {
+  static navigationOptions = {
+    header: null,
+  }
+
   constructor(props) {
     super(props);
   }

@@ -56,6 +56,7 @@ class HeadBar extends Component {
 
 HeadBar.propTypes = {
   title: PropTypes.string,
+  onBack: PropTypes.func,
 }
 
 const styles = StyleSheet.create({

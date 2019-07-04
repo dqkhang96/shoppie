@@ -13,6 +13,10 @@ import IconAndDescription from './IconAndDescription';
 import ButtonContainer from './ButtonContainer';
 
 class OnboardingScreen extends Component {
+  static navigationOptions = {
+    header: null,
+  }
+
   constructor(props) {
     super(props);
   }

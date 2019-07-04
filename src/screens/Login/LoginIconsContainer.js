@@ -8,13 +8,11 @@ import {
 import stateStorage from '../../config/stateStorage';
 import LoginFacebookButton from '../../components/LoginFacebookButton.js';
 import LoginGoogleButton from '../../components/LoginGoogleButton.js';
-import BackXButton from '../../components/BackXButton';
 
 export default class LoginIconsContainer extends Component {
   render() {
     return (
       <View style={styles.iconsContainer}>
-        <BackXButton />
         <View style={styles.appIconContainer} />
         <Text style={styles.text}>LOG IN WITH</Text>
         <View style={styles.fbggContainer}>
@@ -34,12 +32,9 @@ export default class LoginIconsContainer extends Component {
 
 const styles = StyleSheet.create({
   iconsContainer: {
-    height: stateStorage.SCREEN_HEIGHT * 0.4,
+    height: stateStorage.SCREEN_HEIGHT * 0.3,
     alignItems: 'center',
     justifyContent: 'flex-end',
-  },
-  backXButtonContainer: {
-    paddingHorizontal: 10,
   },
   text: {
     fontSize: stateStorage.fontsize,

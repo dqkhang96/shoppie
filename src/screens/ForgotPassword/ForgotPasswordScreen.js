@@ -14,6 +14,14 @@ import BackXButton from '../../components/BackXButton';
 import ColoredButton from '../../components/ColoredButton';
 
 export default class ForgotPasswordScreen extends Component {
+  static navigationOptions = {
+    header: null,
+  }
+
+  onBack = () => {
+    this.props.navigation.goBack();
+  }
+
   onReset = async () => {
 
   }
@@ -21,8 +29,8 @@ export default class ForgotPasswordScreen extends Component {
   render() {
     return (
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={styles.container}>
-          <BackXButton />
+        <ScrollView style={styles.container}>
+          <BackXButton onBack={this.onBack} />
           <View style={styles.textContainer}>
             <Text style={[styles.text, { fontSize: 25, color: 'black' }]}>Forgot your password?</Text>
             <Text style={styles.text}>Enter your email below to receive your password reset instructions.</Text>
@@ -37,7 +45,7 @@ export default class ForgotPasswordScreen extends Component {
 
             <ForgotIconsContainer />
           </View>
-        </View>
+        </ScrollView>
       </TouchableWithoutFeedback>
     );
   }
@@ -49,9 +57,9 @@ const styles = StyleSheet.create({
     backgroundColor: stateStorage.backgroundColor,
   },
   textContainer: {
-    height: stateStorage.SCREEN_HEIGHT * 0.3,
-    justifyContent: 'center',
-    padding: 10,
+    height: stateStorage.SCREEN_HEIGHT * 0.25,
+    justifyContent: 'space-between',
+    paddingHorizontal: 10,
   },
   buttonContainer: {
     height: stateStorage.SCREEN_HEIGHT * 0.1,
@@ -64,8 +72,8 @@ const styles = StyleSheet.create({
     color: 'grey',
   },
   body: {
-    height: stateStorage.SCREEN_HEIGHT * 0.7,
-    justifyContent: 'flex-start',
-    padding: 10,
+    height: stateStorage.SCREEN_HEIGHT * 0.55,
+    justifyContent: 'center',
+    paddingHorizontal: 10,
   }
 })                                                                

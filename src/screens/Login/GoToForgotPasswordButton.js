@@ -10,7 +10,7 @@ import {withNavigation} from 'react-navigation';
 
 class GoToForgotPasswordButton extends Component {
   onForgotPassword = async () => {
-    this.props.navigation.navigate('ForgotPasswordScreen');
+    this.props.navigation.navigate('ForgotPassword');
   }
 
   render() {

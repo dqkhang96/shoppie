@@ -14,6 +14,10 @@ import CodeInput from 'react-native-confirmation-code-input';
 import ColoredButton from '../../components/ColoredButton';
 
 export default class VerifyMobileScreen extends Component {
+  static navigationOptions = {
+    header: null,
+  }
+
   onReset = async () => {
 
   }
