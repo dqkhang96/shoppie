@@ -1,5 +1,5 @@
 import React from 'react'
-import { sp } from '../untils'
+import { sp } from '../utils'
 import {View ,Text} from 'react-native'
 
 const SIZE_LARGE = sp(15)

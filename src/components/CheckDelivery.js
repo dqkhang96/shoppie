@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, TextInput, StyleSheet } from 'react-native'
 import Icons from '../icons'
 import { Svg, Defs, Stop, Circle, LinearGradient } from 'react-native-svg'
-import {sp} from '../untils'
+import {sp} from '../utils'
 
 const SIZE_BUTTON=sp(9)
 export default class CheckDelivery extends React.Component {

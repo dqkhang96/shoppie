@@ -69,8 +69,8 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
                 {this._renderOrderSummary()}
             </ScrollView>
             <View style={{flexDirection:'row'}}>
-                <View style={{width:wp(30),justifyContent:'center'}}><Text style={{textAlign:'center'}}>Rs .5700</Text></View>
-                <ButtonGradient style={{height:40 ,width:wp(70)}} fromColor={'#08D6CC'} toColor={'#00BBE1'} title={'Place Order'}
+                <View style={{width:wp(30),justifyContent:'center',height:sp(12)}}><Text style={{textAlign:'center'}}>Rs .5700</Text></View>
+                <ButtonGradient style={{height:sp(12) ,width:wp(70),fontSize:sp(5)}} fromColor={'#08D6CC'} toColor={'#0cf9ee'} title={'Place Order'}
                 onPress={()=>this.props.navigation.navigate('Payment')}/>
             </View>
         </View>)
@@ -92,25 +92,27 @@ const styles = StyleSheet.create({
     },
     inputViewCoupons: {
         alignItems: 'center',
-        justifyContent: 'center',
         flexDirection: 'row',
         overflow: 'hidden',
         borderRadius: 4,
+        width:"100%"
+    
     },
     inputCoupons: {
         height: sp(12),
         borderWidth: 1,
         borderColor: '#DCDCDC',
         paddingLeft: sp(9),
-        width: (wp(100) - 2 * sp(3.5)) * 0.7,
+        width: (wp(100) - 2 * sp(4)) * 0.7,
         borderRightWidth: 0,
         fontSize: sp(4),
-        borderRadius: 4
+        borderBottomLeftRadius: 4,
+        borderTopLeftRadius:4
     },
     buttonCoupons: {
-        width: (wp(100) - 2 * sp(3.5)) * 0.3,
+        width: (wp(100) - 2 * sp(4)) * 0.3,
         height: sp(12),
-        borderWidth: 1,
+        borderRadius:4,
         borderColor: '#00BBE1',
     },
     iconPercel: {

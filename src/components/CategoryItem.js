@@ -1,7 +1,7 @@
 import React from 'react'
 import { Text, View } from 'react-native'
 import { Svg ,Defs, Stop, Rect  ,LinearGradient } from 'react-native-svg'
-import { sp } from '../untils'
+import { sp } from '../utils'
 import Icons from '../icons'
 
 export default class CategoryItem extends React.Component {

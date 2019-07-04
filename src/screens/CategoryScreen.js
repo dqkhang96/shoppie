@@ -54,7 +54,7 @@ export default class CategoryScreen extends React.Component {
                                 <Card>
                                     <CardView
                                         footer={(
-                                            <ButtonGradient height={sp(8)} width={sp(55)} fromColor="red" toColor="blue" fontSize={sp(4)} title="Get Minimium 40% Off" style={{ bottom: -sp(3) }} />
+                                            <ButtonGradient  fromColor="red" toColor="blue" title="Get Minimium 40% Off" style={{ height:sp(8),fontSize:sp(4) , width:sp(55),bottom: -sp(3) }} />
                                         )}
                                     >
                                         <View style={styles.wardrobeView} />
