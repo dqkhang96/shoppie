@@ -14,6 +14,7 @@ import { sp, wp } from '../untils'
 import Icons from '../icons'
 import Profile from '../navigation/SideMenu/Profile'
 import PaymentScreen from '../screens/PaymentScreen'
+import SearchScreen from '../screens/SearchScreen'
 
 const HomeStack = createStackNavigator({
   Home: {
@@ -47,7 +48,10 @@ HomeStack.navigationOptions = ({ navigation }) => {
 };
 
 const SearchStack = createStackNavigator({
-  Category: CategoryScreen
+  Search :SearchScreen,
+  Product: {
+    screen: ProductScreen,
+  },
 })
 SearchStack.navigationOptions = ({ navigation }) => {
   return ({
