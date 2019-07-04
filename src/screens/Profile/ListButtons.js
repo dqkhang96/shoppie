@@ -17,10 +17,12 @@ class ListButtons extends Component {
     return (
       <View>
         <TouchableOpacity style={styles.button} onPress={() => { }}>
-          <View style={styles.leftIcon}><SimpleLineIcons name="social-dropbox" size={18} /></View>
-          <View style={styles.textContainer}>
-            <Text style={styles.title}>Order</Text>
-            <Text style={styles.description}>Check your order status</Text>
+          <View style={styles.leftButtonContent}>
+            <View style={styles.leftIcon}><SimpleLineIcons name="social-dropbox" size={18} /></View>
+            <View style={styles.textContainer}>
+              <Text style={styles.title}>Order</Text>
+              <Text style={styles.description}>Check your order status</Text>
+            </View>
           </View>
           <View style={styles.rightIcon}><Ionicons name="ios-arrow-forward" size={20} /></View>
         </TouchableOpacity>
@@ -76,12 +78,16 @@ class ListButtons extends Component {
 
 const styles = StyleSheet.create({
   button: {
-    height: stateStorage.SCREEN_HEIGHT * 0.1,
+    height: stateStorage.SCREEN_HEIGHT * 0.08,
     paddingVertical: 6,
     paddingHorizontal: 8,
     borderTopWidth: 1,
     flexDirection: 'row',
     backgroundColor: 'white',
+    justifyContent: 'flex-start'
+  },
+  leftButtonContent:{
+    flexDirection:'row',
   },
   leftIcon: {
     width: stateStorage.SCREEN_WIDTH * 0.1,
@@ -90,7 +96,6 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
   },
   textContainer: {
-    justifyContent: 'center',
     width: stateStorage.SCREEN_WIDTH * 0.8,
   },
   rightIcon: {
