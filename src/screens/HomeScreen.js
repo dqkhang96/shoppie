@@ -6,11 +6,13 @@ import { ScrollView, FlatList, View, StyleSheet, Text, } from 'react-native';
 import { wp, WIDTH_SCREEN } from '../untils'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import ButtonMenu from '../components/ButtonMenu'
+import BagAndWishListButtons from '../components/BagAndWishListButtons.js'
 
 export default class HomeScreen extends React.Component {
     static navigationOptions = {
         title: 'Shoppiee',
-        headerLeft:<ButtonMenu/>
+        headerLeft:<ButtonMenu/>,
+        headerRight:<BagAndWishListButtons/>
     };
 
     render() {
