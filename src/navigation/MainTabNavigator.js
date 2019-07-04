@@ -22,9 +22,6 @@ import CustomDrawerContentComponent from '../navigation/SideMenu/CustomDrawerCon
 import PaymentScreen from '../screens/PaymentScreen'
 
 const HomeStack = createStackNavigator({
-  Profile: {
-    screen: ProfileScreen,
-  },
   Home: {
     screen: HomeScreen,
   },
@@ -38,9 +35,9 @@ const HomeStack = createStackNavigator({
   Login: {
     screen: LoginScreen,
   },
-  // Profile: {
-  //   screen: ProfileScreen,
-  // },
+  Profile: {
+    screen: ProfileScreen,
+  },
   Notification: {
     screen: NotificationScreen,
   },
