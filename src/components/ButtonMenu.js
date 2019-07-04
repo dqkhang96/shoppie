@@ -2,7 +2,7 @@ import React from 'react'
 import { TouchableOpacity, View } from 'react-native'
 import { withNavigation, Header } from 'react-navigation'
 import Icons from '../icons'
-import { sp } from '../untils';
+import { sp } from '../utils';
 
 const ButtonMenu = ({ navigation }) => (
     <TouchableOpacity

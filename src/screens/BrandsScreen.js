@@ -2,7 +2,7 @@ import React from 'react'
 import {View,ScrollView,StyleSheet , FlatList ,Text} from 'react-native'
 import BannerBrand from '../components/BannerBrand'
 import Card,{CardBody,CardView} from '../components/Card'
-import { wp, sp } from '../untils';
+import { wp, sp } from '../utils';
 import Banner from '../components/Banner'
 
 

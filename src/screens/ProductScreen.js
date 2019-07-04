@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, ScrollView, Text, TextInput, StyleSheet } from 'react-native'
 import Swiper from '../components/Swiper'
-import { wp, WIDTH_SCREEN ,sp} from '../untils'
+import { wp, WIDTH_SCREEN ,sp} from '../utils'
 import Icons from '../icons'
 import SizePicker from '../components/SizePicker'
 import ColorPicker from '../components/ColorPicker'

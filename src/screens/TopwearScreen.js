@@ -2,7 +2,7 @@ import React from 'react'
 import { View, StyleSheet, ScrollView, TouchableNativeFeedback, Text, FlatList, Modal } from 'react-native'
 import Banner from '../components/Banner'
 import Icons from '../icons'
-import { sp, wp, hp } from '../untils'
+import { sp, wp, hp } from '../utils'
 import Card, { CardBody, CardView } from '../components/Card'
 import ButtonMenu from '../components/ButtonMenu'
 

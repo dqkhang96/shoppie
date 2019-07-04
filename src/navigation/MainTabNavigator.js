@@ -16,12 +16,13 @@ import ForgotPasswordScreen from '../screens/ForgotPassword'
 import OnboardingScreen from '../screens/Onboarding'
 import VerifyMobileScreen from '../screens/VerifyMobile'
 import NotificationScreen from '../screens/Notification'
-import { sp, wp } from '../untils'
+import { sp, wp } from '../utils'
 import Icons from '../icons'
 import CustomDrawerContentComponent from '../navigation/SideMenu/CustomDrawerContentComponent'
 import PaymentScreen from '../screens/PaymentScreen'
 
 const HomeStack = createStackNavigator({
+  Payment:PaymentScreen,
   Home: {
     screen: HomeScreen,
   },

@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, StyleSheet, Text, ScrollView, FlatList } from 'react-native'
 import Svgs from '../svgs'
-import { sp, WIDTH_SCREEN, wp } from '../untils';
+import { sp, WIDTH_SCREEN, wp } from '../utils';
 import Card, { CardView, CardBody } from '../components/Card';
 import ButtonGradient from '../components/ButtonGradient';
 import Banner from '../components/Banner'

@@ -23,7 +23,7 @@ export default class PaymentScreen extends Component {
 
     _renderHeader() {
         return (
-            <View style={{ width: SCREEN_WIDTH, padding: 10, marginTop: 15 }}>
+            <View style={{ width: SCREEN_WIDTH, padding: normalize(10), marginTop: normalize(15) }}>
                 <ImageBackground source={require('../image/Rectangle6.png')}
                     style={{ height: normalize(50), width: '100%', elevation: 10,justifyContent:'center' }}
                 >
@@ -45,7 +45,7 @@ export default class PaymentScreen extends Component {
         return (
             <View style={{ marginBottom: normalize(15) }}>
                 <Text style={{ marginLeft: normalize(10), marginBottom: normalize(5) }}> Pay using saved cards </Text>
-                <View style={{ backgroundColor: '#FFFFFF', width: SCREEN_WIDTH, height: SCREEN_HEIGHT * 0.19, padding: 10 }}>
+                <View style={{ backgroundColor: '#FFFFFF', width: SCREEN_WIDTH, padding: 10 }}>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                         <View style={{ justifyContent: "flex-start", flexDirection: 'row' }}>
 
@@ -54,7 +54,7 @@ export default class PaymentScreen extends Component {
                                if (this.state.select===1) {this.setState({select:0})}
                                else {this.setState({select:1})}
                            }}>
-                           {this.state.select==1 ? <CheckButton  height={15} width={15} fill={'#08D6CC'}/>:<CircleCheck  height={15} width={15} fill={'#eaeaea'}/> }
+                           {this.state.select==1 ? <CheckButton  height={normalize(15)} width={normalize(15)} fill={'#08D6CC'}/>:<CircleCheck  height={normalize(15)} width={normalize(15)} fill={'#eaeaea'}/> }
                            </TouchableWithoutFeedback>
                            </View>
                             <View style={{ flexDirection: 'row', marginLeft: normalize(10) }}>
@@ -85,7 +85,7 @@ export default class PaymentScreen extends Component {
                                if (this.state.select===2) {this.setState({select:0})}
                                else {this.setState({select:2})}
                            }}>
-                           {this.state.select==2 ? <CheckButton  height={normalize(15)} width={normalize(15)} fill={'#08D6CC'}/>:<CircleCheck  height={15} width={15} fill={'#eaeaea'}/> }
+                           {this.state.select==2 ? <CheckButton  height={normalize(15)} width={normalize(15)} fill={'#08D6CC'}/>:<CircleCheck  height={normalize(15)} width={normalize(15)} fill={'#eaeaea'}/> }
                            </TouchableWithoutFeedback>
                            </View>
                             <View style={{ flexDirection: 'row', marginLeft: normalize(10) }}>

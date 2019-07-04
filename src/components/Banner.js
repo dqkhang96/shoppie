@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
-import { wp, sp ,WIDTH_SCREEN} from '../untils';
+import { wp, sp ,WIDTH_SCREEN} from '../utils';
 
 export default Banner = (props) => (
     <View style={styles.banner}>

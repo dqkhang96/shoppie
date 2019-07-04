@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, TextInput, StyleSheet, TouchableOpacity } from 'react-native'
-import { sp, WIDTH_SCREEN } from '../untils'
+import { sp, WIDTH_SCREEN } from '../utils'
 import Icons from '../icons'
 
 export default class BoxSearch extends React.Component {

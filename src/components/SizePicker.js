@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, StyleSheet, TouchableWithoutFeedback, Text } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler';
-import { sp } from '../untils';
+import { sp } from '../utils';
 import { Svg, Defs, Circle, LinearGradient, Stop } from 'react-native-svg'
 
 const SIZE_ITEM = sp(12)

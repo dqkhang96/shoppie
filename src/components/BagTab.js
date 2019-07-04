@@ -2,7 +2,7 @@ import React from 'react'
 import { View, StyleSheet, ScrollView, TextInput, Text } from 'react-native'
 import BagItem from './BagItem'
 import Icons from '../icons'
-import { sp, wp } from '../untils'
+import { sp, wp } from '../utils'
 import ButtonGradient from './ButtonGradient';
 import CheckDelivery from './CheckDelivery'
 import {withNavigation} from 'react-navigation'
