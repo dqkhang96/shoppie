@@ -1,30 +1,27 @@
 import React, { Component } from 'react';
 import {
   View,
-  Platform,
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import stateStorage from '../config/stateStorage';
+import PropTypes from 'prop-types';
 
 export default class BackXButton extends Component {
-  onBack = () => {
-
-  }
-
   render() {
     return (
-      Platform.OS == 'android'
-        ? <View style={styles.backXButtonContainer} />
-        : <View style={styles.backXButtonContainer}>
-          <TouchableOpacity onPress={this.onBack}>
-            <Ionicons name='ios-close' size={25} />
-          </TouchableOpacity>
-
-        </View>
+      <View style={styles.backXButtonContainer}>
+        <TouchableOpacity onPress={this.props.onBack}>
+          <Ionicons name='ios-close' size={25} />
+        </TouchableOpacity>
+      </View>
     );
   }
+}
+
+BackXButton.propTypes = {
+  onBack: PropTypes.func,
 }
 
 const styles = StyleSheet.create({

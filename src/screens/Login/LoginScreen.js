@@ -11,14 +11,20 @@ import GoToRegisterButton from './GoToRegisterButton';
 import LoginIconsContainer from './LoginIconsContainer';
 import LoginInputFormsContainer from './LoginInputFormsContainer';
 import ColoredButton from '../../components/ColoredButton';
+import BackXButton from '../../components/BackXButton';
 import { ScrollView } from 'react-native-gesture-handler';
 
 export default class LoginScreen extends Component {
   static navigationOptions = {
     header: null,
   }
+
   onLogin = async () => {
 
+  }
+
+  onBack = () => {
+    this.props.navigation.goBack();
   }
 
   render() {
@@ -27,6 +33,7 @@ export default class LoginScreen extends Component {
         <ScrollView>
           <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <View>
+              <BackXButton onBack={this.onBack} />
               <LoginIconsContainer />
 
               <LoginInputFormsContainer />

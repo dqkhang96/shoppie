@@ -154,8 +154,8 @@ export default class ProductScreen extends React.Component {
                     {this._renderSizePicker()}
                     <CheckDelivery/>
                     {this._renderOther()}
-                    {this._renderButtonAddToCart()}
                 </ScrollView>
+                {this._renderButtonAddToCart()}
             </View>
         )
     }

@@ -8,18 +8,19 @@ import {
 import stateStorage from '../../config/stateStorage';
 import { withNavigation } from 'react-navigation';
 
-class GoToRegisterButton extends Component {
-  onRegister = () => {
-    this.props.navigation.navigate('Register');
+class GoToLoginButton extends Component {
+  onGoToLogin = async () => {
+    this.props.navigation.navigate('Login');
   }
 
   render() {
     return (
-      <View style={styles.goToRegister}>
+      <View style={styles.goToLogin}>
+        <Text style={styles.text}>Already have an account? </Text>
         <TouchableOpacity
-          onPress={this.onRegister}
+          onPress={this.onGoToLogin}
         >
-          <Text style={styles.text}>Don't have an account?</Text>
+          <Text style={[styles.text, { textDecorationLine: 'underline', color: stateStorage.appColor }]}>Login</Text>
         </TouchableOpacity>
       </View>
     )
@@ -31,7 +32,7 @@ const styles = StyleSheet.create({
     fontSize: stateStorage.fontsize,
     color: 'grey',
   },
-  goToRegister: {
+  goToLogin: {
     height: stateStorage.SCREEN_HEIGHT * 0.1,
     paddingHorizontal: 30,
     flexDirection: 'row',
@@ -40,4 +41,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default withNavigation(GoToRegisterButton);
+export default withNavigation(GoToLoginButton);

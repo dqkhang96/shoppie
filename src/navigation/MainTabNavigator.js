@@ -9,7 +9,13 @@ import CategoryScreen from '../screens/CategoryScreen'
 import TopwearScreen from '../screens/TopwearScreen'
 import BrandsScreen from '../screens/BrandsScreen'
 import BagAndWishListScreen from '../screens/BagAndWishListScreen'
-import LoginScreen from '../screens/Login';
+import ProfileScreen from '../screens/Profile'
+import LoginScreen from '../screens/Login'
+import RegisterScreen from '../screens/Register'
+import ForgotPasswordScreen from '../screens/ForgotPassword'
+import OnboardingScreen from '../screens/Onboarding'
+import VerifyMobileScreen from '../screens/VerifyMobile'
+import NotificationScreen from '../screens/Notification'
 import { sp, wp } from '../untils'
 import Icons from '../icons'
 import Profile from '../navigation/SideMenu/Profile'
@@ -29,20 +35,43 @@ const HomeStack = createStackNavigator({
   Login: {
     screen: LoginScreen,
   },
+  Profile: {
+    screen: ProfileScreen,
+  },
+  Notification: {
+    screen: NotificationScreen,
+  },
+  Verify: {
+    screen: VerifyMobileScreen,
+  },
+  Onboard: {
+    screen: OnboardingScreen,
+  },
+  ForgotPassword: {
+    screen: ForgotPasswordScreen,
+  },
+  Register: {
+    screen: RegisterScreen,
+  },
 });
 
 HomeStack.navigationOptions = ({ navigation }) => {
   let tabBarVisible = true
   const routeName = navigation.state.routes[navigation.state.index].routeName
-  if ((routeName == 'Product')||(routeName=='Login'))
+  if ((routeName == 'Product') || (routeName == 'Login') || (routeName == 'Profile')
+    || (routeName == 'Notification') || (routeName == 'Onboard') || (routeName == 'ForgotPassword')
+    || (routeName == 'RegisterScreen'))
     tabBarVisible = false
 
   return {
     tabBarVisible,
     tabBarLabel: () => null,
-    tabBarIcon: (
-      <Icons.Home width={sp(5)} height={sp(5)} />
+    tabBarIcon: ({tintColor})=>(
+      <Icons.Home width={sp(5)} height={sp(5)} fill={tintColor}/>
     ),
+    tabBarOptions:{
+      activeTintColor:"#08D6CC"
+    }
   }
 };
 
@@ -52,9 +81,12 @@ const SearchStack = createStackNavigator({
 SearchStack.navigationOptions = ({ navigation }) => {
   return ({
     tabBarLabel: () => null,
-    tabBarIcon: (
-      <Icons.Search width={sp(5)} height={sp(5)} />
-    )
+    tabBarIcon:({tintColor})=> (
+      <Icons.Search width={sp(5)} height={sp(5)} fill={tintColor} />
+    ),
+    tabBarOptions:{
+      activeTintColor:"#08D6CC"
+    }
   }
   )
 }
@@ -67,22 +99,28 @@ const CategoryStack = createStackNavigator(
 
 CategoryStack.navigationOptions = {
   tabBarLabel: () => null,
-  tabBarIcon: (
+  tabBarIcon: ({tintColor})=>(
 
-    <Icons.List width={sp(5)} height={sp(5)} />
+    <Icons.List width={sp(5)} height={sp(5)} fill={tintColor} />
 
   ),
+  tabBarOptions:{
+    activeTintColor:"#08D6CC"
+  }
 };
 
 const ProfileStack = createStackNavigator(
   {
-    BagAndWishList: BagAndWishListScreen
+    Profile: ProfileScreen,
   }
 )
 
 ProfileStack.navigationOptions = {
   tabBarLabel: () => null,
-  tabBarIcon: (<Icons.Profile width={sp(5)} height={sp(5)} />)
+  tabBarIcon: ({tintColor})=>(<Icons.Profile width={sp(5)} height={sp(5)} fill={tintColor} />),
+  tabBarOptions:{
+    activeTintColor:"#08D6CC"
+  }
 }
 
 const ShoppingBagStack = createStackNavigator(
@@ -94,7 +132,10 @@ const ShoppingBagStack = createStackNavigator(
 
 ShoppingBagStack.navigationOptions = {
   tabBarLabel: () => null,
-  tabBarIcon: (<Icons.Bag width={sp(5)} height={sp(5)} />)
+  tabBarIcon:({tintColor})=>(<Icons.Bag width={sp(5)} height={sp(5)} fill={tintColor} />),
+  tabBarOptions:{
+    activeTintColor:"#08D6CC"
+  }
 }
 
 const ParentStack = createBottomTabNavigator({
@@ -110,7 +151,7 @@ ParentStack.navigationOptions = {
 const tabNavigator = createDrawerNavigator({
   ParentStack,
 }, {
-    contentComponent: () => <Profile />,
+    contentComponent: () => <CustomDrawerContentComponent />,
     drawerWidth: wp(75)
 
   })
