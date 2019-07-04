@@ -65,9 +65,12 @@ HomeStack.navigationOptions = ({ navigation }) => {
   return {
     tabBarVisible,
     tabBarLabel: () => null,
-    tabBarIcon: (
-      <Icons.Home width={sp(5)} height={sp(5)} />
+    tabBarIcon: ({tintColor})=>(
+      <Icons.Home width={sp(5)} height={sp(5)} fill={tintColor}/>
     ),
+    tabBarOptions:{
+      activeTintColor:"#08D6CC"
+    }
   }
 };
 
@@ -77,9 +80,12 @@ const SearchStack = createStackNavigator({
 SearchStack.navigationOptions = ({ navigation }) => {
   return ({
     tabBarLabel: () => null,
-    tabBarIcon: (
-      <Icons.Search width={sp(5)} height={sp(5)} />
-    )
+    tabBarIcon:({tintColor})=> (
+      <Icons.Search width={sp(5)} height={sp(5)} fill={tintColor} />
+    ),
+    tabBarOptions:{
+      activeTintColor:"#08D6CC"
+    }
   }
   )
 }
@@ -92,11 +98,14 @@ const CategoryStack = createStackNavigator(
 
 CategoryStack.navigationOptions = {
   tabBarLabel: () => null,
-  tabBarIcon: (
+  tabBarIcon: ({tintColor})=>(
 
-    <Icons.List width={sp(5)} height={sp(5)} />
+    <Icons.List width={sp(5)} height={sp(5)} fill={tintColor} />
 
   ),
+  tabBarOptions:{
+    activeTintColor:"#08D6CC"
+  }
 };
 
 const ProfileStack = createStackNavigator(
@@ -107,7 +116,10 @@ const ProfileStack = createStackNavigator(
 
 ProfileStack.navigationOptions = {
   tabBarLabel: () => null,
-  tabBarIcon: (<Icons.Profile width={sp(5)} height={sp(5)} />)
+  tabBarIcon: ({tintColor})=>(<Icons.Profile width={sp(5)} height={sp(5)} fill={tintColor} />),
+  tabBarOptions:{
+    activeTintColor:"#08D6CC"
+  }
 }
 
 const ShoppingBagStack = createStackNavigator(
@@ -118,7 +130,10 @@ const ShoppingBagStack = createStackNavigator(
 
 ShoppingBagStack.navigationOptions = {
   tabBarLabel: () => null,
-  tabBarIcon: (<Icons.Bag width={sp(5)} height={sp(5)} />)
+  tabBarIcon:({tintColor})=>(<Icons.Bag width={sp(5)} height={sp(5)} fill={tintColor} />),
+  tabBarOptions:{
+    activeTintColor:"#08D6CC"
+  }
 }
 
 const ParentStack = createBottomTabNavigator({

@@ -4,7 +4,7 @@ import Icons from '../icons'
 import { withNavigation ,Header} from 'react-navigation'
 import { sp } from '../untils';
 
-const BUTTON_SIZE= Header.HEIGHT*0.6
+const BUTTON_SIZE= Header.HEIGHT*0.5
 const BagAndWishListButtons=({navigation})=>(
     <View style={styles.container}>
         <TouchableWithoutFeedback
@@ -26,7 +26,8 @@ const BagAndWishListButtons=({navigation})=>(
 const styles=StyleSheet.create({
     container:{
         flexDirection:'row',
-        alignItems:'center'
+        alignItems:'center',
+        marginRight:sp(3.5)
     },
     viewButton:{
         marginLeft:sp(3),

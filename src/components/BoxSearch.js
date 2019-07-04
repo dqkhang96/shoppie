@@ -1,21 +1,35 @@
 import React from 'react'
-import { View, TextInput, StyleSheet, TouchableOpacityBase } from 'react-native'
+import { View, TextInput, StyleSheet, TouchableOpacity } from 'react-native'
 import { sp, WIDTH_SCREEN } from '../untils'
 import Icons from '../icons'
 
 export default class BoxSearch extends React.Component {
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            word: ''
+        }
+    }
+
     render() {
-        const {heightHeader}=this.props
-        const sizeIcon=heightHeader*0.45
+        const { heightHeader } = this.props
+        const sizeIcon = heightHeader * 0.4
 
         return (
             <View style={styles.container}>
-                <TextInput style={[styles.input,{fontSize:heightHeader*0.35}]} placeholder="Search for products" />
-                <View style={{marginRight:sp(5)}}>
-                    <Icons.ShoppingBag width={sizeIcon} height={sizeIcon} />
+                <TextInput
+                    onChangeText={(text) => this.setState({ word: text })}
+                    value={this.state.word}
+                    style={[styles.input, { fontSize: heightHeader * 0.35 }]} placeholder="Search for products" />
+                <View style={{ marginRight: sp(5) }}>
+                    <Icons.Search width={sizeIcon} height={sizeIcon} />
                 </View>
-                <Icons.Trash width={sizeIcon} height={sizeIcon} />
-
+                <TouchableOpacity
+                    onPress={() => this.setState({ word: '' })}
+                >
+                    <Icons.Cancel width={sizeIcon*0.6} height={sizeIcon*0.6} />
+                </TouchableOpacity>
             </View>
         )
     }

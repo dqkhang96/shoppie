@@ -9,7 +9,7 @@ const ButtonMenu = ({ navigation }) => (
         onPress={() => navigation.openDrawer()}
     >
         <View style={{ marginLeft: sp(3.5) }}>
-            <Icons.Menu height={Header.HEIGHT * 0.45} width={Header.HEIGHT * 0.45} />
+            <Icons.Menu height={Header.HEIGHT * 0.4} width={Header.HEIGHT * 0.4} />
         </View>
     </TouchableWithoutFeedback>
 )

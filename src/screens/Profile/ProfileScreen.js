@@ -9,24 +9,23 @@ import {
 } from 'react-native';
 
 import stateStorage from '../../config/stateStorage';
-import HeadBar from '../../components/HeadBar';
+import ButtonBackAndButtonMenu from '../../components/ButtonBackAndButtonMenu'
 import BasicInfo from './BasicInfo';
 import SignoutButton from './SignoutButton';
 import ListButtons from './ListButtons';
 
-import { NavigationActions } from 'react-navigation';
+import BagAndWishListButtons from '../../components/BagAndWishListButtons'
 
 export default class ProfileScreen extends Component {
-  static navigationOptions = {
-    header: null,
-    // headerTitle: <Text>Nhau</Text>,
-    // headerRight: (
-    //   <Button
-    //     onPress={() => alert('This is a button!')}
-    //     title="Info"
-    //     color="#fff"
-    //   />
-    // ),
+  static navigationOptions = ({ navigation }) => {
+    return {
+      headerLeft:(
+        <View style={{ flex: 1}}>  
+          <ButtonBackAndButtonMenu/>
+        </View>),
+      title: "   Profile",
+      headerRight: <BagAndWishListButtons />
+    }
   }
 
   onBack = () => {
@@ -45,7 +44,7 @@ export default class ProfileScreen extends Component {
     // const backAction = NavigationActions.back({
     //   key: null
     // }) 
-    
+
     // this.props.navigation.dispatch(backAction);
     alert(this.props.navigation.state.key)
 
@@ -54,7 +53,6 @@ export default class ProfileScreen extends Component {
   render() {
     return (
       <ScrollView style={styles.container}>
-        <HeadBar title="Profile" onBack={this.onBack} />
         <BasicInfo />
         <ListButtons />
         <SignoutButton />
