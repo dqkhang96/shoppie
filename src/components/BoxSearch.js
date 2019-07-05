@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, TextInput, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, TextInput, StyleSheet, TouchableOpacity ,TouchableWithoutFeedback} from 'react-native'
 import { sp, WIDTH_SCREEN } from '../untils'
 import Icons from '../icons'
 
@@ -13,23 +13,17 @@ export default class BoxSearch extends React.Component {
     }
 
     render() {
-        const { heightHeader } = this.props
-        const sizeIcon = heightHeader * 0.4
+        const {heightHeader}=this.props
+        const sizeIcon=heightHeader*0.35
 
         return (
             <View style={styles.container}>
-                <TextInput
-                    onChangeText={(text) => this.setState({ word: text })}
-                    value={this.state.word}
-                    style={[styles.input, { fontSize: heightHeader * 0.35 }]} placeholder="Search for products" />
-                <View style={{ marginRight: sp(5) }}>
+                <TextInput style={[styles.input,{fontSize:heightHeader*0.35}]} placeholder="Search for products" />
+                <View style={{marginRight:sp(5)}}>
                     <Icons.Search width={sizeIcon} height={sizeIcon} />
                 </View>
-                <TouchableOpacity
-                    onPress={() => this.setState({ word: '' })}
-                >
-                    <Icons.Cancel width={sizeIcon*0.6} height={sizeIcon*0.6} />
-                </TouchableOpacity>
+                <TouchableOpacity><Icons.Close width={sizeIcon} height={sizeIcon} /></TouchableOpacity>
+
             </View>
         )
     }
