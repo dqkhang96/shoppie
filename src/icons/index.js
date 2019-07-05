@@ -42,11 +42,11 @@ import List from './List'
 import Bag from './Bag'
 import Profile from './Profile'
 import Close from './Close.js'
-const Icons={BackgroundColor,Checked,Blockquote,Temperature,Location,Gift,Dress,Right,Home,
-                TextColor,TextStyle,Redo,Save,Pause,Back,Up,Circle,Percel,List,Bag,
-                Remove,AddImage,More,ListNumber,Link,PhotoLibrary,Document,Profile,Close,
-                Audio,AddAudio,Check,AudioFile,StrickeThrough,UnderLine,AddEdit,
-                Normal,Event,Position,Play,Menu,AddEvent,Recorder,Camera,Trash,Edit,Down,LeftArrow,
-                Sort,Filter,ShoppingBag,Search,Heart,ArrowRight,Cancel,Undo}
+const Icons={BackgroundColor,Checked,Location,Gift,Dress,Right,Home,
+                TextColor,TextStyle,Save,Pause,Back,Up,Circle,Percel,List,Bag,
+                Remove,More,Link,Document,Profile,Close,
+                Audio,Check,
+                Normal,Event,Position,Play,Menu,Camera,Trash,Edit,Down,LeftArrow,
+                Sort,Filter,ShoppingBag,Search,Heart,ArrowRight,Cancel}
 
 export default Icons

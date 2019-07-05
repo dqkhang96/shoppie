@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
         justifyContent: "center"
     },
     Information:{
-        height: 50,
+        
         width: 138,
         backgroundColor: '#FFFFFF',
         alignContent:'center',
