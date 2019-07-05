@@ -15,7 +15,6 @@ import BackXButton from '../../components/BackXButton';
 import { ScrollView } from 'react-native-gesture-handler';
 import oauthSignature from 'oauth-signature';
 import axios from 'axios';
-import { isUnaryLike } from '@babel/types';
 
 export default class LoginScreen extends Component {
   static navigationOptions = {
@@ -51,31 +50,42 @@ export default class LoginScreen extends Component {
     signature = oauthSignature.generate(httpMethod, url, allParams, consumerSecret, tokenSecret);
 
     return "OAuth oauth_consumer_key=\"" + consumerKey + "\",oauth_nonce=\"" + nonce + "\",oauth_signature=\"" + signature + "\",oauth_signature_method=\"HMAC-SHA1\",oauth_timestamp=\"" + timeStamp + "\",oauth_token=\"" + accessToken + "\",oauth_version=\"1.0\"";
-    // return signature;
   }
 
-  doLogin = async () => {
-    this.setState({ loading: true, });
-    const url = 'https://dev.goodiebox.dk/api/rest/integration/customer/token'
-    const method = 'POST';
-    const authorization = this.generateAuthorization(url, method);
+  doLogin = async (username, password) => {
+    url = 'https://dev.goodiebox.dk/api/rest/integration/customer/token';
+    method = 'POST';
     options = {
+      url: url,
       method: method,
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': authorization
+        'Authorization': this.generateAuthorization(url, method),
       },
-      url: url,
       data: JSON.stringify({
-        username: 'test@test.com',
-        password: '123456',
+        username: username,
+        password: password,
       })
     };
 
-    const response = await axios(options);
-    const token = await response.data.split(':\"')[1].split('\"}')[0]     // This is a string, not a JSON object so we have to split this string 
-    alert(token);
+    try {
+      const response = await axios(options);
+      const token = await response.data.split(':\"')[1].split('\"}')[0]     // This is a string, not a JSON object so we have to split this string to get the token
+      alert(token);
+    } catch(err) {
+      console.error(`ERR with: ${err}`);
+    }
+
+    // // You can use ".then" instead of "async await" if you want
+    // axios(options)
+    //   .then(response => response.data.split(':\"')[1].split('\"}')[0])
+    //   .then(token => {
+    //     alert(token);
+    //   })
+    //   .catch(err => {
+    //     console.error(`ERR with: ${err}`);
+    //   })
   }
 
   onBack = () => {
@@ -94,7 +104,7 @@ export default class LoginScreen extends Component {
               <LoginInputFormsContainer />
 
               <View style={styles.buttonContainer} >
-                <ColoredButton title='Login' method={this.doLogin} />
+                <ColoredButton title='Login' method={() => { this.doLogin('test@test.com', '123456') }} />
               </View>
               <GoToForgotPasswordButton />
               <GoToRegisterButton />
