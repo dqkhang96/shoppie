@@ -14,6 +14,8 @@ import ColoredButton from '../../components/ColoredButton';
 import BackXButton from '../../components/BackXButton';
 import { ScrollView } from 'react-native-gesture-handler';
 import oauthSignature from 'oauth-signature';
+import axios from 'axios';
+import { isUnaryLike } from '@babel/types';
 
 export default class LoginScreen extends Component {
   static navigationOptions = {
@@ -24,7 +26,7 @@ export default class LoginScreen extends Component {
     var nonce = (Math.random() * 1e32).toString(32),
       // timeStamp = new Date().getTime(),
       // timeStamp = '1559616233',//Tạm thời fix cứng vì device và server đang lệch múi giờ
-      timeStamp = '1559616235',
+      timeStamp = '1559616233',
       accessToken = '275f3514fec865dc3186fedb678a9433',
       consumerKey = "f62b7aefaf38026da8cf0b664e7e254f",
       consumerSecret = "9f6ed4ca684a0c10bbf4678c30ed56a4",
@@ -58,31 +60,23 @@ export default class LoginScreen extends Component {
     const method = 'POST';
     const authorization = this.generateAuthorization(url, method);
     options = {
-      // mode: 'cors',
       method: method,
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         'Authorization': authorization
       },
-      body: JSON.stringify({
+      url: url,
+      data: JSON.stringify({
         username: 'test@test.com',
         password: '123456',
       })
     };
 
-    try {
-      const response = await fetch(url, options);
-      const responseJSON = await response.json();
-      alert(responseJSON);
-    } catch(err) {
-      alert('ERR with' + err);
-    }
+    const response = await axios(options);
+    const token = await response.data.split(':\"')[1].split('\"}')[0]     // This is a string, not a JSON object so we have to split this string 
+    alert(token);
   }
-
-  // onLogin = async () => {
-
-  // }
 
   onBack = () => {
     this.props.navigation.goBack();
