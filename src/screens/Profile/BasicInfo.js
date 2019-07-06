@@ -25,7 +25,10 @@ class BasicInfo extends Component {
       this.props.user.isLogin == true
         ?
         <View style={[styles.basicInfoContainer, { alignItems: 'center', }]}>
-          <Image source={{ uri: this.props.user.avatar }} style={styles.avatar} />
+          {this.props.user.avatar == ''
+            ? <View style={styles.avatar} />
+            : <Image source={{ uri: this.props.user.avatar }} style={styles.avatar} />}
+
           <Text style={styles.name}>
             {this.props.user.name}
           </Text>
@@ -52,6 +55,7 @@ const styles = StyleSheet.create({
     width: stateStorage.SCREEN_HEIGHT * 0.15,
     borderRadius: 80,
     borderWidth: 1,
+    backgroundColor: stateStorage.appColor,
   },
   name: {
     fontSize: 25,

@@ -12,4 +12,5 @@ export const NOTFOCUSNAME = 'notfocusname';
 export const NOTFOCUSMOBILE = 'notfocusmobile';
 export const LOGINFB = 'loginfb';
 export const LOGINGG = 'logingg';
+export const LOGINNORMAL = 'loginnormal'
 export const LOGOUT = 'logout';

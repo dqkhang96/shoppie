@@ -24,10 +24,10 @@ class InputEmail extends Component {
         }]}>
           <Text style={styles.text}>Email Id</Text>
           <TextInput
-            placeholder="abc@gmail.com"
+            value={stateStorage.username}
             onFocus={() => { this.props.focusEmail() }}
             onBlur={() => { this.props.notFocusEmail() }}
-            onChangeText={() => {}}
+            onChangeText={(text) => { stateStorage.username = text }}
             keyboardType="email-address"
             style={styles.inputText}
           />
@@ -35,10 +35,10 @@ class InputEmail extends Component {
         : <View style={styles.inputForm}>
           <Text style={styles.text}>Email Id</Text>
           <TextInput
-            placeholder="abc@gmail.com"
+            value={stateStorage.username}
             onFocus={() => { this.props.focusEmail() }}
             onBlur={() => { this.props.notFocusEmail() }}
-            onChangeText={() => {}}
+            onChangeText={(text) => { stateStorage.username = text }}
             keyboardType="email-address"
             style={styles.inputText}
           />
