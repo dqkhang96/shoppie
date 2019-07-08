@@ -3,8 +3,12 @@ import {
   TouchableOpacity,
   Image,
   StyleSheet,
+  ActivityIndicator,
+  View,
 } from 'react-native';
 import { withNavigation } from 'react-navigation';
+import AsyncStorage from '@react-native-community/async-storage';
+import stateStorage from '../config/stateStorage';
 
 // import GG Login
 import { GoogleSignin, statusCodes } from 'react-native-google-signin';
@@ -19,20 +23,31 @@ GoogleSignin.configure({
 });
 
 class LoginGoogleButton extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoginLoading: false,
+    }
+  }
+
   onLoginGG = async () => {
+    this.setState({ isLoginLoading: true });
     try {
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
 
       // Call the Login Google action of Redux
       await this.props.logInGG(userInfo.user);
+      await AsyncStorage.setItem('isLoginGG', 'true');
 
+      this.setState({ isLoginLoading: false });
       this.props.navigation.goBack();
     } catch (err) {
       if (err.code === statusCodes.SIGN_IN_CANCELLED) {
-        // user cancelled the login flow
+        this.setState({ isLoginLoading: false });
       }
       else {
+        this.setState({isLoginLoading: false})
         alert(`Login failed with error: ${err}`);
       }
     }
@@ -40,13 +55,15 @@ class LoginGoogleButton extends Component {
 
   render() {
     return (
-      <TouchableOpacity
-        style={styles.fbggButton}
-        onPress={this.onLoginGG}>
-        <Image
-          style={styles.ggIcon}
-          source={require('../img/gg.png')} />
-      </TouchableOpacity>
+      this.state.isLoginLoading
+        ? <ActivityIndicator size='large' color={stateStorage.appColor} style={styles.fbggButton}/>
+        : <TouchableOpacity
+          style={styles.fbggButton}
+          onPress={this.onLoginGG}>
+          <Image
+            style={styles.ggIcon}
+            source={require('../img/gg.png')} />
+        </TouchableOpacity>
     )
   }
 }
@@ -73,4 +90,4 @@ const mapStateToProps = state => ({
   user: state.user,
 });
 
-export default connect(mapStateToProps,actions)(withNavigation(LoginGoogleButton));
+export default connect(mapStateToProps, actions)(withNavigation(LoginGoogleButton));

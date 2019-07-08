@@ -1,8 +1,8 @@
 import {
   TO1STEP, TO2STEP, TOBACKSTEP, TONEXTSTEP,
   FOCUSEMAIL, FOCUSPASSWORD, FOCUSMOBILE, FOCUSNAME,
-  NOTFOCUSEMAIL, NOTFOCUSPASSWORD, NOTFOCUSMOBILE, NOTFOCUSNAME, 
-  LOGINFB, LOGINGG, LOGOUT,
+  NOTFOCUSEMAIL, NOTFOCUSPASSWORD, NOTFOCUSMOBILE, NOTFOCUSNAME,
+  LOGINFB, LOGINGG, LOGINNORMAL, LOGOUT,
 } from './type';
 
 export const to1step = () => ({ type: TO1STEP });
@@ -28,4 +28,8 @@ export const logInGG = (USER) => ({
   type: LOGINGG,
   user: USER,
 });
-export const logOut = () => ({type: LOGOUT});
+export const logInNormal = (USER) => ({
+  type: LOGINNORMAL,
+  user: USER,
+});
+export const logOut = () => ({ type: LOGOUT });

@@ -24,10 +24,10 @@ class InputPassword extends Component {
         }]}>
           <Text style={styles.text}>Password</Text>
           <TextInput
-            placeholder="********"
+            value={stateStorage.password}
             onFocus={() => { this.props.focusPassword() }}
             onBlur={() => { this.props.notFocusPassword() }}
-            onChangeText={() => { }}
+            onChangeText={(text) => { stateStorage.password = text }}
             style={styles.inputText}
             secureTextEntry={true}
           />
@@ -35,14 +35,14 @@ class InputPassword extends Component {
         : <View style={styles.inputForm}>
           <Text style={styles.text}>Password</Text>
           <TextInput
-            placeholder="********"
+            value={stateStorage.password}
             onFocus={() => { this.props.focusPassword() }}
             onBlur={() => { this.props.notFocusPassword() }}
-            onChangeText={() => { }}
+            onChangeText={(text) => { stateStorage.password = text }}
             style={styles.inputText}
             secureTextEntry={true}
           />
-      </View>
+        </View>
     )
   }
 }

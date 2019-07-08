@@ -4,23 +4,27 @@ import {
   Keyboard,
   View,
   TouchableWithoutFeedback,
+  ScrollView,
 } from 'react-native';
 import stateStorage from '../../config/stateStorage';
 import GoToForgotPasswordButton from './GoToForgotPasswordButton';
 import GoToRegisterButton from './GoToRegisterButton';
 import LoginIconsContainer from './LoginIconsContainer';
-import LoginInputFormsContainer from './LoginInputFormsContainer';
-import ColoredButton from '../../components/ColoredButton';
+import InputEmail from '../../components/InputEmail';
+import InputPassword from '../../components/InputPassword';
 import BackXButton from '../../components/BackXButton';
-import { ScrollView } from 'react-native-gesture-handler';
+import LoginNormalButton from './LoginNormalButton';
+
+import AsyncStorage from '@react-native-community/async-storage';
 
 export default class LoginScreen extends Component {
   static navigationOptions = {
     header: null,
   }
 
-  onLogin = async () => {
-
+  async componentWillMount() {
+    stateStorage.username = await AsyncStorage.getItem('username');
+    stateStorage.password = await AsyncStorage.getItem('password');
   }
 
   onBack = () => {
@@ -36,11 +40,12 @@ export default class LoginScreen extends Component {
               <BackXButton onBack={this.onBack} />
               <LoginIconsContainer />
 
-              <LoginInputFormsContainer />
-
-              <View style={styles.buttonContainer} >
-                <ColoredButton title='Login' method={this.onLogin} />
+              <View style={styles.inputFormContainer} >
+                <InputEmail />
+                <InputPassword />
               </View>
+
+              <LoginNormalButton />
               <GoToForgotPasswordButton />
               <GoToRegisterButton />
 
@@ -57,9 +62,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: stateStorage.backgroundColor,
   },
-  buttonContainer: {
-    height: stateStorage.SCREEN_HEIGHT * 0.1,
+  inputFormContainer: {
+    height: stateStorage.SCREEN_HEIGHT * 0.28,
+    paddingHorizontal: 18,
     justifyContent: 'center',
-    paddingHorizontal: 30,
   },
 })                                                                

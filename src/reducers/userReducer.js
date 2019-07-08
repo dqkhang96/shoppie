@@ -1,5 +1,5 @@
 import {
-  LOGINFB, LOGINGG, LOGOUT,
+  LOGINFB, LOGINGG, LOGINNORMAL, LOGOUT,
 } from '../actions/type';
 
 const initialState = {
@@ -34,6 +34,16 @@ export default function (state = initialState, action) {
         avatar: action.user.photo,
         accessToken: action.idToken,
       };
+
+    case LOGINNORMAL:
+      return {
+        ...state,
+        isLogin: true,
+        name: action.user.name,
+        username: action.user.username,
+        email: action.user.email,
+        accessToken: action.Token,
+      }
 
     case LOGOUT:
       return initialState;

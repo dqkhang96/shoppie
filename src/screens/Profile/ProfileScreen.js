@@ -28,28 +28,6 @@ export default class ProfileScreen extends Component {
     }
   }
 
-  onBack = () => {
-    // let resetAction = NavigationActions.reset({
-    //   index: 0,
-    //   actions: [
-    //     NavigationActions.init({ routeName: 'Home' }),
-    //   ]
-    // });
-    // this.props.navigation.dispatch(resetAction);
-
-    // this.props.navigation.navigate('Home');
-
-    // this.props.navigation.dispatch(NavigationActions.back())
-
-    // const backAction = NavigationActions.back({
-    //   key: null
-    // }) 
-
-    // this.props.navigation.dispatch(backAction);
-    alert(this.props.navigation.state.key)
-
-  }
-
   render() {
     return (
       <ScrollView style={styles.container}>

@@ -23,6 +23,9 @@ import PaymentScreen from '../screens/PaymentScreen'
 import SearchScreen from '../screens/SearchScreen'
 
 const HomeStack = createStackNavigator({
+  // Login: {
+  //   screen: LoginScreen,
+  // },
   Home: {
     screen: HomeScreen,
   },
