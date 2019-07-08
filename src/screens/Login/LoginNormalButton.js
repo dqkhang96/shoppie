@@ -87,7 +87,7 @@ class LoginNormalButton extends Component {
       const userInfo = {
         name: this.props.username,
         username: this.props.username,
-        email: this.props.username,
+        email: username,
         accessToken: token,
       }
       this.props.logInNormal(userInfo);

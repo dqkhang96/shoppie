@@ -45,6 +45,7 @@ class LoginGoogleButton extends Component {
     } catch (err) {
       if (err.code === statusCodes.SIGN_IN_CANCELLED) {
         this.setState({ isLoginLoading: false });
+        await AsyncStorage.setItem('isLoginGG', 'false');
       }
       else {
         this.setState({isLoginLoading: false})

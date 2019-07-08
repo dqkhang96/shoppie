@@ -32,6 +32,7 @@ class LoginFacebookButton extends Component {
 
       if (resultLogin.isCancelled) {
         this.setState({isLoginLoading: false});
+        await AsyncStorage.setItem('isLoginFB', 'false');
       } else {
         let resultToken = await AccessToken.getCurrentAccessToken();
         let res = await fetch(`https://graph.facebook.com/me?fields=id,name,email,picture.type(large)&access_token=${resultToken.accessToken}`)
