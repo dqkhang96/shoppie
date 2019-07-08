@@ -81,7 +81,7 @@ class LoginNormalButton extends Component {
       // Save this for the next Login Normal
       await AsyncStorage.setItem('username', stateStorage.username);
       await AsyncStorage.setItem('password', stateStorage.password);
-      await AsyncStorage.setItem('isLoginNormal', 'true');
+      await AsyncStorage.setItem('isLoginNormal','true');
 
       // Save to redux
       const userInfo = {
