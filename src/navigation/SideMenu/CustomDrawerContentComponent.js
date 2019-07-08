@@ -24,7 +24,7 @@ import { AccessToken, LoginManager, GraphRequest, GraphRequestManager, LoginButt
 import { GoogleSignin, statusCodes } from 'react-native-google-signin';
 
 // Import redux
-import * as actions from '../../actions/index';
+import * as actions from '../../redux/actions/index';
 import { connect } from 'react-redux';
 
 let isLoginGG;

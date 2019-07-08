@@ -11,7 +11,7 @@ import Carousel, { Pagination } from 'react-native-snap-carousel';
 import stateStorage from '../../config/stateStorage';
 
 //import redux
-import * as actions from '../../actions/index';
+import * as actions from '../../redux/actions/index';
 import { connect } from 'react-redux';
 
 const onboardImagesList = [

@@ -7,7 +7,7 @@ import {
 
 //import redux
 import { connect } from 'react-redux';
-import * as actions from '../../actions/index';
+import * as actions from '../../redux/actions/index';
 import stateStorage from '../../config/stateStorage';
 import BackXButton from '../../components/BackXButton';
 import ListItems from './ListItems';

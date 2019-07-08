@@ -14,7 +14,7 @@ import stateStorage from '../config/stateStorage';
 import { GoogleSignin, statusCodes } from 'react-native-google-signin';
 
 //import redux
-import * as actions from '../actions/index';
+import * as actions from '../redux/actions/index';
 import { connect } from 'react-redux';
 
 GoogleSignin.configure({
@@ -62,7 +62,7 @@ class LoginGoogleButton extends Component {
           onPress={this.onLoginGG}>
           <Image
             style={styles.ggIcon}
-            source={require('../img/gg.png')} />
+            source={require('../../res/img/gg.png')} />
         </TouchableOpacity>
     )
   }

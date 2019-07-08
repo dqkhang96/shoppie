@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Gift  from'../../icons/Gift'
+import Gift  from'../../../res/icons/Gift'
 import MenuItem from './MenuItem'
 export default class MenComponent extends Component {
   render() {

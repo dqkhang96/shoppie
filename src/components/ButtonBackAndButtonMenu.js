@@ -1,7 +1,7 @@
 import React from 'react'
 import { withNavigation, Header } from 'react-navigation'
 import { View, TouchableOpacity } from 'react-native'
-import Icons from '../icons'
+import Icons from '../../res/icons'
 const ButtonBackAndButtonMenu = ({ navigation }) => (
     <View style={{ flexDirection: 'row', marginLeft: Header.HEIGHT * 0.3 ,justifyContent:'center'}}>
         <TouchableOpacity onPress={() => navigation.goBack(null)}>

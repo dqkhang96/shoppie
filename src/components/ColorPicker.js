@@ -1,6 +1,6 @@
 import React from 'react'
 import { View , TouchableNativeFeedback,StyleSheet} from 'react-native'
-import {sp} from '../untils'
+import {sp} from '../util'
 export default class ColorPicker extends React.Component {
 
     constructor(props) {

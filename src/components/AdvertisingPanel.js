@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
-import {sp} from '../untils'
+import {sp} from '../util'
 
 export default AdvertisingPanel = (props) => (
     <View style={styles.adContainer}>

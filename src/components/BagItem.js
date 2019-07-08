@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, Picker, StyleSheet } from 'react-native'
-import Icons from '../icons';
-import { wp, sp } from '../untils';
+import Icons from '../../res/icons';
+import { wp, sp } from '../util';
 import { Svg, Defs, Stop, LinearGradient } from 'react-native-svg';
 
 export default class BagItem extends React.Component {

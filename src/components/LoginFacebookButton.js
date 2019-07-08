@@ -13,7 +13,7 @@ import stateStorage from '../config/stateStorage';
 import { AccessToken, LoginManager, GraphRequest, GraphRequestManager } from 'react-native-fbsdk';
 
 //import redux
-import * as actions from '../actions/index';
+import * as actions from '../redux/actions/index';
 import { connect } from 'react-redux';
 
 
@@ -59,7 +59,7 @@ class LoginFacebookButton extends Component {
           onPress={this.onLoginFB}>
           <Image
             style={styles.fbIcon}
-            source={require('../img/fb.png')} />
+            source={require('../../res/img/fb.png')} />
         </TouchableOpacity>
     )
   }

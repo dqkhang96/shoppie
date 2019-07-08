@@ -14,7 +14,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import ColoredButton from '../../components/ColoredButton';
 
 //import redux
-import * as actions from '../../actions/index';
+import * as actions from '../../redux/actions/index';
 import { connect } from 'react-redux';
 
 class LoginNormalButton extends Component {

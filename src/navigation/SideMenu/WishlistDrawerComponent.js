@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Wishlist  from'../../icons/Wishlist'
+import Wishlist  from'../../../res/icons/Wishlist'
 import MenuItem from './MenuItem'
 export default class MenComponent extends Component {
   render() {

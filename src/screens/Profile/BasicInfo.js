@@ -9,7 +9,7 @@ import {
 import { withNavigation } from 'react-navigation';
 
 //import redux
-import * as actions from '../../actions/index';
+import * as actions from '../../redux/actions/index';
 import { connect } from 'react-redux';
 
 import stateStorage from '../../config/stateStorage';

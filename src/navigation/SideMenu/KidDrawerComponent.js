@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Kids from'../../icons/Kids'
+import Kids from'../../../res/icons/Kids'
 import MenuItem from './MenuItem'
 export default class MenComponent extends Component {
   render() {

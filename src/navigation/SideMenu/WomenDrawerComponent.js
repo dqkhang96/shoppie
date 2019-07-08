@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Women from '../../icons/Women'
+import Women from '../../../res/icons/Women'
 import MenuItem from './MenuItem'
 export default class MenComponent extends Component {
   render() {

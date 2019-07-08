@@ -5,7 +5,7 @@ import {
 import HeaderComponent from './HeaderComponent';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
-import Men from'../../icons/Men'
+import Men from'../../../res/icons/Men'
 import MenuItem from './MenuItem'
 export default class MenComponent extends Component {
   render() {

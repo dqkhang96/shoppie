@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Logout  from'../../icons/Logout'
+import Logout  from'../../../res/icons/Logout'
 import MenuItem from './MenuItem'
 export default class MenComponent extends Component {
   render() {

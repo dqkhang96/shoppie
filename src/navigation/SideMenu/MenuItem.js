@@ -5,7 +5,7 @@ import {
 import HeaderComponent from './HeaderComponent';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
-import ArrowRight from '../../icons/ArrowRight'
+import ArrowRight from '../../../res/icons/ArrowRight'
 export default class MenComponent extends Component {
   render() {
     return (
