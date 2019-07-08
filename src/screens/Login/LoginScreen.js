@@ -22,6 +22,14 @@ export default class LoginScreen extends Component {
     header: null,
   }
 
+  constructor(props){
+    super(props)
+    this.state={
+      username:'',
+      password:''
+    }
+  }
+
   async componentWillMount() {
     stateStorage.username = await AsyncStorage.getItem('username');
     stateStorage.password = await AsyncStorage.getItem('password');
@@ -41,11 +49,11 @@ export default class LoginScreen extends Component {
               <LoginIconsContainer />
 
               <View style={styles.inputFormContainer} >
-                <InputEmail />
-                <InputPassword />
+                <InputEmail setUsername={(username)=>this.setState({username})}/>
+                <InputPassword setPassword={(password)=>this.setState({password:password})}/>
               </View>
 
-              <LoginNormalButton />
+              <LoginNormalButton username={this.state.username} password={this.state.password}/>
               <GoToForgotPasswordButton />
               <GoToRegisterButton />
 
