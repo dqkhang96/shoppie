@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { View, StyleSheet, Dimensions } from 'react-native';
 import { TabView, SceneMap } from 'react-native-tab-view';
-import BagTab from '../components/BagTab.js'
-import WishlistTab from '../components/WishlistTab'
-import BagAndWishListButtons from '../components/BagAndWishListButtons.js'
-import ButtonMenu from '../components/ButtonMenu.js'
+import BagTab from './BagTab'
+import WishlistTab from './WishlistTab'
+import BagAndWishListButtons from '../../components/BagAndWishListButtons.js'
+import ButtonMenu from '../../components/ButtonMenu.js'
 const FirstRoute = () => (
   <View style={{flex:1}}>
       <BagTab></BagTab>

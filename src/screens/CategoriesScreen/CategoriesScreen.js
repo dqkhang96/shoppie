@@ -1,8 +1,8 @@
 import React from 'react'
 import { View, StyleSheet, ScrollView, TouchableWithoutFeedback } from 'react-native'
 import { Header } from 'react-navigation'
-import CategoryItem from '../components/CategoryItem'
-import BoxSearch from '../components/BoxSearch'
+import CategoryItem from '../../components/CategoryItem'
+import BoxSearch from '../../components/BoxSearch'
 
 
 export default class CategoriesScreen extends React.Component {

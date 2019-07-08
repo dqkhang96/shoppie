@@ -1,11 +1,11 @@
 import React from 'react'
 import { View, StyleSheet, Text, ScrollView, FlatList } from 'react-native'
-import Svgs from '../../res/svgs'
-import { sp, WIDTH_SCREEN, wp } from '../util';
-import Card, { CardView, CardBody } from '../components/Card';
-import ButtonGradient from '../components/ButtonGradient';
-import Banner from '../components/Banner'
-import AdvertisingPanel from '../components/AdvertisingPanel'
+import Svgs from '../../../res/svgs'
+import { sp, WIDTH_SCREEN, wp } from '../../util';
+import Card, { CardView, CardBody } from '../../components/Card';
+import ButtonGradient from '../../components/ButtonGradient';
+import Banner from '../../components/Banner'
+import AdvertisingPanel from '../../components/AdvertisingPanel'
 import { TouchableNativeFeedback } from 'react-native-gesture-handler';
 
 export default class CategoryScreen extends React.Component {

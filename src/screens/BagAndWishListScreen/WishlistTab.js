@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View} from 'react-native'
-import Wishlist from './Wishlist'
+import Wishlist from '../../components/Wishlist'
 export default class WishlishTab extends Component {
     render() {
         return (
