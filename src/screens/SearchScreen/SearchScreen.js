@@ -8,8 +8,8 @@ import {
     TouchableOpacity
 } from 'react-native'
 import { Header } from 'react-navigation'
-import BoxSearch from '../components/BoxSearch'
-import MasterCard from '../../res/icons/MasterCard.js'
+import BoxSearch from '../../components/BoxSearch'
+import MasterCard from '../../../res/icons/MasterCard.js'
 
 export default class SearchScreen extends Component {
     static navigationOptions = {

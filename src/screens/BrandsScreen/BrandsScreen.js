@@ -1,9 +1,9 @@
 import React from 'react'
 import {View,ScrollView,StyleSheet , FlatList ,Text} from 'react-native'
-import BannerBrand from '../components/BannerBrand'
-import Card,{CardBody,CardView} from '../components/Card'
-import { wp, sp } from '../util';
-import Banner from '../components/Banner'
+import BannerBrand from '../../components/BannerBrand'
+import Card,{CardBody,CardView} from '../../components/Card'
+import { wp, sp } from '../../util';
+import Banner from '../../components/Banner'
 
 
 export default class BrandsScreen extends React.Component{

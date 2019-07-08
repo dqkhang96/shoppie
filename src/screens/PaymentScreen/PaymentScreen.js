@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { View, Text, Image, ImageBackground, Dimensions, ScrollView, StyleSheet ,TouchableWithoutFeedback } from 'react-native'
-import CheckButton from '../../res/icons/CheckButton.js'
-import MasterCard from '../../res/icons/MasterCard.js'
-import Visa from '../../res/icons/Visa.js'
-import ButtonGradient from '../components/ButtonGradient.js'
-import CircleCheck from '../../res/icons/CircleCheck'
+import CheckButton from '../../../res/icons/CheckButton.js'
+import MasterCard from '../../../res/icons/MasterCard.js'
+import Visa from '../../../res/icons/Visa.js'
+import ButtonGradient from '../../components/ButtonGradient.js'
+import CircleCheck from '../../../res/icons/CircleCheck'
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import ImageRes from '../../util/images'
 const SCREEN_WIDTH = Dimensions.get('window').width
 const SCREEN_HEIGHT = Dimensions.get('window').height
 export default class PaymentScreen extends Component {
@@ -23,7 +24,7 @@ export default class PaymentScreen extends Component {
     _renderHeader() {
         return (
             <View style={{ width: SCREEN_WIDTH, padding: 10, marginTop: 15 }}>
-                <ImageBackground source={require('../../res/img/Rectangle6.png')}
+                <ImageBackground source={ImageRes.rectangle}
                     style={{ height: 50, width: '100%', elevation: 10,justifyContent:'center' }}
                 >
                     <View style={styles.TotalPayable}>

@@ -1,12 +1,12 @@
 import React from 'react'
 import { View, ScrollView, Text, TextInput, StyleSheet } from 'react-native'
-import Swiper from '../components/Swiper'
-import { wp, WIDTH_SCREEN ,sp} from '../util'
-import Icons from '../../res/icons'
-import SizePicker from '../components/SizePicker'
-import ColorPicker from '../components/ColorPicker'
+import Swiper from '../../components/Swiper'
+import { wp, WIDTH_SCREEN ,sp} from '../../util'
+import Icons from '../../../res/icons'
+import SizePicker from '../../components/SizePicker'
+import ColorPicker from '../../components/ColorPicker'
 import { Svg, LinearGradient, Stop, Defs, Rect } from 'react-native-svg'
-import  CheckDelivery from '../components/CheckDelivery'
+import  CheckDelivery from '../../components/CheckDelivery'
 
 export default class ProductScreen extends React.Component {
     static navigationOptions = {
