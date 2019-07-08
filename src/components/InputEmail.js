@@ -14,35 +14,25 @@ import { connect } from 'react-redux';
 class InputEmail extends Component {
   render() {
     return (
-      this.props.inputFocus.email == true
-        ? <View style={[styles.inputForm, {
+      <View style={this.props.inputFocus.email == true
+        ? [styles.inputForm, {
           backgroundColor: '#ffffff',
           shadowOffset: { width: 10, height: 10, },
           shadowColor: 'black',
           shadowOpacity: 0.2,
           elevation: 4,
-        }]}>
-          <Text style={styles.text}>Email Id</Text>
-          <TextInput
-            value={stateStorage.username}
-            onFocus={() => { this.props.focusEmail() }}
-            onBlur={() => { this.props.notFocusEmail() }}
-            onChangeText={(text) => { stateStorage.username = text }}
-            keyboardType="email-address"
-            style={styles.inputText}
-          />
-        </View>
-        : <View style={styles.inputForm}>
-          <Text style={styles.text}>Email Id</Text>
-          <TextInput
-            value={stateStorage.username}
-            onFocus={() => { this.props.focusEmail() }}
-            onBlur={() => { this.props.notFocusEmail() }}
-            onChangeText={(text) => { stateStorage.username = text }}
-            keyboardType="email-address"
-            style={styles.inputText}
-          />
-        </View>
+        }]
+        : styles.inputForm}>
+        <Text style={styles.text}>Email Id</Text>
+        <TextInput
+          value={stateStorage.username}
+          onFocus={() => { this.props.focusEmail() }}
+          onBlur={() => { this.props.notFocusEmail() }}
+          onChangeText={(text) => { this.props.setUsername(text) }}
+          keyboardType="email-address"
+          style={styles.inputText}
+        />
+      </View>
     )
   }
 }

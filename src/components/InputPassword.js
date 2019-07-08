@@ -14,35 +14,25 @@ import { connect } from 'react-redux';
 class InputPassword extends Component {
   render() {
     return (
-      this.props.inputFocus.password == true
-        ? <View style={[styles.inputForm, {
+      <View style={this.props.inputFocus.password == true
+        ? [styles.inputForm, {
           backgroundColor: '#ffffff',
           shadowOffset: { width: 10, height: 10, },
           shadowColor: 'black',
           shadowOpacity: 0.2,
           elevation: 4,
-        }]}>
-          <Text style={styles.text}>Password</Text>
-          <TextInput
-            value={stateStorage.password}
-            onFocus={() => { this.props.focusPassword() }}
-            onBlur={() => { this.props.notFocusPassword() }}
-            onChangeText={(text) => { stateStorage.password = text }}
-            style={styles.inputText}
-            secureTextEntry={true}
-          />
-        </View>
-        : <View style={styles.inputForm}>
-          <Text style={styles.text}>Password</Text>
-          <TextInput
-            value={stateStorage.password}
-            onFocus={() => { this.props.focusPassword() }}
-            onBlur={() => { this.props.notFocusPassword() }}
-            onChangeText={(text) => { stateStorage.password = text }}
-            style={styles.inputText}
-            secureTextEntry={true}
-          />
-        </View>
+        }]
+        : styles.inputForm}>
+        <Text style={styles.text}>Password</Text>
+        <TextInput
+          value={stateStorage.password}
+          onFocus={() => { this.props.focusPassword() }}
+          onBlur={() => { this.props.notFocusPassword() }}
+          onChangeText={(text) => { this.props.setPassword(text) }}
+          style={styles.inputText}
+          secureTextEntry={true}
+        />
+      </View>
     )
   }
 }
