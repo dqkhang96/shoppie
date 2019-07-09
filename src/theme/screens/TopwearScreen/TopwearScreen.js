@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native'
-import {Size,sp, hp,wp} from '../../sizes'
+import {Size,sp, hp,wp, SCREEN_HEIGHT} from '../../sizes'
 import Color from '../../colors';
 
 export default styles = StyleSheet.create({
@@ -25,8 +25,8 @@ export default styles = StyleSheet.create({
         paddingHorizontal: sp(3)
     },
     circleItem:{
-        height:Size.Button.height*0.2,
-        height:Size.Button.height*0.2
+        height:Size.Icon.height*0.3,
+        width:Size.Icon.width*0.3
     },
 
     itemText: {
@@ -70,7 +70,7 @@ export default styles = StyleSheet.create({
     titleModalSort: {
         textAlign: 'center',
         marginVertical: sp(3),
-        fontSize: Size.Text.normal
+        fontSize: Size.Text.pageTitle
     },
     devide: {
         width: "100%",
@@ -85,7 +85,7 @@ export default styles = StyleSheet.create({
         justifyContent: 'center'
     },
     sortByText: {
-        fontSize: Size.Text.normal,
+        fontSize: Size.Text.pageTitle,
         textAlign: 'center',
     },
     wrapModal: {
@@ -106,7 +106,7 @@ export default styles = StyleSheet.create({
     },
     headerModalFilter: {
         padding: Size.Section.padding,
-        height: "8%",
+        height: Size.Button.height,
         backgroundColor: '#FAFAFA',
         flexDirection: 'row',
         alignItems: 'center'
@@ -121,7 +121,7 @@ export default styles = StyleSheet.create({
     },
     bodyModalFilter: {
         width: "100%",
-        height: "84%",
+        height: SCREEN_HEIGHT-2.5*Size.Button.height,
         flexDirection: 'row',
         backgroundColor: 'white'
     },
@@ -159,7 +159,7 @@ export default styles = StyleSheet.create({
     },
     footerFilterModal: {
         backgroundColor: 'white',
-        height: "8%",
+        height: Size.Button.height,
         width: "100%",
         flexDirection: 'row',
         justifyContent: 'space-between',
