@@ -13,8 +13,11 @@ import ForgotPasswordScreen from '../screens/ForgotPasswordScreen'
 import OnboardingScreen from '../screens/OnboardingScreen'
 import VerifyMobileScreen from '../screens/VerifyMobileScreen'
 import NotificationScreen from '../screens/NotificationScreen'
-import { sp, wp } from '../util'
 import Icons from '../../res/icons'
+import Color from '../theme/colors'
+import Size from '../theme/sizes'
+
+
 export const HomeStack = createStackNavigator({
   Home: {
     screen: HomeScreen,
@@ -61,10 +64,10 @@ HomeStack.navigationOptions = ({ navigation }) => {
     tabBarVisible,
     tabBarLabel: () => null,
     tabBarIcon: ({ tintColor }) => (
-      <Icons.Home width={sp(5)} height={sp(5)} fill={tintColor} />
+      <Icons.Home width={Size.TabIcon.width} height={Size.TabIcon.width} fill={tintColor}/>
     ),
     tabBarOptions: {
-      activeTintColor: "#08D6CC"
+      activeTintColor: Color.primary
     }
   }
 };

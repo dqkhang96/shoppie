@@ -3,6 +3,7 @@ import { createStackNavigator, createBottomTabNavigator, createDrawerNavigator, 
 import ProfileScreen from '../screens/ProfileScreen'
 import { sp, wp } from '../util'
 import Icons from '../../res/icons'
+import Size from '../theme/sizes'
 import Color from '../theme/colors';
 export const ProfileStack = createStackNavigator(
     {
