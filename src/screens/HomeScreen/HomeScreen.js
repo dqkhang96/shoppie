@@ -7,7 +7,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import ButtonMenu from '../../components/ButtonMenu'
 import BagAndWishListButtons from '../../components/BagAndWishListButtons.js'
 import styles from '../../theme/screens/HomeScreen/HomeScreen'
-import { Size ,sp, SCREEN_WIDTH} from '../../theme/sizes'
+import { Size, sp, SCREEN_WIDTH } from '../../theme/sizes'
 
 export default class HomeScreen extends React.Component {
     static navigationOptions = {
@@ -35,7 +35,7 @@ export default class HomeScreen extends React.Component {
                 />
             </View>)
     }
-    
+
     _renderHotBrands() {
         const MARGIN_LEFT = (SCREEN_WIDTH - 2 * Size.Section.padding - 3 * sp(28)) / 2
         return (
@@ -46,12 +46,16 @@ export default class HomeScreen extends React.Component {
                     showsHorizontalScrollIndicator={false}
                     keyExtractor={(item, index) => "brand-" + index}
                     renderItem={({ item, index }) => (
-                        <Card style={[styles.hotBrandCard, { marginLeft: index % 3 != 0 ? MARGIN_LEFT : 0 }]}>
-                            <CardView footer={(<View style={{ height: sp(5), width: sp(20), backgroundColor: 'white', justifyContent: 'center' }}><Text style={{ textAlign: 'center' }}>MEN</Text></View>)}>
-                                <View style={{ height: sp(28), width: sp(28), backgroundColor: '#EEEEEE' }} />
-                            </CardView>
-                            <CardBody><View style={{ width: sp(28) }}><Text style={{ textAlign: 'center', fontSize: Size.Text.normal }}>Shit</Text></View></CardBody>
-                        </Card>
+                        <TouchableOpacity
+                            onPress={()=>this.props.navigation.navigate("Brands")}
+                        >
+                            <Card style={[styles.hotBrandCard, { marginLeft: index % 3 != 0 ? MARGIN_LEFT : 0 }]}>
+                                <CardView footer={(<View style={{ height: sp(5), width: sp(20), backgroundColor: 'white', justifyContent: 'center' }}><Text style={{ textAlign: 'center' }}>MEN</Text></View>)}>
+                                    <View style={{ height: sp(28), width: sp(28), backgroundColor: '#EEEEEE' }} />
+                                </CardView>
+                                <CardBody><View style={{ width: sp(28) }}><Text style={{ textAlign: 'center', fontSize: Size.Text.normal }}>Shit</Text></View></CardBody>
+                            </Card>
+                        </TouchableOpacity>
                     )}
                 />
             </View>
