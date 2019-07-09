@@ -9,8 +9,8 @@ export const CardBody = ({ children, style }) => (
     </View>
 )
 
-export const CardView = ({ height, width, footer, footerStyle, children }) => (
-    <View style={{ height, width, alignItems: 'center' }}>
+export const CardView = ({ height, width, footer, footerStyle, children ,style}) => (
+    <View style={[style,{ height, width, alignItems: 'center' }]}>
         {children}
         <View style={[{ position: 'absolute', bottom: 0 },footerStyle]}>
             {footer}

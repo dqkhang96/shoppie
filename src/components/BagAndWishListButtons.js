@@ -2,7 +2,7 @@ import React from 'react'
 import {View,Text,TouchableOpacity,StyleSheet} from 'react-native'
 import Icons from '../../res/icons'
 import { withNavigation ,Header} from 'react-navigation'
-import { sp } from '../util';
+import { sp } from '../theme/sizes';
 
 const BUTTON_SIZE= Header.HEIGHT*0.5
 const BagAndWishListButtons=({navigation})=>(

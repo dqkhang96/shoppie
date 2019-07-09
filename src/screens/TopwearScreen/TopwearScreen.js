@@ -2,10 +2,12 @@ import React from 'react'
 import { View, StyleSheet, ScrollView, TouchableNativeFeedback, Text, FlatList, Modal } from 'react-native'
 import Banner from '../../components/Banner'
 import Icons from '../../../res/icons'
-import { sp, wp, hp } from '../../util'
 import Card, { CardBody, CardView } from '../../components/Card'
 import ButtonMenu from '../../components/ButtonMenu'
+import Color from '../../theme/colors';
 
+import styles from '../../theme/screens/TopwearScreen/TopwearScreen'
+import Size from '../../theme/sizes';
 
 export default class TopwearScreen extends React.Component {
 
@@ -16,11 +18,12 @@ export default class TopwearScreen extends React.Component {
 
     constructor(props) {
         super(props)
-        this.sortBy = ["Popularity", "New", "Discount", "Delivery Time", "Price: High - Low", "Price: High - Low"]
+        this.sortBy = ["Popularity", "New", "Discount", "Delivery Time", "Price: High - Low", "Price: High - Low", "Popularity", "New", "Discount", "Delivery Time", "Price: High - Low", "Price: High - Low", "Popularity", "New", "Discount", "Delivery Time", "Price: High - Low", "Price: High - Low"]
         this.filters = [
             {
                 tag: "Categories",
-                children: ["Cargos & Trousers", "Ethnic Wear", "Innerwear & Sleepwear", "Jackets", "Jeans", "T-Shirts", "Shorts", "Sportswear", "Swimwear", "Winterwear", "Handkerchieves"]
+                children: ["Cargos & Trousers", "Ethnic Wear", "Innerwear & Sleepwear", "Jackets", "Jeans", "T-Shirts", "Shorts", "Sportswear", "Swimwear", "Winterwear", "Handkerchieves",
+                    "Cargos & Trousers", "Ethnic Wear", "Innerwear & Sleepwear", "Jackets", "Jeans", "T-Shirts", "Shorts", "Sportswear", "Swimwear", "Winterwear", "Handkerchieves",]
             },
             {
                 tag: 'Brands',
@@ -52,6 +55,29 @@ export default class TopwearScreen extends React.Component {
             filterPrice: {},
             indexTagFilterSelected: 0
         }
+
+        this.toggleFilters = this.toggleFilters.bind(this)
+        this.clearAllFilter = this.clearAllFilter.bind(this)
+        this.applyFilter = this.applyFilter.bind(this)
+    }
+
+    clearAllFilter() {
+        this.setState({
+            filterCategoriesTemp: [],
+            filterBrandsTemp: [],
+            filterSizeTemp: [],
+            filterColorTemp: []
+        })
+    }
+
+    applyFilter() {
+        this.setState({
+            filterCategories: [...this.state.filterCategoriesTemp],
+            filterBrands: [...this.state.filterBrandsTemp],
+            filterSize: [...this.state.filterSizeTemp],
+            filterColor: [...this.state.filterColorTemp],
+            showModalFilter: false
+        })
     }
 
     _renderSortAndFilter() {
@@ -61,19 +87,25 @@ export default class TopwearScreen extends React.Component {
                     onPress={() => this.setState({ showModalSort: true })}
                 >
                     <View style={styles.item}>
-                        <Icons.Circle height={sp(1.5)} width={sp(1.5)} fill={this.hasSortBy() ? "#00D3E1" : "gray"} />
+                        <Icons.Circle height={styles.circleItem.height} width={styles.circleItem.width} fill={this.hasSortBy() ? Color.primary : "gray"} />
                         <View style={styles.mr_2} />
-                        <Icons.Sort height={sp(5)} width={sp(5)} />
+                        <Icons.Sort height={Size.Icon.height} width={Size.Icon.width} />
                         <Text style={styles.itemText}>SORT</Text>
                     </View>
                 </TouchableNativeFeedback>
                 <TouchableNativeFeedback
-                    onPress={() => this.setState({ showModalFilter: true })}
+                    onPress={() => this.setState({
+                        showModalFilter: true,
+                        filterCategoriesTemp: [...this.state.filterCategories],
+                        filterColorTemp: [...this.state.filterColor],
+                        filterBrandsTemp: [...this.state.filterBrands],
+                        filterSizeTemp: [...this.state.filterSize]
+                    })}
                 >
                     <View style={styles.item}>
-                        <Icons.Circle height={sp(1.5)} width={sp(1.5)} fill={this.hasFilter() ? "#00D3E1" : "gray"} />
+                        <Icons.Circle height={styles.circleItem.height} width={styles.circleItem.width} fill={this.hasFilter() ? Color.primary : "gray"} />
                         <View style={styles.mr_2} />
-                        <Icons.Filter height={sp(5)} width={sp(5)} />
+                        <Icons.Filter height={Size.Icon.height} width={Size.Icon.width} />
                         <Text style={styles.itemText}>Filter</Text>
                     </View>
                 </TouchableNativeFeedback>
@@ -90,7 +122,7 @@ export default class TopwearScreen extends React.Component {
                     keyExtractor={(item, index) => "product-" + index}
                     renderItem={({ item, key }) => (
                         <TouchableNativeFeedback
-                            onPress={()=>this.props.navigation.navigate("Product")}
+                            onPress={() => this.props.navigation.navigate("Product")}
                         >
                             <View style={styles.product}>
                                 <Card>
@@ -148,27 +180,27 @@ export default class TopwearScreen extends React.Component {
     }
 
     toggleFilters(filter) {
-        const { filterCategories, filterBrands, filterSize, filterColor, indexTagFilterSelected } = this.state
+        const { filterCategoriesTemp, filterBrandsTemp, filterSizeTemp, filterColorTemp, indexTagFilterSelected } = this.state
         switch (indexTagFilterSelected) {
             case 0:
-                if (filterCategories.find((item => item == filter)) == undefined)
-                    this.setState({ filterCategories: [...filterCategories, filter] })
-                else this.setState({ filterCategories: filterCategories.filter(item => item != filter) })
+                if (filterCategoriesTemp.find((item => item == filter)) == undefined)
+                    this.setState({ filterCategoriesTemp: [...filterCategoriesTemp, filter] })
+                else this.setState({ filterCategoriesTemp: filterCategoriesTemp.filter(item => item != filter) })
                 break;
             case 1:
-                if (filterBrands.find((item => item == filter)) == undefined)
-                    this.setState({ filterBrands: [...filterBrands, filter] })
-                else this.setState({ filterBrands: filterBrands.filter(item => item != filter) })
+                if (filterBrandsTemp.find((item => item == filter)) == undefined)
+                    this.setState({ filterBrandsTemp: [...filterBrandsTemp, filter] })
+                else this.setState({ filterBrandsTemp: filterBrandsTemp.filter(item => item != filter) })
                 break;
             case 2:
                 if (filterSize.find((item => item == filter)) == undefined)
-                    this.setState({ filterSize: [...filterSize, filter] })
-                else this.setState({ filterSize: filterSize.filter(item => item != filter) })
+                    this.setState({ filterSizeTemp: [...filterSizeTemp, filter] })
+                else this.setState({ filterSizeTemp: filterSizeTemp.filter(item => item != filter) })
                 break;
             case 3:
                 if (filterColor.find((item => item == filter)) == undefined)
-                    this.setState({ filterColor: [...filterColor, filter] })
-                else this.setState({ filterColor: filterColor.filter(item => item != filter) })
+                    this.setState({ filterColorTemp: [...filterColorTemp, filter] })
+                else this.setState({ filterColorTemp: filterColorTemp.filter(item => item != filter) })
                 break;
         }
 
@@ -184,16 +216,16 @@ export default class TopwearScreen extends React.Component {
     }
 
     isFilter(filter) {
-        const { filterCategories, filterBrands, filterSize, filterColor, indexTagFilterSelected } = this.state
+        const { filterCategoriesTemp, filterBrandsTemp, filterSizeTemp, filterColorTemp, indexTagFilterSelected } = this.state
         switch (indexTagFilterSelected) {
             case 0:
-                return filterCategories.find(item => item == filter) != undefined
+                return filterCategoriesTemp.find(item => item == filter) != undefined
             case 1:
-                return filterBrands.find(item => item == filter) != undefined
+                return filterBrandsTemp.find(item => item == filter) != undefined
             case 2:
-                return filterSize.find(item => item == filter) != undefined
+                return filterSizeTemp.find(item => item == filter) != undefined
             case 3:
-                return filterColor.find(item => item == filter) != undefined
+                return filterColorTemp.find(item => item == filter) != undefined
         }
 
     }
@@ -203,11 +235,11 @@ export default class TopwearScreen extends React.Component {
         return (
             <Modal visible={this.state.showModalFilter} transparent animationType="fade">
                 <View style={styles.wrapModal}>
-                    <View style={styles.modalFitler}>
+                    <View style={styles.modalFilter}>
                         <View style={styles.headerModalFilter}>
                             <TouchableNativeFeedback onPress={() => this.setState({ showModalFilter: false })}>
                                 <View style={styles.buttonCancelModalFilter}>
-                                    <Icons.Cancel height={sp(4)} width={sp(4)} fill="gray" />
+                                    <Icons.Cancel height={styles.buttonCancelModalFilter.height} width={styles.buttonCancelModalFilter.width} fill="gray" />
                                 </View>
                             </TouchableNativeFeedback>
                             <Text style={styles.titleModalFilter}>Filter By</Text>
@@ -233,22 +265,41 @@ export default class TopwearScreen extends React.Component {
                                 />
                             </View>
                             <View style={styles.listFilter}>
-                                {filters.map((item, index) => (
-                                    <TouchableNativeFeedback
-                                        key={index}
-                                        onPress={() => this.toggleFilters(index)}
-                                    >
-                                        <View style={styles.filterView}>
-                                            <View style={styles.filterButton}>
-                                                <Text style={[styles.filterText, { color: this.isFilter(index) ? "#00D3E1" : "black" }]}>{item}</Text>
+                                <FlatList data={filters}
+                                    keyExtractor={(item, key) => "filter-" + key}
+                                    extraData={this.state}
+                                    renderItem={({ item, index }) => (
+                                        <TouchableNativeFeedback
+                                            onPress={() => this.toggleFilters(index)}
+                                        >
+                                            <View style={styles.filterView}>
+                                                <View style={styles.filterButton}>
+                                                    <Text style={[styles.filterText, { color: this.isFilter(index) ? Color.primary : "black" }]}>{item}</Text>
+                                                </View>
+                                                {index < filters.length ? <View style={styles.devide} /> : null}
                                             </View>
-                                            {index < filters.length ? <View style={styles.devide} /> : null}
-                                        </View>
-                                    </TouchableNativeFeedback>
-                                ))}
+                                        </TouchableNativeFeedback>
+                                    )}
+                                />
                             </View>
                         </View>
-
+                        <View style={styles.footerFilterModal}>
+                            <TouchableNativeFeedback
+                                onPress={this.clearAllFilter}
+                            >
+                                <View style={styles.buttonFilter}>
+                                    <Text style={styles.textButtonFilter}>Clear all</Text>
+                                </View>
+                            </TouchableNativeFeedback>
+                            <Text>|</Text>
+                            <TouchableNativeFeedback
+                                onPress={this.applyFilter}
+                            >
+                                <View style={styles.buttonFilter}>
+                                    <Text style={styles.textButtonFilter}>Apply</Text>
+                                </View>
+                            </TouchableNativeFeedback>
+                        </View>
                     </View>
                 </View>
             </Modal>
@@ -269,154 +320,3 @@ export default class TopwearScreen extends React.Component {
     }
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-    mr_2: {
-        marginRight: sp(2)
-    },
-    sortAndFilter: {
-        width: wp(100),
-        height: sp(12),
-        backgroundColor: 'white',
-        justifyContent: 'space-between',
-        paddingHorizontal: sp(20),
-        alignItems: 'center',
-        flexDirection: 'row',
-
-    },
-    item: {
-        flexDirection: 'row',
-        height: sp(12),
-        alignItems: 'center',
-        paddingHorizontal: sp(3)
-    },
-
-    itemText: {
-        fontSize: sp(4),
-        marginLeft: sp(4)
-    },
-    product: {
-        width: wp(50) - 4
-    },
-    productView: {
-        height: sp(50),
-        width: wp(50) - 4,
-        backgroundColor: '#f7f7f7'
-    },
-    productBody: {
-        padding: sp(3),
-        backgroundColor: 'white'
-    },
-    productBrand: {
-        fontSize: sp(4.5),
-        marginBottom: sp(1.5)
-    },
-    productPrice: {
-        flexDirection: 'row',
-        marginBottom: sp(1.5)
-    },
-    price: {
-        fontSize: sp(4),
-        marginRight: sp(0.5)
-    },
-    priceRoot: {
-        fontSize: sp(3.7),
-        marginRight: sp(0.5),
-        textDecorationLine: 'line-through',
-        color: "gray"
-    },
-    saleOff: {
-        fontSize: sp(3.5),
-        color: "#00BBE1"
-    },
-    titleModalSort: {
-        textAlign: 'center',
-        marginVertical: sp(3),
-        fontSize: sp(5.5)
-    },
-    devide: {
-        width: "100%",
-        borderWidth: 1,
-        borderColor: '#eeeeee'
-    },
-    bodyModalSort: {
-
-    },
-    buttonSortBy: {
-        height: sp(12),
-        justifyContent: 'center'
-    },
-    sortByText: {
-        fontSize: sp(5.5),
-        textAlign: 'center',
-    },
-    wrapModal: {
-        backgroundColor: 'rgba(0,0,0,0.6)',
-        height: hp(100),
-        width: wp(100)
-    },
-    modalSort: {
-        position: 'absolute',
-        bottom: 0,
-        width: wp(100),
-        paddingBottom: sp(8),
-        backgroundColor: 'white'
-    },
-    modalFilter: {
-        height: hp(100),
-        width: wp(100),
-        backgroundColor: "white",
-    },
-    headerModalFilter: {
-        padding: sp(4),
-        height: sp(15),
-        backgroundColor: '#FAFAFA',
-        flexDirection: 'row',
-        alignItems: 'center'
-    },
-    titleModalFilter: {
-        marginLeft: sp(5),
-        fontSize: sp(5)
-    },
-    buttonCancelModalFilter: {
-    },
-    bodyModalFilter: {
-        width: wp(100),
-        height: "100%",
-        flexDirection: 'row',
-        backgroundColor: 'white'
-    },
-    listTag: {
-        width: wp(35) - 1,
-        borderRightWidth: 1,
-        borderColor: '#eeeeee'
-    },
-    tagView: {
-        height: sp(16)
-    },
-    buttonTag: {
-        height: sp(16),
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    textTag: {
-        fontSize: sp(5)
-    },
-    listFilter: {
-        backgroundColor: "#e2e2e2",
-        width: wp(70)
-    },
-    filterView: {
-
-    },
-    filterButton: {
-        paddingVertical: sp(4),
-        justifyContent: 'center'
-    },
-    filterText: {
-        fontSize: sp(5),
-        marginLeft: wp(3)
-    }
-})

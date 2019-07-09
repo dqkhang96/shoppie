@@ -1,4 +1,4 @@
-const COLOR_PRIMARY = '#FCC9D1';
+const COLOR_PRIMARY = '#08d6cc';
 const COLOR_SECONDARY = '#D89113';
 const COLOR_THIRD = '#D64E0A';
 
@@ -13,7 +13,7 @@ const Color = {
     title: COLOR_PRIMARY,
     desc: '#000',
     name: COLOR_PRIMARY,
-    link: '#00f',
+    link: COLOR_PRIMARY,
   },
 
   TabBar:{
@@ -31,7 +31,10 @@ const Color = {
       background: COLOR_PRIMARY,
       text: '#fff',
     },
-
+    PrimaryGradient:{
+      fromColor:"#08d6cc",
+      toColor:"#00BBE1"
+    },
     Secondary:{
       background: COLOR_SECONDARY,
       text: '#fff',
@@ -55,7 +58,7 @@ const Color = {
   },
 
   Screen:{
-    background: '#fff',
+    background: '#eaeaea',
   },
 
   ScreenLogin:{

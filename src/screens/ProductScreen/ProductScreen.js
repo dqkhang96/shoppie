@@ -1,13 +1,14 @@
 import React from 'react'
-import { View, ScrollView, Text, TextInput, StyleSheet } from 'react-native'
+import { View, ScrollView, Text } from 'react-native'
 import Swiper from '../../components/Swiper'
-import { wp, WIDTH_SCREEN ,sp} from '../../util'
 import Icons from '../../../res/icons'
-import SizePicker from '../../components/SizePicker'
-import ColorPicker from '../../components/ColorPicker'
-import { Svg, LinearGradient, Stop, Defs, Rect } from 'react-native-svg'
-import  CheckDelivery from '../../components/CheckDelivery'
-
+import SizePicker from './SizePicker'
+import ColorPicker from './ColorPicker'
+import CheckDelivery from '../../components/CheckDelivery'
+import ButtonGradient from '../../components/ButtonGradient';
+import styles from '../../theme/screens/ProductScreen/ProductScreen'
+import Color from '../../theme/colors';
+import {wp} from '../../theme/sizes'
 export default class ProductScreen extends React.Component {
     static navigationOptions = {
         title:"Product",
@@ -32,7 +33,7 @@ export default class ProductScreen extends React.Component {
                     <Text style={styles.nameProduct}>{"Men Solid Bomber Jacket"}</Text>
                 </View>
                 <View style={styles.like}>
-                    <Icons.Heart width={sp(6)} height={sp(6)} fill='#08D6CC' />
+                    <Icons.Heart width={styles.like.width} height={styles.like.height} fill={Color.primary} />
                 </View>
             </View>
         )
@@ -116,34 +117,17 @@ export default class ProductScreen extends React.Component {
     }
 
     _renderButtonAddToCart() {
-
         return (
             <View style={styles.buttonAddToCart}>
-                <View
-                    style={styles.gradientAddToCart}
-                >
-                    <Svg
-                        width={WIDTH_SCREEN}
-                        height={sp(12)}
-                    >
-                        <Defs>
-                            <LinearGradient id="grad" x1={0} y1={0} x2={WIDTH_SCREEN} y2={sp(12)}>
-                                <Stop offset="0" stopColor="#00BBE1" stopOpacity="1" />
-                                <Stop offset="1" stopColor="#08D6CC" stopOpacity="1" />
-                            </LinearGradient>
-                        </Defs>
-                        <Rect
-                            x={0}
-                            y={0}
-                            width={WIDTH_SCREEN}
-                            height={sp(12)}
-                            fill="url(#grad)" />
-                    </Svg>
-                </View>
-                <Text style={styles.textAddToCart}>Add to cart</Text>
+                <ButtonGradient style={styles.gradientAddToCart} 
+                    fromColor={Color.Button.PrimaryGradient.fromColor} 
+                    toColor={Color.Button.PrimaryGradient.toColor}
+                    title="Add to cart"
+                    />
             </View>
         )
     }
+
     render() {
         return (
             <View style={styles.container}>
@@ -161,103 +145,3 @@ export default class ProductScreen extends React.Component {
     }
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#EEEEEE'
-    },
-    priceInfor: {
-        padding: sp(3.5),
-        marginBottom: sp(1),
-        backgroundColor: 'white'
-    },
-    newLabelWrap: {
-        height: sp(5),
-        width: sp(14),
-        borderColor: '#08D6CC',
-        borderWidth: 1,
-        alignItems: 'center',
-        borderRadius: 5,
-        justifyContent: 'center',
-        marginBottom: sp(1)
-    },
-    newLabel: {
-        fontSize: sp(4),
-        color: '#08D6CC'
-    },
-    priceWrap: {
-        flexDirection: 'row',
-        marginBottom: sp(1)
-    },
-    price: {
-        fontSize: sp(5),
-        marginRight: sp(3.5)
-    },
-    priceRoot: {
-        fontSize: sp(4.5),
-        textDecorationLine: 'line-through',
-        color: "#afafaf",
-        marginRight: sp(3.5)
-    },
-    saleOff: {
-        fontSize: sp(4.5),
-        color: '#08D6CC'
-    },
-    like: {
-        position: 'absolute',
-        top: sp(3.5),
-        right: sp(5)
-    },
-    colorPicker: {
-        padding: sp(3.5),
-        backgroundColor: 'white',
-        marginBottom: sp(1)
-    },
-    titlePickColor: {
-        fontSize: sp(4.5),
-        marginBottom: sp(2)
-    },
-    
-    sizePicker: {
-        padding: sp(3.5),
-        backgroundColor: 'white',
-        marginBottom: sp(1),
-    },
-    titleSizePicker: {
-        fontSize: sp(4.5),
-        marginBottom: sp(2)
-    },
-    title: {
-        fontSize: sp(4.5),
-        marginBottom: sp(1.5)
-    },
-    
-    content: {
-        padding: sp(3.5),
-        backgroundColor: 'white',
-        marginBottom: sp(1)
-    },
-    contentText: {
-        fontSize: sp(4),
-        color: 'gray',
-        marginBottom: sp(1)
-    },
-    buttonAddToCart: {
-        marginTop: -sp(1),
-        height: sp(12),
-        width: WIDTH_SCREEN,
-        justifyContent:'center'
-    },
-    gradientAddToCart: {
-        height: sp(12),
-        width: WIDTH_SCREEN,
-        position: 'absolute',
-        top: 0,
-        left: 0
-    },
-    textAddToCart: {
-        fontSize: sp(4),
-        color: 'white',
-        textAlign: 'center'
-    }
-})

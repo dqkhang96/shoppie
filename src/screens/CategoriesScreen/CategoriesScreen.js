@@ -1,8 +1,9 @@
 import React from 'react'
-import { View, StyleSheet, ScrollView, TouchableWithoutFeedback } from 'react-native'
+import { View, ScrollView, TouchableWithoutFeedback } from 'react-native'
 import { Header } from 'react-navigation'
-import CategoryItem from '../../components/CategoryItem'
+import CategoryItem from './CategoryItem'
 import BoxSearch from '../../components/BoxSearch'
+import styles from '../../theme/screens/CategoriesScreen/CategoriesScreen'
 
 
 export default class CategoriesScreen extends React.Component {
@@ -55,9 +56,3 @@ export default class CategoriesScreen extends React.Component {
         )
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1
-    }
-})

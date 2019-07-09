@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, TextInput, StyleSheet, TouchableOpacity ,TouchableWithoutFeedback} from 'react-native'
-import { sp, WIDTH_SCREEN } from '../util'
+import { sp, wp } from '../theme/sizes'
 import Icons from '../../res/icons'
 
 export default class BoxSearch extends React.Component {
@@ -35,10 +35,10 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end',
         alignItems: 'center',
         paddingHorizontal: sp(3.5),
-        width: WIDTH_SCREEN * 0.8
+        width: wp(80)
     },
     input: {
         marginRight: sp(3.5),
-        width: WIDTH_SCREEN * 0.7
+        width: wp(70)
     }
 })

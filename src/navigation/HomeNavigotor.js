@@ -13,17 +13,21 @@ import ForgotPasswordScreen from '../screens/ForgotPassword'
 import OnboardingScreen from '../screens/Onboarding'
 import VerifyMobileScreen from '../screens/VerifyMobile'
 import NotificationScreen from '../screens/Notification'
-import { sp, wp } from '../util'
+import { Size } from '../theme/sizes'
 import Icons from '../../res/icons'
+import Color from '../theme/colors';
 export const HomeStack = createStackNavigator({
+  
+  Topwear: TopwearScreen,
+   
     Home: {
       screen: HomeScreen,
     },
+  
     Product: {
       screen: ProductScreen,
     },
-    Topwear: TopwearScreen,
-    Category: CategoryScreen,
+   
     BagAndWishList: BagAndWishListScreen,
     Brands: BrandsScreen,
     Login: {
@@ -32,6 +36,7 @@ export const HomeStack = createStackNavigator({
     Profile: {
       screen: ProfileScreen,
     },
+    Category: CategoryScreen,
     Notification: {
       screen: NotificationScreen,
     },
@@ -61,10 +66,10 @@ export const HomeStack = createStackNavigator({
       tabBarVisible,
       tabBarLabel: () => null,
       tabBarIcon: ({tintColor})=>(
-        <Icons.Home width={sp(5)} height={sp(5)} fill={tintColor}/>
+        <Icons.Home width={Size.TabIcon.width} height={Size.TabIcon.width} fill={tintColor}/>
       ),
       tabBarOptions:{
-        activeTintColor:"#08D6CC"
+        activeTintColor:Color.primary
       }
     }
   };

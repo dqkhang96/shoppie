@@ -1,10 +1,10 @@
 import React from 'react'
 import { View, StyleSheet, TouchableWithoutFeedback, Text } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler';
-import { sp } from '../util';
 import { Svg, Defs, Circle, LinearGradient, Stop } from 'react-native-svg'
+import Color from '../../theme/colors'
+import styles from '../../theme/screens/ProductScreen/SizePicker'
 
-const SIZE_ITEM = sp(12)
 export default class SizePicker extends React.Component {
 
     constructor(props) {
@@ -18,6 +18,8 @@ export default class SizePicker extends React.Component {
         this.setState({ sizeIndexPicked: index })
     }
     _renderItem(item, index) {
+        const SIZE_ITEM=styles.item.height
+
         return (
             <TouchableWithoutFeedback
                 onPress={() => this.pickSize(index)}
@@ -34,8 +36,8 @@ export default class SizePicker extends React.Component {
                                 >
                                     <Defs>
                                         <LinearGradient id="grad" x1={0} y1={0} x2={SIZE_ITEM} y2={SIZE_ITEM}>
-                                            <Stop offset="0" stopColor="#00BBE1" stopOpacity="1" />
-                                            <Stop offset="1" stopColor="#08D6CC" stopOpacity="1" />
+                                            <Stop offset="0" stopColor={Color.Button.PrimaryGradient.fromColor} stopOpacity="1" />
+                                            <Stop offset="1" stopColor={Color.Button.PrimaryGradient.toColor} stopOpacity="1" />
                                         </LinearGradient>
                                     </Defs>
                                     <Circle
@@ -72,37 +74,3 @@ export default class SizePicker extends React.Component {
     }
 }
 
-const styles = StyleSheet.create({
-    item: {
-        height: SIZE_ITEM,
-        width: SIZE_ITEM,
-        borderRadius: SIZE_ITEM / 2,
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginLeft: sp(3.5)
-    },
-    itemNotPicked: {
-        borderWidth: 1,
-        borderColor: "gray"
-    },
-    sizeItemPicked: {
-        height:SIZE_ITEM,
-        width:SIZE_ITEM,
-        justifyContent:'center',
-        alignItems:'center'
-    },
-    gradient: {
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        height: SIZE_ITEM,
-        width: SIZE_ITEM,
-    },
-    textSizePicked: {
-        fontSize: sp(4),
-        color: 'white',
-    },
-    textSizeNotPicked: {
-        fontSize: sp(4)
-    }
-})

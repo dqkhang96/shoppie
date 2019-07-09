@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
-import { wp, sp ,WIDTH_SCREEN} from '../util';
+import { wp, sp ,SCREEN_WIDTH} from '../theme/sizes';
+import Svgs from '../../res/svgs'
 
 export default Banner = (props) => (
     <View style={styles.banner}>
@@ -17,18 +18,18 @@ export default Banner = (props) => (
 const styles = StyleSheet.create({
     banner: {
         height: sp(30),
-        width: WIDTH_SCREEN,
+        width: SCREEN_WIDTH,
     },
     backgroundBanner: {
         position: 'absolute',
         top: 0,
         left: 0,
         height: sp(30),
-        width: WIDTH_SCREEN
+        width: SCREEN_WIDTH
     },
     contentBanner: {
         height: sp(30),
-        width: WIDTH_SCREEN,
+        width: SCREEN_WIDTH,
         justifyContent: 'center'
     },
     lageTextBanner: {

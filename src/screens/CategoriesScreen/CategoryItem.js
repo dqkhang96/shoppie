@@ -1,13 +1,15 @@
 import React from 'react'
 import { Text, View } from 'react-native'
 import { Svg ,Defs, Stop, Rect  ,LinearGradient } from 'react-native-svg'
-import { sp } from '../util'
-import Icons from '../../res/icons'
+import {SCREEN_WIDTH,Size,SCREEN_HEIGHT} from '../../theme/sizes'
+import Icons from '../../../res/icons'
 
 export default class CategoryItem extends React.Component {
     
     render() {
         const {category,label,fromColor,toColor}= this.props
+        const HEIGHT_CATEGORY=Math.min(SCREEN_HEIGHT,SCREEN_WIDTH)*0.35,
+            WIDTH_CATEGORY=SCREEN_WIDTH
         return (
             <View
             >
@@ -17,11 +19,11 @@ export default class CategoryItem extends React.Component {
                     right: 0
                 }}>
                     <Svg
-                        height={sp(35)}
-                        width={sp(100)}
+                        height={HEIGHT_CATEGORY}
+                        width={ WIDTH_CATEGORY}
                     >
                         <Defs>
-                            <LinearGradient id="grad" x1={0} y1={sp(35)} x2={sp(35)} y2="0">
+                            <LinearGradient id="grad" x1={0} y1={HEIGHT_CATEGORY} x2={ WIDTH_CATEGORY} y2="0">
                                 <Stop offset="0" stopColor={fromColor} stopOpacity="1" />
                                 <Stop offset="1" stopColor={toColor} stopOpacity="0.6" />
                             </LinearGradient>
@@ -29,18 +31,18 @@ export default class CategoryItem extends React.Component {
                         <Rect
                             x={0}
                             y={0}
-                            width={sp(100)}
-                            height={sp(35)}
+                            width={ WIDTH_CATEGORY}
+                            height={HEIGHT_CATEGORY}
                             fill="url(#grad)"
                         />
                     </Svg>
                 </View>
                 <View
                     style={{
-                        height:sp(35),
+                        height:HEIGHT_CATEGORY,
                         alignItems:"flex-start",
                         justifyContent:'center',
-                        padding: sp(3.5)
+                        padding: Size.Section.padding
                     }}
                 >
                     <View
@@ -48,16 +50,16 @@ export default class CategoryItem extends React.Component {
                             justifyContent:'center'
                         }}
                     >
-                        <Text style={{fontSize:sp(5.5),color:'black'}}>{category}</Text>
+                        <Text style={{fontSize:Size.Text.pageTitle,color:'black'}}>{category}</Text>
                         <View style={{
                             position:'absolute',
-                            left: sp(40)
+                            left: Size.Text.pageTitle*10
                         }}>
-                            <Icons.Down width={sp(4)} height={sp(4)}/>
+                            <Icons.Down width={Size.Icon.width} height={Size.Icon.height}/>
                         </View>
                     </View>
                     <View>
-                        <Text style={{fontSize:sp(4)}}>{label}</Text>
+                        <Text style={{fontSize:Size.Text.normal}}>{label}</Text>
                     </View>
                 </View>
 

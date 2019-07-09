@@ -1,8 +1,8 @@
 import React from 'react'
 import { View, Text, Picker, StyleSheet } from 'react-native'
 import Icons from '../../res/icons';
-import { wp, sp } from '../util';
-import { Svg, Defs, Stop, LinearGradient } from 'react-native-svg';
+import { wp, sp } from '../theme/sizes';
+
 
 export default class BagItem extends React.Component {
     constructor(props) {

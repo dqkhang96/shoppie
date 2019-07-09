@@ -1,6 +1,6 @@
 import React from 'react'
-import { View , TouchableNativeFeedback,StyleSheet} from 'react-native'
-import {sp} from '../util'
+import { View , TouchableNativeFeedback} from 'react-native'
+import styles from '../../theme/screens/ProductScreen/ColorPicker'
 export default class ColorPicker extends React.Component {
 
     constructor(props) {
@@ -27,21 +27,3 @@ export default class ColorPicker extends React.Component {
     }
 }
 
-const styles= StyleSheet.create({
-    listColors: {
-        flexDirection: 'row',
-    },
-    pickColor: {
-        padding: sp(1.2),
-        borderWidth: 1.5,
-        height: sp(20),
-        width: sp(18),
-        marginRight: sp(4),
-        borderRadius: sp(1.2)
-    },
-    color: {
-        height: "100%",
-        width: "100%",
-        borderRadius: sp(1)
-    },
-})
