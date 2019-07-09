@@ -2,19 +2,21 @@ import React, { Component } from 'react';
 import {
   TouchableOpacity,
   Image,
-  StyleSheet,
   ActivityIndicator,
 } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import AsyncStorage from '@react-native-community/async-storage';
-import stateStorage from '../config/stateStorage';
 
-//import Facebook Login
+// Import styles
+import styles from '../theme/components/LoginFacebookButton';
+
+// Import Facebook Login
 import { AccessToken, LoginManager, GraphRequest, GraphRequestManager } from 'react-native-fbsdk';
 
-//import redux
+// Import redux
 import * as actions from '../redux/actions/index';
 import { connect } from 'react-redux';
+import Color from '../theme/colors';
 
 
 class LoginFacebookButton extends Component {
@@ -54,7 +56,7 @@ class LoginFacebookButton extends Component {
   render() {
     return (
       this.state.isLoginLoading
-        ? <ActivityIndicator size='large' color={stateStorage.appColor} style={styles.fbggButton}/>
+        ? <ActivityIndicator size='large' color={Color.primary} style={styles.fbggButton}/>
         : <TouchableOpacity
           style={styles.fbggButton}
           onPress={this.onLoginFB}>
@@ -65,24 +67,6 @@ class LoginFacebookButton extends Component {
     )
   }
 }
-
-const styles = StyleSheet.create({
-  fbggButton: {
-    padding: 10,
-    backgroundColor: '#ffffff',
-    borderRadius: 5,
-    borderWidth: 1,
-    borderColor: 'grey',
-    width: '43%',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginHorizontal: 10,
-  },
-  fbIcon: {
-    height: 43,
-    width: 43,
-  },
-});
 
 const mapStateToProps = state => ({
   user: state.user,

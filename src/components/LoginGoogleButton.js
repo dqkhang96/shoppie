@@ -2,20 +2,21 @@ import React, { Component } from 'react';
 import {
   TouchableOpacity,
   Image,
-  StyleSheet,
   ActivityIndicator,
-  View,
 } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import AsyncStorage from '@react-native-community/async-storage';
-import stateStorage from '../config/stateStorage';
+
+// Import styles
+import styles from '../theme/components/LoginGoogleButton';
 
 // import GG Login
 import { GoogleSignin, statusCodes } from 'react-native-google-signin';
 
-//import redux
+// Import redux
 import * as actions from '../redux/actions/index';
 import { connect } from 'react-redux';
+import Color from '../theme/colors';
 
 GoogleSignin.configure({
   scopes: ['https://www.googleapis.com/auth/plus.login', 'https://www.googleapis.com/auth/plus.me'],
@@ -57,7 +58,7 @@ class LoginGoogleButton extends Component {
   render() {
     return (
       this.state.isLoginLoading
-        ? <ActivityIndicator size='large' color={stateStorage.appColor} style={styles.fbggButton}/>
+        ? <ActivityIndicator size='large' color={Color.primary} style={styles.fbggButton}/>
         : <TouchableOpacity
           style={styles.fbggButton}
           onPress={this.onLoginGG}>
@@ -68,24 +69,6 @@ class LoginGoogleButton extends Component {
     )
   }
 }
-
-const styles = StyleSheet.create({
-  fbggButton: {
-    padding: 10,
-    backgroundColor: '#ffffff',
-    borderRadius: 5,
-    borderWidth: 1,
-    borderColor: 'grey',
-    width: '43%',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginHorizontal: 10,
-  },
-  ggIcon: {
-    height: 25,
-    width: 25,
-  },
-})
 
 const mapStateToProps = state => ({
   user: state.user,

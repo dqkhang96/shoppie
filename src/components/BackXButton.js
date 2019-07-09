@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import {
   View,
   TouchableOpacity,
-  StyleSheet,
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import stateStorage from '../config/stateStorage';
 import PropTypes from 'prop-types';
+
+// Import styles
+import styles from '../theme/components/BackXButton';
 
 export default class BackXButton extends Component {
   render() {
@@ -22,17 +23,4 @@ export default class BackXButton extends Component {
 
 BackXButton.propTypes = {
   onBack: PropTypes.func,
-}
-
-const styles = StyleSheet.create({
-  backXButtonContainer: {
-    height: stateStorage.SCREEN_HEIGHT * 0.08,
-    paddingHorizontal: 18,
-    paddingTop: 10,
-    alignSelf: 'flex-start',
-  },
-  text: {
-    fontSize: 20,
-    color: 'grey',
-  },
-})                                                        
+}                                                      

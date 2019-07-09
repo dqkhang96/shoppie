@@ -1,6 +1,6 @@
 import React from 'react';
 import { createStackNavigator, createBottomTabNavigator, createDrawerNavigator, DrawerItems } from 'react-navigation';
-import ProfileScreen from '../screens/Profile'
+import ProfileScreen from '../screens/ProfileScreen'
 import { sp, wp } from '../util'
 import Icons from '../../res/icons'
 export const ProfileStack = createStackNavigator(

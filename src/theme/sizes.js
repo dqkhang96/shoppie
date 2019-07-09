@@ -1,10 +1,10 @@
-import {Dimensions} from 'react-native';
+import { Dimensions } from 'react-native';
 
 export const screen = Dimensions.get("window");
 export const SEARCH_WIDTH = Dimensions.get("window").width - 100;
 
 export const SCREEN_HEIGHT = Dimensions.get("window").height;
-export  const SCREEN_WIDTH = Dimensions.get("window").width;
+export const SCREEN_WIDTH = Dimensions.get("window").width;
 
 
 export const Size = {
@@ -15,55 +15,57 @@ export const Size = {
     itemHeight: 140,
     headerHeight: 40,
   },
-  
-  Button:{
-    height: 50,
+
+  Button: {
+    height: SCREEN_HEIGHT * 0.07,
     borderRadius: 25,
+    borderRadiusSmall: 5,
     widthRatio: .8,
     textSize: 18,
 
   },
 
-  Text:{
+  Text: {
+    xIcon: 20,
     pageTitle: 22,
     sectionTitle: 17,
-    normal: 17,
+    normal: 15,
     button: 18,
-    link: 17,
+    link: 13,
     sub: 15,
-    leftMenu:17,
+    leftMenu: 17,
   },
 
-  TabIcon:{
-    width:20,
-    height:20,
+  TabIcon: {
+    width: 20,
+    height: 20,
   },
 
-  LeftMenu:{
-    Icon:{
-      height:24,
+  LeftMenu: {
+    Icon: {
+      height: 24,
       width: 24,
-      Margin:{
-        left:5,
-        right:5,
+      Margin: {
+        left: 5,
+        right: 5,
       },
     },
-    Separator:{
-      height:5,
-      Margin:{
-        left:0,
-        right:0,
-      }
-    },
-  },
-
-  Section:{
-      Margin:{
-        top: 5,
+    Separator: {
+      height: 5,
+      Margin: {
         left: 0,
         right: 0,
       }
-    
+    },
+  },
+
+  Section: {
+    Margin: {
+      top: 5,
+      left: 0,
+      right: 0,
+    }
+
   }
 };
 
