@@ -1,7 +1,7 @@
 import React from 'react';
 import { createStackNavigator, createBottomTabNavigator, createDrawerNavigator, DrawerItems } from 'react-navigation';
-import ProfileScreen from '../screens/Profile'
-import { Size } from '../theme/sizes'
+import ProfileScreen from '../screens/ProfileScreen'
+import { sp, wp } from '../util'
 import Icons from '../../res/icons'
 import Color from '../theme/colors';
 export const ProfileStack = createStackNavigator(

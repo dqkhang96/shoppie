@@ -2,7 +2,7 @@ import React from 'react';
 import { createStackNavigator, createBottomTabNavigator, createDrawerNavigator, DrawerItems } from 'react-navigation';
 import { sp, wp } from '../theme/sizes'
 import CustomDrawerContentComponent from '../navigation/SideMenu/CustomDrawerContentComponent'
-import {HomeStack} from './HomeNavigotor'
+import {HomeStack} from './HomeNavigator'
 import {SearchStack} from './SearchNavigator'
 import {CategoryStack} from './CategoryNavigator'
 import {ProfileStack} from './ProfileNavigator'

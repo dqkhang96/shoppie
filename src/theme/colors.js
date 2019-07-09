@@ -1,33 +1,34 @@
-const COLOR_PRIMARY = '#08d6cc';
-const COLOR_SECONDARY = '#D89113';
-const COLOR_THIRD = '#D64E0A';
+const COLOR_PRIMARY = '#08d6cc';          // Light Blue
+const COLOR_SECONDARY = '#D89113';        // Heavy Yellow
+const COLOR_THIRD = '#D64E0A';            // Red + Brown
 
 const Color = {
   primary: COLOR_PRIMARY,
   secondary: COLOR_SECONDARY,
   third: COLOR_THIRD,
-  
-  Text:{
-    default: '#000',
-    price: '#f00',
-    title: COLOR_PRIMARY,
+
+  Text: {
+    default: 'grey',
+    button: 'white',
+    price: '#f00',              // Red + Orange
+    title: '#000',
     desc: '#000',
     name: COLOR_PRIMARY,
-    link: COLOR_PRIMARY,
+    link: COLOR_PRIMARY,               // Blue
   },
 
-  TabBar:{
+  TabBar: {
     active: COLOR_PRIMARY,
     inactive: 'gray',
   },
 
-  Toolbar:{
+  Toolbar: {
     background: COLOR_PRIMARY,
     tint: '#fff',
   },
-  
-  Button:{
-    Primary:{
+
+  Button: {
+    Primary: {
       background: COLOR_PRIMARY,
       text: '#fff',
     },
@@ -40,57 +41,68 @@ const Color = {
       text: '#fff',
     },
 
-    Third:{
+    Third: {
       background: COLOR_THIRD,
       text: '#fff',
     },
 
-    Facebook:{
+    Facebook: {
       background: '#3b5998',
       text: '#fff',
     },
 
-    Google:{
+    Google: {
       background: '#CC3333',
       text: '#fff',
     },
 
   },
 
-  Screen:{
-    background: '#eaeaea',
-  },
-
-  ScreenLogin:{
+  Screen: {
     background: '#fff',
   },
 
-  SectionScreen:{
-    background: '#DCDCDC',
+  ItemMenu: {
+    background: '#fff',
+  },
+
+  InputForm: {
+    focus: '#ffffff',
+    notfocus: '#fbfbfb',
+  },
+
+  CodeInput: {
+    borderColor: 'grey',
+    textColor: 'black',
+    background: 'white',
+  },
+
+  SectionScreen: {
+    background: '#DCDCDC',              // Light Grey + White
     section: '#fff',
   },
 
-  List:{
+  List: {
     separator: '#DCDCDC',
   },
 
-  LeftMenu:{
+  LeftMenu: {
     background: '#fff',
     text: '#000',
     separator: '#DCDCDC',
 
-    Header:{
+    Header: {
       background: COLOR_PRIMARY,
       text: '#ffff',
       separator: COLOR_PRIMARY,
     },
 
-    Footer:{
+    Footer: {
       background: COLOR_SECONDARY,
       text: '#000',
       separator: COLOR_SECONDARY,
     }
-    
+
   }
   ,
 
