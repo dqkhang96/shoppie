@@ -30,11 +30,6 @@ export default class LoginScreen extends Component {
     }
   }
 
-  async componentWillMount() {
-    stateStorage.username = await AsyncStorage.getItem('username');
-    stateStorage.password = await AsyncStorage.getItem('password');
-  }
-
   onBack = () => {
     this.props.navigation.goBack();
   }

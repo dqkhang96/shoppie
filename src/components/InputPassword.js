@@ -25,7 +25,6 @@ class InputPassword extends Component {
         : styles.inputForm}>
         <Text style={styles.text}>Password</Text>
         <TextInput
-          value={stateStorage.password}
           onFocus={() => { this.props.focusPassword() }}
           onBlur={() => { this.props.notFocusPassword() }}
           onChangeText={(text) => { this.props.setPassword(text) }}

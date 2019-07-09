@@ -25,7 +25,6 @@ class InputEmail extends Component {
         : styles.inputForm}>
         <Text style={styles.text}>Email Id</Text>
         <TextInput
-          value={stateStorage.username}
           onFocus={() => { this.props.focusEmail() }}
           onBlur={() => { this.props.notFocusEmail() }}
           onChangeText={(text) => { this.props.setUsername(text) }}
