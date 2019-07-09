@@ -42,10 +42,11 @@ import List from './List'
 import Bag from './Bag'
 import Profile from './Profile'
 import Close from './Close.js'
+import CaretDown from './CaretDown'
 const Icons={BackgroundColor,Checked,Location,Gift,Dress,Right,Home,
                 TextColor,TextStyle,Save,Pause,Back,Up,Circle,Percel,List,Bag,
                 Remove,More,Link,Document,Profile,Close,
-                Audio,Check,
+                Audio,Check,CaretDown,
                 Normal,Event,Position,Play,Menu,Camera,Trash,Edit,Down,LeftArrow,
                 Sort,Filter,ShoppingBag,Search,Heart,ArrowRight,Cancel}
 

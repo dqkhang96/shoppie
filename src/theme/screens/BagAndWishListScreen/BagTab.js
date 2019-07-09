@@ -85,7 +85,7 @@ export default styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        marginVertical: Size.Section.margin
+        marginVertical: 15
     },
     devideDash: {
         width: "100%",
@@ -94,10 +94,10 @@ export default styles = StyleSheet.create({
         borderStyle: 'dotted'
     },
     summaryTitle: {
-        fontSize: Size.Text.normal
+        fontSize: Size.Text.sectionTitle
     },
     summaryValue: {
-        fontSize: Size.Text.normal
+        fontSize: Size.Text.sectionTitle
     },
     viewPlaceOrder:{
         flexDirection:'row'

@@ -1,8 +1,8 @@
 import React from 'react'
-import { View, StyleSheet, ScrollView, TextInput, Text } from 'react-native'
-import BagItem from '../../components/BagItem'
+import { View, ScrollView, TextInput, Text } from 'react-native'
+import BagItem from './BagItem'
 import Icons from '../../../res/icons'
-import { wp ,Size} from '../../theme/sizes'
+import { Size} from '../../theme/sizes'
 import ButtonGradient from '../../components/ButtonGradient';
 import CheckDelivery from '../../components/CheckDelivery'
 import {withNavigation} from 'react-navigation'

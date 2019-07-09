@@ -18,8 +18,7 @@ import Icons from '../../res/icons'
 import Color from '../theme/colors';
 export const HomeStack = createStackNavigator({
   
-  Topwear: TopwearScreen,
-   
+ 
     Home: {
       screen: HomeScreen,
     },
@@ -27,6 +26,8 @@ export const HomeStack = createStackNavigator({
     Product: {
       screen: ProductScreen,
     },
+    Topwear: TopwearScreen,
+   
    
     BagAndWishList: BagAndWishListScreen,
     Brands: BrandsScreen,
