@@ -1,8 +1,8 @@
 import React from 'react'
-import {View,Text,TouchableOpacity,StyleSheet} from 'react-native'
+import {View,TouchableOpacity} from 'react-native'
 import Icons from '../../res/icons'
 import { withNavigation ,Header} from 'react-navigation'
-import { sp } from '../theme/sizes';
+import styles from '../theme/components/BagAndWishListButtons';
 
 const BUTTON_SIZE= Header.HEIGHT*0.5
 const BagAndWishListButtons=({navigation})=>(
@@ -23,17 +23,6 @@ const BagAndWishListButtons=({navigation})=>(
     </View>
 )
 
-const styles=StyleSheet.create({
-    container:{
-        flexDirection:'row',
-        alignItems:'center',
-        marginRight:sp(3.5)
-    },
-    viewButton:{
-        marginLeft:sp(3),
-        flexDirection:'row',
-        alignItems:'center',
-    }
-})
+
 
 export default withNavigation(BagAndWishListButtons)
