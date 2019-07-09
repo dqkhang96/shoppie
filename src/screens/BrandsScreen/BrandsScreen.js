@@ -4,10 +4,14 @@ import BannerBrand from '../../components/BannerBrand'
 import Card,{CardBody,CardView} from '../../components/Card'
 import Banner from '../../components/Banner'
 import styles from '../../theme/screens/BrandsScreen/BrandsScreen'
-
+import ButtonBackAndButtonMenu from '../../components/ButtonBackAndButtonMenu'
 
 export default class BrandsScreen extends React.Component{
 
+    static navigationOptions={
+        title:"Brands",
+        headerLeft:<ButtonBackAndButtonMenu/>
+    }
 
     _renderMostBrands(){
         return(

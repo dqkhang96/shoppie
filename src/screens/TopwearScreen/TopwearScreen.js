@@ -3,7 +3,7 @@ import { View, StyleSheet, ScrollView, TouchableNativeFeedback, Text, FlatList, 
 import Banner from '../../components/Banner'
 import Icons from '../../../res/icons'
 import Card, { CardBody, CardView } from '../../components/Card'
-import ButtonMenu from '../../components/ButtonMenu'
+import ButtonBackAndButtonMenu from '../../components/ButtonBackAndButtonMenu'
 import Color from '../../theme/colors';
 
 import styles from '../../theme/screens/TopwearScreen/TopwearScreen'
@@ -12,8 +12,8 @@ import Size from '../../theme/sizes';
 export default class TopwearScreen extends React.Component {
 
     static navigationOptions = {
-        headerLeft: <ButtonMenu />,
-        title: "Topwear"
+        headerLeft: <ButtonBackAndButtonMenu />,
+        title: "   Topwear"
     }
 
     constructor(props) {

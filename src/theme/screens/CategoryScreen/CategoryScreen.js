@@ -11,7 +11,7 @@ export default styles = StyleSheet.create({
         marginBottom: Size.Section.Margin.bottom
     },
     categoryContent: {
-        width: wp(32),
+        width: wp(33.33),
         justifyContent: 'center'
     },
     title: {
@@ -64,19 +64,19 @@ export default styles = StyleSheet.create({
     },
     hotBrandItem: {
         width: wp(30),
-        marginRight: sp(2),
-        marginBottom: sp(2)
+        marginRight: (wp(100)-2*Size.Section.padding-3*wp(30))/2,
+        marginBottom: Size.CategoryGrid.itemMargin
     },
     hotBrandView: {
-        height: wp(30),
-        width: wp(30),
+        height: wp(30)-2,
+        width: wp(30)-2,
         backgroundColor: "#eaeaea"
     },
     hotBrandName: {
         width: wp(30),
         textAlign: 'center',
         fontSize: Size.Text.normal,
-        marginBottom: sp(2),
+        marginBottom: Size.Text.Margin.bottom,
         marginTop: wp(1)
     }
 })

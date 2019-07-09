@@ -1,14 +1,18 @@
 import React from 'react'
 import { View, ScrollView, TouchableWithoutFeedback } from 'react-native'
-import { Header } from 'react-navigation'
+import { Header, HeaderBackButton } from 'react-navigation'
 import CategoryItem from './CategoryItem'
 import BoxSearch from '../../components/BoxSearch'
 import styles from '../../theme/screens/CategoriesScreen/CategoriesScreen'
 
 
 export default class CategoriesScreen extends React.Component {
-    static navigationOptions = {
-        headerRight: <BoxSearch heightHeader={Header.HEIGHT} />
+    static navigationOptions = ({ navigation }) => {
+        return ({
+            headerRight: <BoxSearch heightHeader={Header.HEIGHT} />,
+            headerLeft: <HeaderBackButton onPress={()=>navigation.goBack(null)} />
+            }
+        )
     }
     render() {
         const { navigation } = this.props

@@ -4,7 +4,7 @@ import { TabView, SceneMap ,TabBar} from 'react-native-tab-view';
 import BagTab from './BagTab'
 import WishlistTab from './WishlistTab'
 import BagAndWishListButtons from '../../components/BagAndWishListButtons.js'
-import ButtonMenu from '../../components/ButtonMenu.js'
+import ButtonBackAndButtonMenu from '../../components/ButtonBackAndButtonMenu'
 import Color from '../../theme/colors';
 const FirstRoute = () => (
   <View style={{flex:1}}>
@@ -20,8 +20,8 @@ const SecondRoute = () => (
 
 export default class TabViewExample extends React.Component {
     static navigationOptions = {
-        title: 'Shopping Bag',
-        headerLeft:<ButtonMenu/>,
+        title: '  Shopping Bag',
+        headerLeft:<ButtonBackAndButtonMenu/>,
         headerRight:<BagAndWishListButtons/>
 
     };

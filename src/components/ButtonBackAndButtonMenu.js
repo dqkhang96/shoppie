@@ -10,7 +10,7 @@ const ButtonBackAndButtonMenu = ({ navigation }) => (
         <TouchableOpacity
             onPress={() => navigation.openDrawer()}
         >
-            <View style={{ marginLeft: Header.HEIGHT * 0.25 }}>
+            <View style={{ marginLeft: Header.HEIGHT * 0.2 }}>
                 <Icons.Menu height={Header.HEIGHT * 0.4} width={Header.HEIGHT * 0.4} />
             </View>
         </TouchableOpacity>

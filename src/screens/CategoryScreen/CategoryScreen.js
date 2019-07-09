@@ -8,10 +8,12 @@ import AdvertisingPanel from '../../components/AdvertisingPanel'
 import { TouchableNativeFeedback } from 'react-native-gesture-handler';
 import {Size,sp} from '../../theme/sizes'
 import styles from '../../theme/screens/CategoryScreen/CategoryScreen'
-
+import ButtonBackAndButtonMenu from '../../components/ButtonBackAndButtonMenu'
 export default class CategoryScreen extends React.Component {
     static navigationOptions = {
-        title: "Category"
+        title: "   Category",
+        headerLeft:<ButtonBackAndButtonMenu/>
+
     }
     constructor(props) {
         super(props)

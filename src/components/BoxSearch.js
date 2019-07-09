@@ -35,10 +35,10 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end',
         alignItems: 'center',
         paddingHorizontal: sp(3.5),
-        width: wp(80)
+        width: wp(75)
     },
     input: {
         marginRight: sp(3.5),
-        width: wp(70)
+        width: wp(60)
     }
 })
