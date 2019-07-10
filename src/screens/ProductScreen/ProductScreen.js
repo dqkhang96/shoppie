@@ -9,11 +9,18 @@ import ButtonGradient from '../../components/ButtonGradient';
 import styles from '../../theme/screens/ProductScreen/ProductScreen'
 import Color from '../../theme/colors';
 import {wp} from '../../theme/sizes'
+import BagAndWishListButton from '../../components/BagAndWishListButtons'
+
 export default class ProductScreen extends React.Component {
     static navigationOptions = {
         title:"Product",
-        tabBarVisible: false,
+        headerRight:<BagAndWishListButton/>
     };
+
+    constructor(props){
+        super(props)
+
+    }
 
     _renderInforPrice() {
         return (
@@ -123,6 +130,10 @@ export default class ProductScreen extends React.Component {
                     fromColor={Color.Button.PrimaryGradient.fromColor} 
                     toColor={Color.Button.PrimaryGradient.toColor}
                     title="Add to cart"
+                    onPress={(event)=>{
+                        console.log(this.props.navigation.state)
+                        console.log(event.nativeEvent)
+                    }}
                     />
             </View>
         )
