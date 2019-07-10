@@ -28,27 +28,24 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     renderItemRecommend:{
-        height: 150, 
-        width: 140, 
-        borderWidth: 1,         
-        borderColor: '#eaeaea', 
+        height: 100, 
+        width: 140,  
         backgroundColor: '#F6F6F6', 
-        justifyContent: 'flex-end',
+        alignItems:'center'
     },
     Brand:{
-        height: 35, width: 90, backgroundColor: '#FFFFFF',
+        width: 90, backgroundColor: '#FFFFFF',
         position: 'absolute',
-        top: -25,
-        left:25,
-        borderRadius: 10,
+        bottom:0,
+        borderTopRightRadius: 10,
+        borderTopLeftRadius:10,
         alignItems: "center",
         justifyContent: "center"
     },
     Information:{
-        
         width: 138,
         backgroundColor: '#FFFFFF',
-        alignContent:'center',
+        alignItems:'center'
     }
     ,
     text:{
