@@ -8,7 +8,7 @@ import CheckDelivery from '../../components/CheckDelivery'
 import {withNavigation} from 'react-navigation'
 import styles from '../../theme/screens/BagAndWishListScreen/BagTab'
 import Color from '../../theme/colors';
-
+import {connect} from 'react-redux';
 
  class BagTab extends React.Component {
 
@@ -54,8 +54,7 @@ import Color from '../../theme/colors';
     render() {
         return (<View style={styles.container}>
             <ScrollView>
-                <BagItem />
-                <BagItem />
+                {this.props.cart.map((product,key)=><BagItem product={product} key={key}></BagItem>)}
                 {this._renderCoupons()}
                 <CheckDelivery />
                 <View style={styles.gift}>
@@ -79,4 +78,7 @@ import Color from '../../theme/colors';
         </View>)
     }
 }
-export default withNavigation(BagTab)
+const mapStateToProp=(state)=>{
+ return {cart :state.cart}
+}
+export default connect(mapStateToProp)(withNavigation(BagTab))

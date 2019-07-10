@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text,  TouchableNativeFeedback } from 'react-native'
+import { View, Text,  TouchableNativeFeedback,Image } from 'react-native'
 import Icons from '../../../res/icons';
 import Size from '../../theme/sizes';
 import styles from '../../theme/screens/BagAndWishListScreen/BagItem'
@@ -67,9 +67,9 @@ export default class BagItem extends React.Component {
         return (
             <View style={styles.container}>
                 <View style={styles.content}>
-                    <View style={styles.image} />
+                    <Image style={styles.image} source={{uri:this.props.product.urlImage}} />
                     <View style={styles.infor}>
-                        <Text style={styles.title}>Lawman</Text>
+                        <Text style={styles.title}>{this.props.product.name}</Text>
                         <Text style={styles.name}>Men’s Slim Fit Printed jacket</Text>
                         <View style={styles.groupViewInputSelect}>
                             <View style={styles.viewInputSelect}>

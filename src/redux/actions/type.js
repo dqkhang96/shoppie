@@ -14,3 +14,6 @@ export const LOGINFB = 'loginfb';
 export const LOGINGG = 'logingg';
 export const LOGINNORMAL = 'loginnormal'
 export const LOGOUT = 'logout';
+export const LIKE_PRODUCT= 'like_product'
+export const REMOVE_LIKE_PRODUCT='remove_like_product'
+export const ADD_TO_CART='12325345'
