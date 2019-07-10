@@ -25,13 +25,22 @@ export default class TabViewExample extends React.Component {
         headerRight:<BagAndWishListButtons/>
 
     };
-  state = {
-    index: 0,
-    routes: [
-      { key: 'first', title: 'My Bag' },
-      { key: 'second', title: 'Wishlist' },
-    ],
-  };
+  
+    constructor(props){
+      super(props)
+      this.state = {
+        index: this.props.navigation.getParam('index'),
+        routes: [
+          { key: 'first', title: 'My Bag' },
+          { key: 'second', title: 'Wishlist' },
+        ],
+      };
+    }
+  
+  componentWillReceiveProps(nextProps){
+    if(nextProps.navigation.getParam('index')!=this.state.index)
+      this.setState({index:nextProps.navigation.getParam('index')})
+  }
 
   render() {
     return (
