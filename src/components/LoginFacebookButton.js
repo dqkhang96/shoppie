@@ -44,12 +44,15 @@ class LoginFacebookButton extends Component {
         await this.props.logInFB(resultUserInfoJSON, resultToken.accessToken);
         await AsyncStorage.setItem('isLoginFB', 'true');
 
+        // Go Back
         this.setState({ isLoginLoading: false });
         this.props.navigation.goBack();
       }
     } catch (err) {
-      this.setState({isLoginLoading: false})
-      alert(`Login failed with error: ${err}`);
+      this.setState({isLoginLoading: false});
+      await AsyncStorage.setItem('isLoginFB', 'false');
+      
+      alert(`FB Login failed with error: ${err}`);
     }
   }
 

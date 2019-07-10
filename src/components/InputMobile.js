@@ -4,7 +4,6 @@ import {
   Text,
   TextInput,
 } from 'react-native';
-import stateStorage from '../config/stateStorage';
 
 // Import styles
 import styles from '../theme/components/InputMobile';
