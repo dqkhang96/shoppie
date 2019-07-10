@@ -7,6 +7,8 @@ import ButtonGradient from '../../components/ButtonGradient.js'
 import CircleCheck from '../../../res/icons/CircleCheck'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import ImageRes from '../../util/images'
+import styles from '../../theme/screens/PaymentScreen/PaymentScreen';
+import Colors from '../../theme/colors'
 const SCREEN_WIDTH = Dimensions.get('window').width
 const SCREEN_HEIGHT = Dimensions.get('window').height
 export default class PaymentScreen extends Component {
@@ -25,9 +27,9 @@ export default class PaymentScreen extends Component {
         return (
             <View style={{ width: SCREEN_WIDTH, padding: 10, marginTop: 15 }}>
                 <ImageBackground source={ImageRes.rectangle}
-                    style={{ height: 50, width: '100%', elevation: 10,justifyContent:'center' }}
+                    style={styles.imagebackground}
                 >
-                    <View style={styles.TotalPayable}>
+                    <View style={styles.totalpayable}>
                         <View >
                             <Text style={{ color: 'white' }}>- Standard Delivery on 21st July -</Text>
                             <Text style={{ color: 'white' }}>2 items -view details</Text>
@@ -74,10 +76,10 @@ export default class PaymentScreen extends Component {
                                 </TouchableOpacity>
                                 <Text style={{ fontSize: 15 }}>ARUN KUMAR</Text>
                             </View>
-                            <View style={styles.CVV}></View>
+                            <View style={styles.cvv}></View>
                         </View>
                     </View>
-                    <View style={styles.DIVIED}></View>
+                    <View style={styles.divide}></View>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 5 }}>
                         <View style={{ justifyContent: "flex-start", flexDirection: 'row' }}>
                         <View style={{height:15,width:15}}>
@@ -103,7 +105,7 @@ export default class PaymentScreen extends Component {
                                 <MasterCard height={40} width={40}></MasterCard>
                                 <Text style={{ fontSize: 15 }}>ARUN KUMAR</Text>
                             </View>
-                            <View style={styles.CVV}></View>
+                            <View style={styles.cvv}></View>
                         </View>
                     </View>
                 </View>
@@ -114,25 +116,25 @@ export default class PaymentScreen extends Component {
         return (
             <View style={{ marginTop: 15 }}>
                 <Text style={{ marginLeft: 10, marginBottom: 5 }}> Other Payment Options </Text>
-                <View style={{ backgroundColor: '#FFFFFF', width: SCREEN_WIDTH, padding: 10 }}>
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 10 }}>
+                <View style={{ backgroundColor: Colors.ItemMenu.background, width: SCREEN_WIDTH, padding: 10 }}>
+                    <View style={styles.paymentitem}>
                         <Text>Credit / Debit Card</Text>
-                        <Text style={{ color: '#08D6CC' }}>SELECT</Text>
+                        <Text style={{ color: Colors.Text.name }}>SELECT</Text>
                     </View>
-                    <View style={styles.DIVIED}></View>
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 10 }}>
+                    <View style={styles.divide}></View>
+                    <View style={styles.paymentitem}>
                         <Text>Net Banking</Text>
-                        <Text style={{ color: '#08D6CC' }}>SELECT</Text>
+                        <Text style={{ color: Colors.Text.name}}>SELECT</Text>
                     </View>
-                    <View style={styles.DIVIED}></View>
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 10 }}>
+                    <View style={styles.divide}></View>
+                    <View style={styles.paymentitem }>
                         <Text>Cash on Delivery</Text>
-                        <Text style={{ color: '#08D6CC' }}>SELECT</Text>
+                        <Text style={{ color: Colors.Text.name }}>SELECT</Text>
                     </View>
-                    <View style={styles.DIVIED}></View>
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 10 }}>
+                    <View style={styles.divide}></View>
+                    <View style={styles.paymentitem}>
                         <Text>Wallets</Text>
-                        <Text style={{ color: '#08D6CC' }}>SELECT</Text>
+                        <Text style={{ color: Colors.Text.name }}>SELECT</Text>
                     </View>
 
                 </View>
@@ -148,48 +150,25 @@ export default class PaymentScreen extends Component {
                     {this._renderOtherPayment()}
                     <View style={{ marginTop: 15 }}>
                         <Text style={{ marginLeft: 10, marginBottom: 5 }}> Deliver To </Text>
-                        <View style={{ backgroundColor: '#FFFFFF', width: SCREEN_WIDTH, padding: 10 }}>
+                        <View style={{ backgroundColor: Colors.ItemMenu.background, width: SCREEN_WIDTH, padding: 10 }}>
                             <Text>Arun Kumar</Text>
                             <Text>J, Saket Rd, Block J, Eastern Avenue</Text>
                             <Text>Delhi</Text>
                             <Text>SDelhi - Delhi 110062</Text>
-                            <Text style={{ color: '#08D6CC' }}>Change Address</Text>
+                            <Text style={{ color: Colors.Text.name }}>Change Address</Text>
                         </View>
                     </View>
                 </ScrollView>
                 <View style={{ marginTop: 15 }}>
-                    <View style={{ backgroundColor: '#FFFFFF', width: SCREEN_WIDTH, padding: 10, flexDirection: 'row',justifyContent:'space-between' }}>
+                    <View style={styles.pay}>
                         <View>
                             <Text>Rs.5700</Text>
-                            <Text style={{ color: '#08D6CC' }}>View Details</Text>
+                            <Text style={{ color: Colors.Text.name  }}>View Details</Text>
                         </View>
-                        <ButtonGradient style={{ height: 40, width: SCREEN_WIDTH * 0.4,borderRadius:4,overflow:'hidden'}} fromColor={'#08D6CC'} toColor={'#00BBE1'} title={'PAY NOW'} ></ButtonGradient>
+                        <ButtonGradient style={styles.buttongradient} fromColor={'#08D6CC'} toColor={'#00BBE1'} title={'PAY NOW'} ></ButtonGradient>
                     </View>
                 </View>
             </View>
         )
     }
 }
-const styles = StyleSheet.create({
-    CVV: {
-        height: 45,
-        marginLeft: 5,
-        width: 65,
-        borderWidth: 1,
-        borderRadius: 5,
-        marginTop: 10,
-        borderColor: '#eaeaea'
-    },
-    TotalPayable: {
-        paddingHorizontal: 30,
-        flexDirection: 'row',
-        justifyContent: 'space-between'
-    },
-    DIVIED: {
-        height: 0,
-        width: '100%',
-        borderBottomWidth: 0.8,
-        borderColor: '#eaeaea',
-        marginTop: 5
-    }
-})

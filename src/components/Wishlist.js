@@ -4,7 +4,7 @@ export default class Wishlist extends Component {
     render() {
         return (
 
-            <ScrollView>
+           
                 <View style={{ flex: 1, padding: 20 }}>
                 <View style={{ flexDirection: 'row' }}>
                     <View style={{ height: 120, width: 86, backgroundColor: '#eaeaea' }}></View>
@@ -27,7 +27,7 @@ export default class Wishlist extends Component {
                 </View>
             </View>
 
-            </ScrollView>
+        
         )
     }
 }

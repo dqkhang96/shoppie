@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
-import { View} from 'react-native'
+import { View, ScrollView } from 'react-native'
 import Wishlist from '../../components/Wishlist'
 export default class WishlishTab extends Component {
     render() {
         return (
-            <View style={{flex:1}}>
-                <Wishlist></Wishlist>
-                <Wishlist></Wishlist>
+            <View style={{ flex: 1 }}>
+                <ScrollView>
+                    <Wishlist></Wishlist>
+                    <Wishlist></Wishlist>
+                    <Wishlist></Wishlist>
+                </ScrollView>
             </View>
         )
     }
