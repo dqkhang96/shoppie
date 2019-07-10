@@ -19,12 +19,12 @@ export default styles = StyleSheet.create({
         justifyContent: 'center'
     },
     lageTextBanner: {
-        fontSize: Size.Text.pageTitle*3,
+        fontSize: Size.Text.pageTitle*1.5,
         color: 'white',
         textAlign: 'center'
     },
     smallTextBanner: {
-        fontSize: Size.Text.sectionTitle*2.5,
+        fontSize: Size.Text.pageTitle,
         color: 'white',
         textAlign: 'center'
     },
