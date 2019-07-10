@@ -41,6 +41,7 @@ class LoginGoogleButton extends Component {
       await this.props.logInGG(userInfo.user);
       await AsyncStorage.setItem('isLoginGG', 'true');
 
+      // Go Back
       this.setState({ isLoginLoading: false });
       this.props.navigation.goBack();
     } catch (err) {
@@ -49,8 +50,10 @@ class LoginGoogleButton extends Component {
         await AsyncStorage.setItem('isLoginGG', 'false');
       }
       else {
-        this.setState({isLoginLoading: false})
-        alert(`Login failed with error: ${err}`);
+        this.setState({isLoginLoading: false});
+        await AsyncStorage.setItem('isLoginGG', 'false');
+        
+        alert(`GG Login failed with error: ${err}`);
       }
     }
   }

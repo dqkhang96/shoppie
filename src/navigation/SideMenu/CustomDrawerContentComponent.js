@@ -12,11 +12,11 @@ import GiftDawerComponent from './GiftDawerComponent'
 import ReferDrawerCoponent from './ReferDrawerCoponent.js'
 import SettingDrawerComponent from './SettingDrawerComponent'
 import LogoutDrawerComponent from './LogoutDrawerComponent'
-
-import oauthSignature from 'oauth-signature';
-import axios from 'axios';
+import Color from '../../theme/colors';
 import AsyncStorage from '@react-native-community/async-storage';
-import stateStorage from '../../config/stateStorage';
+
+// Import api
+import { logoutAPI, loginNormalAPI } from '../../config/apis';
 
 // Import Facebook Login
 import { AccessToken, LoginManager, GraphRequest, GraphRequestManager, LoginButton } from 'react-native-fbsdk';
@@ -27,41 +27,51 @@ import { GoogleSignin, statusCodes } from 'react-native-google-signin';
 import * as actions from '../../redux/actions/index';
 import { connect } from 'react-redux';
 
-let isLoginNormal;
-let isLoginGG;
-let isLoginFB;
-let username;
-let password;
-
 class CustomDrawerContentComponent extends Component {
 
   // First of all, check if user had already logged in on this app?
   async componentWillMount() {
-    isLoginGG = await AsyncStorage.getItem('isLoginGG');
-    isLoginFB = await AsyncStorage.getItem('isLoginFB');
-    isLoginNormal = await AsyncStorage.getItem('isLoginNormal');
-    username = await AsyncStorage.getItem('username');
-    password = await AsyncStorage.getItem('password');
+    const isLoginGG = await AsyncStorage.getItem('isLoginGG');
+    const isLoginFB = await AsyncStorage.getItem('isLoginFB');
+    const isLoginNormal = await AsyncStorage.getItem('isLoginNormal');
+    const username = await AsyncStorage.getItem('username');
+    const password = await AsyncStorage.getItem('password');
 
     if (isLoginGG == 'true') {
-      try {
-        await GoogleSignin.hasPlayServices();
-        const userInfo = await GoogleSignin.signIn();
-        // Call the Login Google action of Redux
-        await this.props.logInGG(userInfo.user);
-        this.props.navigation.goBack();
-      } catch (err) {
-        if (err.code === statusCodes.SIGN_IN_CANCELLED) {
-          this.setState({ isLoginLoading: false });
-          await AsyncStorage.setItem('isLoginGG', 'false');
-        }
-        else {
-          this.setState({ isLoginLoading: false })
-          alert(`Login failed with error: ${err}`);
-        }
-      }
+      this.onGGLogin();
+      this.props.navigation.goBack();
     }
     else if (isLoginFB == 'true') {
+      this.onFBLogin();
+      this.props.navigation.goBack();
+    }
+    else if (isLoginNormal == 'true') {
+      this.onNormalLogin(username, password);
+      this.props.navigation.goBack();
+    }
+    else {
+      // Do nothing
+    }
+  }
+
+  onGGLogin = async () => {
+    try {
+      await GoogleSignin.hasPlayServices();
+      const userInfo = await GoogleSignin.signIn();
+      // Call the Login Google action of Redux
+      await this.props.logInGG(userInfo.user);
+    } catch (err) {
+      if (err.code === statusCodes.SIGN_IN_CANCELLED) {
+        await AsyncStorage.setItem('isLoginGG', 'false');
+      }
+      else {
+        alert(`GG Login Silently failed with error: ${err}`);
+      }
+    }
+  }
+
+  onFBLogin = async () => {
+    try {
       let resultLogin = await LoginManager.logInWithPermissions(['public_profile', 'email']);
 
       if (resultLogin.isCancelled) {
@@ -73,63 +83,20 @@ class CustomDrawerContentComponent extends Component {
         let resultUserInfoJSON = await res.json();
         // Call the Login Facebook action of Redux
         await this.props.logInFB(resultUserInfoJSON, resultToken.accessToken);
-        this.props.navigation.goBack();
       }
-    }
-    else if (isLoginNormal == 'true') {
-      this.doLogin(username, password);
-      this.props.navigation.goBack();
+    } catch (err) {
+      alert(`FB Login silently failed with: ${err}`);
     }
   }
 
-  generateAuthorization = (url, httpMethod, params) => {
-    var nonce = (Math.random() * 1e32).toString(32),
-      // timeStamp = new Date().getTime(),
-      // timeStamp = '1559616233',//Tạm thời fix cứng vì device và server đang lệch múi giờ
-      timeStamp = '1559616233',
-      accessToken = '275f3514fec865dc3186fedb678a9433',
-      consumerKey = "f62b7aefaf38026da8cf0b664e7e254f",
-      consumerSecret = "9f6ed4ca684a0c10bbf4678c30ed56a4",
-      tokenSecret = "d71d43cd90317ecc81c57e74c72e846c",
-
-      parameters = {
-        oauth_consumer_key: consumerKey,
-        oauth_nonce: nonce,
-        oauth_signature_method: 'HMAC-SHA1',
-        oauth_timestamp: timeStamp,
-        oauth_token: accessToken,
-        oauth_version: '1.0',
-      },
-
-      allParams = parameters;
-    if (typeof (params) != 'undefined')
-      allParams = { ...parameters, ...params }
-
-    signature = oauthSignature.generate(httpMethod, url, allParams, consumerSecret, tokenSecret);
-
-    return "OAuth oauth_consumer_key=\"" + consumerKey + "\",oauth_nonce=\"" + nonce + "\",oauth_signature=\"" + signature + "\",oauth_signature_method=\"HMAC-SHA1\",oauth_timestamp=\"" + timeStamp + "\",oauth_token=\"" + accessToken + "\",oauth_version=\"1.0\"";
-  }
-
-  doLogin = async (username, password) => {
-    url = 'https://dev.goodiebox.dk/api/rest/integration/customer/token';
-    method = 'POST';
-    options = {
-      url: url,
-      method: method,
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': this.generateAuthorization(url, method),
-      },
-      data: JSON.stringify({
-        username: username,
-        password: password,
-      })
-    };
-
+  onNormalLogin = async (username, password) => {
     try {
-      const response = await axios(options);
-      const token = await response.data.split(':\"')[1].split('\"}')[0]     // This is a string, not a JSON object so we have to split this string to get the token
+      const token = await loginNormalAPI(username, password);
+
+      // Save this for the next Login Normal
+      await AsyncStorage.setItem('username', username);
+      await AsyncStorage.setItem('password', password);
+      await AsyncStorage.setItem('isLoginNormal', 'true');
 
       // Save to redux
       const userInfo = {
@@ -139,63 +106,18 @@ class CustomDrawerContentComponent extends Component {
         accessToken: token,
       }
       this.props.logInNormal(userInfo);
-
-      // Save this for the next Login Normal
-      await AsyncStorage.setItem('username', username);
-      await AsyncStorage.setItem('password', password);
-      await AsyncStorage.setItem('isLoginNormal', 'true');
     } catch (err) {
-      console.error(`ERR with: ${err}`);
+      alert(`Normal Login silently failed with: ${err}`);
     }
-
-    // // You can use ".then" instead of "async await" if you want
-    // axios(options)
-    //   .then(response => response.data.split(':\"')[1].split('\"}')[0])
-    //   .then(token => {
-    //     alert(token);
-    //   })
-    //   .catch(err => {
-    //     console.error(`ERR with: ${err}`);
-    //   })
   }
 
   onLogOut = async () => {
-    isLoginGG = await AsyncStorage.getItem('isLoginGG');
-    isLoginFB = await AsyncStorage.getItem('isLoginFB');
-    isLoginNormal = await AsyncStorage.getItem('isLoginNormal');
-    if (isLoginGG == 'true') {
-      await GoogleSignin.revokeAccess();
-      await GoogleSignin.signOut();
-      await AsyncStorage.setItem('isLoginGG', 'false');
+    const isLogoutable = await logoutAPI();
+    if (isLogoutable) {
       this.props.logOut();
     }
-    else if (isLoginFB == 'true') {
-      let signOutRequest =
-        new GraphRequest(
-          "me/permissions/",
-          {
-            accessToken: this.props.user.accessToken,
-            httpMethod: 'DELETE'
-          },
-          (error, result) => {
-            if (error) {
-              console.error('Error fetching data: ' + error.toString());
-            } else {
-              LoginManager.logOut();
-            }
-          });
-      await new GraphRequestManager().addRequest(signOutRequest).start();
-      await AsyncStorage.setItem('isLoginFB', 'false');
-      this.props.logOut();
-    }
-    else if (isLoginNormal == 'true') {
-      await AsyncStorage.setItem('isLoginNormal', 'false');
-      await AsyncStorage.setItem('username', '');
-      await AsyncStorage.setItem('password', '');
-      stateStorage.username = '';
-      stateStorage.password = '';
-
-      this.props.logOut();
+    else {
+      // Do nothing
     }
   }
 
@@ -210,7 +132,7 @@ class CustomDrawerContentComponent extends Component {
             ? <Image style={{ height: 50, width: 50, borderRadius: 25, marginLeft: 15 }}
               source={{ uri: this.props.user.avatar }}
             />
-            : <View style={{ height: 50, width: 50, borderRadius: 25, marginLeft: 15, backgroundColor: stateStorage.appColor }} />}
+            : <View style={{ height: 50, width: 50, borderRadius: 25, marginLeft: 15, backgroundColor: Color.primary }} />}
           <View
             style={styles.pencil}>
             <EvilIcons name='pencil'
