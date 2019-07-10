@@ -12,8 +12,6 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Foundation from 'react-native-vector-icons/Foundation';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 
-import stateStorage from '../config/stateStorage';
-
 class HeadBar extends Component {
   onBack = () => {
     this.props.navigation.goBack();

@@ -7,15 +7,14 @@ import {
 import { withNavigation } from 'react-navigation';
 import axios from 'axios';
 import AsyncStorage from '@react-native-community/async-storage';
-
-
 import ColoredButton from '../../components/ColoredButton';
-import Utils from '../../util/utils';
-
 import Color from '../../theme/colors';
 import styles from '../../theme/screens/LoginScreen/LoginNormalButton';
 
-//import redux
+// Import api
+import { loginNormalAPI } from '../../config/apis';
+
+// Import redux
 import * as actions from '../../redux/actions/index';
 import { connect } from 'react-redux';
 
@@ -29,25 +28,8 @@ class LoginNormalButton extends Component {
 
   onLoginNormal = async () => {
     this.setState({ isLoginLoading: true });
-    url = 'https://dev.goodiebox.dk/api/rest/integration/customer/token';
-    method = 'POST';
-    options = {
-      url: url,
-      method: method,
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': Utils.generateAuthorization(url, method),
-      },
-      data: JSON.stringify({
-        username: this.props.username,
-        password: this.props.password,
-      })
-    };
-
     try {
-      const response = await axios(options);
-      const token = await response.data.split(':\"')[1].split('\"}')[0]     // This is a string, not a JSON object so we have to split this string to get the token
+      const token = await loginNormalAPI(this.props.username, this.props.password);
 
       // Save this for the next Login Normal
       await AsyncStorage.setItem('username', this.props.username);
@@ -58,16 +40,22 @@ class LoginNormalButton extends Component {
       const userInfo = {
         name: this.props.username,
         username: this.props.username,
-        email: username,
+        email: this.props.username,
         accessToken: token,
       }
       this.props.logInNormal(userInfo);
-      this.setState({ isLoginLoading: false })
 
+      // Go back
+      this.setState({ isLoginLoading: false })
       this.props.navigation.goBack();
     } catch (err) {
-      this.setState({ isLoginLoading: false })
-      alert(`ERR with: ${err}`);
+      // If Login Normal failed, refresh all from AsyncStorage
+      this.setState({ isLoginLoading: false });
+      await AsyncStorage.setItem('username', '');
+      await AsyncStorage.setItem('password', '');
+      await AsyncStorage.setItem('isLoginNormal', 'false');
+
+      alert(`Normal Login failed with: ${err}`);
     }
   }
 
