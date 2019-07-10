@@ -29,7 +29,7 @@ export default class TabViewExample extends React.Component {
     constructor(props){
       super(props)
       this.state = {
-        index: this.props.navigation.getParam('index'),
+        index: this.props.navigation.getParam('index',0),
         routes: [
           { key: 'first', title: 'My Bag' },
           { key: 'second', title: 'Wishlist' },
