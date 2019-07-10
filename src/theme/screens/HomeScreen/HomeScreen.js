@@ -60,6 +60,6 @@ export default styles = StyleSheet.create({
     nSSContent:{
         backgroundColor:'#EEEEEE',
         height:sp(60),
-        width:wp(90)
+        width:wp(95)
     }
 })

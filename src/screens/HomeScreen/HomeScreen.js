@@ -42,7 +42,7 @@ export default class HomeScreen extends React.Component {
         return (
             <View style={styles.hotBrands}>
                 <Text style={styles.textHotBrand}>HOT SELLER BRANDS</Text>
-                <FlatList data={[1, 2, 3, 4, 5, 6]}
+                <FlatList data={data}
                     numColumns={3}
                     showsHorizontalScrollIndicator={false}
                     keyExtractor={(item, index) => "brand-" + index}
@@ -52,9 +52,11 @@ export default class HomeScreen extends React.Component {
                         >
                             <Card style={[styles.hotBrandCard, { marginLeft: index % 3 != 0 ? MARGIN_LEFT : 0 }]}>
                                 <CardView footer={(<View style={{ height: sp(5), width: sp(20), backgroundColor: 'white', justifyContent: 'center' }}><Text style={{ textAlign: 'center' }}>MEN</Text></View>)}>
-                                    <View style={{ height: sp(28), width: sp(28), backgroundColor: '#EEEEEE' }} />
+                                    <Image style={{ height: sp(28), width: sp(28), backgroundColor: '#EEEEEE' }}
+                                    source={{uri:item.urlImage}}
+                                    />
                                 </CardView>
-                                <CardBody><View style={{ width: sp(28) }}><Text style={{ textAlign: 'center', fontSize: Size.Text.normal }}>Shit</Text></View></CardBody>
+                                <CardBody><View style={{ width: sp(28) }}><Text style={{ textAlign: 'center', fontSize: Size.Text.normal }}>{item.name}</Text></View></CardBody>
                             </Card>
                         </TouchableOpacity>
                     )}
@@ -101,9 +103,9 @@ export default class HomeScreen extends React.Component {
             <View style={styles.newSessionStyle}>
                 <Text style={styles.newSessionStyleText}>NEW SESSION STYLE</Text>
                 <View style={styles.nSSContainer}>
-                    <View style={styles.nSSContent}>
-
-                    </View>
+                    <Image style={styles.nSSContent}
+                    source={{uri:data[0].urlImage}}
+                    />
 
                 </View>
 
@@ -130,9 +132,7 @@ export default class HomeScreen extends React.Component {
                     </View>
                     <View style={{ height: sp(40) }}>
                         <Swiper autoplay autoplayTimeout={5} showsPagination={false}>
-                            <View style={{ width: SCREEN_WIDTH, height: sp(40), backgroundColor: 'red' }} />
-                            <View style={{ width: SCREEN_WIDTH, height: sp(40), backgroundColor: 'blue' }} />
-                            <View style={{ width: SCREEN_WIDTH, height: sp(40), backgroundColor: 'green' }} />
+                            {data.map((product,key)=><Image source={{uri:product.urlImage}} style={{height:SCREEN_WIDTH,width:SCREEN_WIDTH}} key={product.id} />)}
                         </Swiper>
                     </View>
                     {this._renderNewArrival()}
