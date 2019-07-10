@@ -27,9 +27,11 @@ import { GoogleSignin, statusCodes } from 'react-native-google-signin';
 import * as actions from '../../redux/actions/index';
 import { connect } from 'react-redux';
 
+let isLoginNormal;
 let isLoginGG;
 let isLoginFB;
-let isLoginNormal;
+let username;
+let password;
 
 class CustomDrawerContentComponent extends Component {
 
@@ -38,21 +40,33 @@ class CustomDrawerContentComponent extends Component {
     isLoginGG = await AsyncStorage.getItem('isLoginGG');
     isLoginFB = await AsyncStorage.getItem('isLoginFB');
     isLoginNormal = await AsyncStorage.getItem('isLoginNormal');
-    stateStorage.username = await AsyncStorage.getItem('username');
-    stateStorage.password = await AsyncStorage.getItem('password');
+    username = await AsyncStorage.getItem('username');
+    password = await AsyncStorage.getItem('password');
 
     if (isLoginGG == 'true') {
-      await GoogleSignin.hasPlayServices();
-      const userInfo = await GoogleSignin.signIn();
-      // Call the Login Google action of Redux
-      await this.props.logInGG(userInfo.user);
-      this.props.navigation.goBack();
+      try {
+        await GoogleSignin.hasPlayServices();
+        const userInfo = await GoogleSignin.signIn();
+        // Call the Login Google action of Redux
+        await this.props.logInGG(userInfo.user);
+        this.props.navigation.goBack();
+      } catch (err) {
+        if (err.code === statusCodes.SIGN_IN_CANCELLED) {
+          this.setState({ isLoginLoading: false });
+          await AsyncStorage.setItem('isLoginGG', 'false');
+        }
+        else {
+          this.setState({ isLoginLoading: false })
+          alert(`Login failed with error: ${err}`);
+        }
+      }
     }
     else if (isLoginFB == 'true') {
       let resultLogin = await LoginManager.logInWithPermissions(['public_profile', 'email']);
 
       if (resultLogin.isCancelled) {
         alert(`Login was cancelled!`);
+        await AsyncStorage.setItem('isLoginFB', 'false');
       } else {
         let resultToken = await AccessToken.getCurrentAccessToken();
         let res = await fetch(`https://graph.facebook.com/me?fields=id,name,email,picture.type(large)&access_token=${resultToken.accessToken}`)
@@ -63,7 +77,7 @@ class CustomDrawerContentComponent extends Component {
       }
     }
     else if (isLoginNormal == 'true') {
-      this.doLogin(stateStorage.username, stateStorage.password);
+      this.doLogin(username, password);
       this.props.navigation.goBack();
     }
   }

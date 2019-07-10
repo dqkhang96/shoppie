@@ -1,6 +1,7 @@
 import React from 'react'
-import { sp } from '../util'
+import { sp } from '../theme/sizes'
 import {View ,Text} from 'react-native'
+import Color from '../theme/colors';
 
 const SIZE_LARGE = sp(15)
 const SIZE_SMAll = sp(12)
@@ -14,7 +15,7 @@ export default CircleView = ({ label, children ,style}) => (
             height:SIZE_LARGE,
             width:SIZE_LARGE,
             borderRadius:SIZE_LARGE/2,
-            borderColor:'#08D6CC',
+            borderColor:Color.primary,
             borderWidth:1,
             justifyContent:'center',
             alignItems:'center'

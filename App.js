@@ -1,7 +1,6 @@
 
 import React, { useState } from 'react';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
-import CategoryItem from './src/components/CategoryItem'
 
 //import redux
 import { Provider } from 'react-redux';

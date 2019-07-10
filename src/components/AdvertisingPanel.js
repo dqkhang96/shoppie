@@ -1,6 +1,6 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
-import {sp} from '../util'
+import { View, Text } from 'react-native'
+import styles from '../theme/components/AdvertisingPanel'
 
 export default AdvertisingPanel = (props) => (
     <View style={styles.adContainer}>
@@ -22,43 +22,3 @@ export default AdvertisingPanel = (props) => (
 )
 
 
-const styles = StyleSheet.create({
-    adContainer: {
-        padding: sp(3.5),
-        marginBottom: sp(2),
-    },
-    adContent: {
-        borderWidth: 1,
-        borderColor: 'gray',
-        padding: sp(1),
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-
-    bodyAd: {
-        width: "100%",
-        flexDirection: 'row'
-    },
-    itemAd: {
-        width: "50%",
-        height: sp(40)
-    },
-    titleAd: {
-        backgroundColor: 'white',
-        position: 'absolute',
-        padding: sp(1.5),
-        bottom: sp(4),
-        alignItems: 'center',
-        width: sp(80)
-    },
-    largeAdText: {
-        fontSize: sp(5),
-        textAlign: 'center',
-        marginBottom: sp(1)
-    },
-    smallAdText: {
-        fontSize: sp(3.5),
-        color: 'gray',
-        textAlign: 'center'
-    },
-})

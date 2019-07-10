@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
-import { sp } from '../util'
+import { sp } from '../theme/sizes'
 
 export default BannerBrand = (props) => (
     <View style={styles.container}>

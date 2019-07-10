@@ -1,13 +1,17 @@
 import React from 'react'
-import {View,ScrollView,StyleSheet , FlatList ,Text} from 'react-native'
+import {View,ScrollView , FlatList ,Text} from 'react-native'
 import BannerBrand from '../../components/BannerBrand'
 import Card,{CardBody,CardView} from '../../components/Card'
-import { wp, sp } from '../../util';
 import Banner from '../../components/Banner'
-
+import styles from '../../theme/screens/BrandsScreen/BrandsScreen'
+import ButtonBackAndButtonMenu from '../../components/ButtonBackAndButtonMenu'
 
 export default class BrandsScreen extends React.Component{
 
+    static navigationOptions={
+        title:"Brands",
+        headerLeft:<ButtonBackAndButtonMenu/>
+    }
 
     _renderMostBrands(){
         return(
@@ -52,45 +56,3 @@ export default class BrandsScreen extends React.Component{
     }
 }
 
-const styles=StyleSheet.create({
-    container:{
-        flex:1
-    },
-    mostBrandsContainer:{
-        marginBottom:sp(3)
-    },
-    titleMostBrands:{
-        textAlign:'center',
-        fontSize:sp(6),
-        marginBottom:sp(3),
-        marginTop:sp(3)
-    },
-    brand:{
-        marginLeft:sp(3.5),
-        width:(wp(100)-4*sp(3.5))/3,
-        height:(wp(100)-4*sp(3.5))/3*1.4,
-    },
-    brandFooter:{
-        backgroundColor:'white',
-        paddingHorizontal:sp(2)
-    },
-    brandFooterText:{
-        fontSize:sp(4),
-        textAlign:'center'
-    },
-    brandView:{
-        backgroundColor:"#EEEEEE",
-        width:(wp(100)-4*sp(3.5))/3-2,
-        height:(wp(100)-4*sp(3.5))/3,
-    },
-    brandBody:{
-        paddingVertical:sp(2),
-        justifyContent:'center',
-        alignItems:'center',
-      
-    },
-    brandTitle:{
-        textAlign:'center',
-        fontSize:sp(4)
-    }
-})

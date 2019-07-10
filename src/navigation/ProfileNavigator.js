@@ -1,8 +1,10 @@
 import React from 'react';
 import { createStackNavigator, createBottomTabNavigator, createDrawerNavigator, DrawerItems } from 'react-navigation';
-import ProfileScreen from '../screens/Profile'
+import ProfileScreen from '../screens/ProfileScreen'
 import { sp, wp } from '../util'
 import Icons from '../../res/icons'
+import Size from '../theme/sizes'
+import Color from '../theme/colors';
 export const ProfileStack = createStackNavigator(
     {
       Profile: ProfileScreen,
@@ -11,9 +13,9 @@ export const ProfileStack = createStackNavigator(
   
   ProfileStack.navigationOptions = {
     tabBarLabel: () => null,
-    tabBarIcon: ({tintColor})=>(<Icons.Profile width={sp(5)} height={sp(5)} fill={tintColor} />),
+    tabBarIcon: ({tintColor})=>(<Icons.Profile width={Size.TabIcon.width} height={Size.TabIcon.width} fill={tintColor} />),
     tabBarOptions:{
-      activeTintColor:"#08D6CC"
+      activeTintColor:Color.primary
     }
   }
   
