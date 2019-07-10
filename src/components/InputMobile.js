@@ -3,37 +3,39 @@ import {
   View,
   Text,
   TextInput,
+  TouchableNativeFeedback
 } from 'react-native';
-import stateStorage from '../config/stateStorage';
 
 // Import styles
 import styles from '../theme/components/InputMobile';
 
-// Import redux
-import * as actions from '../redux/actions/index';
-import { connect } from 'react-redux';
+
 
 class InputMobile extends Component {
+  state={
+    isFocus:false
+  }
   render() {
     return (
-      <View style={this.props.inputFocus.mobile == true
-        ? styles.inputFormFocus
-        : styles.inputForm}>
-        <Text style={styles.text}>Mobile Number</Text>
-        <TextInput
-          onFocus={() => { this.props.focusMobile() }}
-          onBlur={() => { this.props.notFocusMobile() }}
-          onChangeText={() => { }}
-          style={styles.inputText}
-          secureTextEntry={true}
-        />
-      </View>
+      <TouchableNativeFeedback
+        onPress={() => this.inputMobile.focus()}
+      >
+        <View style={this.state.isFocus == true
+          ? styles.inputFormFocus
+          : styles.inputForm}>
+          <Text style={styles.text}>Mobile Number</Text>
+          <TextInput
+            ref={input=>this.inputMobile=input}
+            onFocus={() => { this.setState({isFocus:true}) }}
+            onBlur={() => { this.setState({isFocus:false}) }}
+            onChangeText={() => { }}
+            style={styles.inputText}
+          />
+        </View>
+      </TouchableNativeFeedback>
     )
   }
 }
 
-const mapStateToProps = state => ({
-  inputFocus: state.inputFocus,
-});
 
-export default connect(mapStateToProps, actions)(InputMobile);
+export default (InputMobile);

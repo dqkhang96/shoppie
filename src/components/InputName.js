@@ -3,36 +3,37 @@ import {
   View,
   Text,
   TextInput,
+  TouchableNativeFeedback
 } from 'react-native';
 
 // Import styles
 import styles from '../theme/components/InputName';
 
-// Import redux
-import * as actions from '../redux/actions/index';
-import { connect } from 'react-redux';
 
 class InputName extends Component {
+  state = {
+    isFocus: false
+  }
   render() {
     return (
-      <View style={this.props.inputFocus.name == true
-        ? styles.inputFormFocus
-        : styles.inputForm}>
-        <Text style={styles.text}>Name</Text>
-        <TextInput
-          onFocus={() => { this.props.focusName() }}
-          onBlur={() => { this.props.notFocusName() }}
-          onChangeText={() => { }}
-          style={styles.inputText}
-          secureTextEntry={true}
-        />
-      </View>
+      <TouchableNativeFeedback
+        onPress={() => this.inputName.focus()}
+      >
+        <View style={this.state.isFocus == true
+          ? styles.inputFormFocus
+          : styles.inputForm}>
+          <Text style={styles.text}>Name</Text>
+          <TextInput
+            ref={input=>this.inputName=input}
+            onFocus={() => { this.setState({isFocus:true}) }}
+            onBlur={() => { this.setState({isFocus:false}) }}
+            onChangeText={() => { }}
+            style={styles.inputText}
+          />
+        </View>
+      </TouchableNativeFeedback>
     )
   }
 }
 
-const mapStateToProps = state => ({
-  inputFocus: state.inputFocus,
-});
-
-export default connect(mapStateToProps, actions)(InputName);
+export default InputName;

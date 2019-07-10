@@ -3,36 +3,40 @@ import {
   View,
   Text,
   TextInput,
+  TouchableNativeFeedback
 } from 'react-native';
 
 // Import styles
 import styles from '../theme/components/InputPassword';
 
-// Import redux
-import * as actions from '../redux/actions/index';
-import { connect } from 'react-redux';
 
 class InputPassword extends Component {
+  state={
+    isFocus:false
+  }
+
+
   render() {
     return (
-      <View style={this.props.inputFocus.password == true
-        ? styles.inputFormFocus
-        : styles.inputForm}>
-        <Text style={styles.text}>Password</Text>
-        <TextInput
-          onFocus={() => { this.props.focusPassword() }}
-          onBlur={() => { this.props.notFocusPassword() }}
-          onChangeText={(text) => { this.props.setPassword(text) }}
-          style={styles.inputText}
-          secureTextEntry={true}
-        />
-      </View>
+      <TouchableNativeFeedback
+        onPress={() => this.inputPassword.focus() }
+      >
+        <View style={this.state.isFocus
+          ? styles.inputFormFocus
+          : styles.inputForm}>
+          <Text style={styles.text}>Password</Text>
+          <TextInput
+            ref={(input)=>this.inputPassword=input}
+            onFocus={() => { this.setState({isFocus:true}) }}
+            onBlur={() => { this.setState({isFocus:false})}}
+            onChangeText={(text) => { this.props.setPassword(text) }}
+            style={styles.inputText}
+            secureTextEntry={true}
+          />
+        </View>
+      </TouchableNativeFeedback>
     )
   }
 }
 
-const mapStateToProps = state => ({
-  inputFocus: state.inputFocus,
-});
-
-export default connect(mapStateToProps, actions)(InputPassword);
+export default InputPassword

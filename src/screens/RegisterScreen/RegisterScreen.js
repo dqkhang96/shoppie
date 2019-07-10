@@ -39,8 +39,8 @@ export default class RegisterScreen extends Component {
 
           <View style={styles.inputFormContainer} >
             <InputName />
-            <InputEmail />
-            <InputPassword />
+            <InputEmail setUsername={()=>{}}/>
+            <InputPassword setPassword={()=>{}}/>
             <InputMobile />
           </View>
 

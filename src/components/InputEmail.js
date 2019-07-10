@@ -3,36 +3,40 @@ import {
   View,
   Text,
   TextInput,
+  TouchableNativeFeedback
 } from 'react-native';
 
 // Import styles
 import styles from '../theme/components/InputEmail';
 
-// Import redux
-import * as actions from '../redux/actions/index';
-import { connect } from 'react-redux';
 
 class InputEmail extends Component {
+
+  state={
+    isFocus:false
+  }
+
   render() {
     return (
-      <View style={this.props.inputFocus.email == true
-        ? styles.inputFormFocus
-        : styles.inputForm}>
-        <Text style={styles.text}>Email Id</Text>
-        <TextInput
-          onFocus={() => { this.props.focusEmail() }}
-          onBlur={() => { this.props.notFocusEmail() }}
-          onChangeText={(text) => { this.props.setUsername(text) }}
-          keyboardType="email-address"
-          style={styles.inputText}
-        />
-      </View>
+      <TouchableNativeFeedback
+        onPress={()=>this.inputEmail.focus()}
+      >
+        <View style={this.state.isFocus
+          ? styles.inputFormFocus
+          : styles.inputForm}>
+          <Text style={styles.text}>Email Id</Text>
+          <TextInput
+            ref={(input)=>this.inputEmail=input}
+            onFocus={() => { this.setState({isFocus:true}) }}
+            onBlur={() => { this.setState({isFocus:false}) }}
+            onChangeText={(text) => { this.props.setUsername(text) }}
+            keyboardType="email-address"
+            style={styles.inputText}
+          />
+        </View>
+      </TouchableNativeFeedback>
     )
   }
 }
 
-const mapStateToProps = state => ({
-  inputFocus: state.inputFocus,
-});
-
-export default connect(mapStateToProps, actions)(InputEmail);
+export default InputEmail
