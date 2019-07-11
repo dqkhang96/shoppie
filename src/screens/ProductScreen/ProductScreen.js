@@ -8,7 +8,7 @@ import CheckDelivery from '../../components/CheckDelivery'
 import ButtonGradient from '../../components/ButtonGradient';
 import styles from '../../theme/screens/ProductScreen/ProductScreen'
 import Color from '../../theme/colors';
-import Size, { wp } from '../../theme/sizes'
+import { wp } from '../../theme/sizes'
 import data from '../../../res/data'
 import {Header,HeaderBackButton} from 'react-navigation'
 import { connect } from 'react-redux';
@@ -31,6 +31,7 @@ class ProductScreen extends React.Component {
         this.toggleLike = this.toggleLike.bind(this)
         this.onPressButtonAddToCart=this.onPressButtonAddToCart.bind(this)
         this.animationScaleAddToBag=new Animated.Value(0)
+        this.animationOpacityAddToBab=new Animated.Value(1)
     }
 
     toggleLike(){
@@ -180,11 +181,12 @@ class ProductScreen extends React.Component {
             y:pageY
         })
         this.animationScaleAddToBag=new Animated.Value(0)
+        this.animationOpacityAddToBab=new Animated.Value(1)
         this.setState({isAnimationAddToBagRun:true},()=>{
             Animated.parallel([
                 Animated.timing(this.animationAddToBag,{
                     toValue:{
-                        x:positionCartButton.pageX-Header.HEIGHT * 0.25-Size.Section.padding,
+                        x:positionCartButton.pageX-Header.HEIGHT * 0.25,
                         y:positionCartButton.pageY-Header.HEIGHT*0.5
                     },
                     duration:900,
@@ -194,6 +196,11 @@ class ProductScreen extends React.Component {
                     toValue:1,
                     duration:900,
                     easing:Easing.linear
+                }),
+                Animated.timing(this.animationOpacityAddToBab,{
+                    toValue:0.02,
+                    duration:1100,
+                    easing:Easing.quad
                 })
             ]).start(()=>{
                 this.setState({isAnimationAddToBagRun:false})
@@ -245,7 +252,11 @@ class ProductScreen extends React.Component {
                 </ScrollView>
                 {this._renderButtonAddToCart()}
                 {this.state.isAnimationAddToBagRun?
-                    <Animated.Image style={[styles.miniProductImage,this.animationAddToBag.getLayout(),{transform:[{scale:scaleProductImage}]}]} source={{uri:this.state.product.urlImage}}/>
+                    <Animated.Image style={[styles.miniProductImage,
+                            this.animationAddToBag.getLayout(),
+                            {transform:[{scale:scaleProductImage}],
+                            opacity:this.animationOpacityAddToBab
+                        }]} source={{uri:this.state.product.urlImage}}/>
                 :null}
             </View>
         )

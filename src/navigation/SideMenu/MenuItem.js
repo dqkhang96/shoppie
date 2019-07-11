@@ -1,20 +1,18 @@
 import React, { Component } from 'react';
 import {
-  Text, View, Image, TouchableHighlight,
+  Text, View,
 } from 'react-native';
-import HeaderComponent from './HeaderComponent';
-import Ionicons from 'react-native-vector-icons/Ionicons'
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import ArrowRight from '../../../res/icons/ArrowRight'
+import styles from '../../theme/SildeMenu/MenuItem'
 export default class MenComponent extends Component {
   render() {
     return (
-      <View style={{ marginLeft: 10, flexDirection: 'row', alignItems: "center", marginTop: 12, justifyContent: "space-between", marginBottom: 10 }}>
-        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+      <View style={styles.container}>
+        <View style={styles.content}>
           {this.props.icon}
-          <Text style={{ marginLeft: 10, fontWeight: 'bold' }}>{this.props.label}</Text>
+          <Text style={styles.label}>{this.props.label}</Text>
         </View>
-        <View>{this.props.hiddenArrow ? null : <ArrowRight height={20} width={20} fill={'#B8B8B8'}></ArrowRight>}</View>
+        <View>{this.props.hiddenArrow ? null : <ArrowRight height={styles.icon.height} width={styles.icon.width} fill={'#B8B8B8'}></ArrowRight>}</View>
       </View>
     );
   }
