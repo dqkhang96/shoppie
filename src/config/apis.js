@@ -32,7 +32,7 @@ export const loginNormalAPI = async (username, password) => {
   return token;
 }
 
-export const logoutAPI = async () => {
+export const logoutAPI = async (token) => {
   const isLoginGG = await AsyncStorage.getItem('isLoginGG');
   const isLoginFB = await AsyncStorage.getItem('isLoginFB');
   const isLoginNormal = await AsyncStorage.getItem('isLoginNormal');
@@ -45,7 +45,7 @@ export const logoutAPI = async () => {
   else if (isLoginFB == 'true') {
     let signOutRequest = new GraphRequest(
       "me/permissions/", {
-        accessToken: this.props.user.accessToken,
+        accessToken: token,
         httpMethod: 'DELETE'
       }, (error, result) => {
         if (error) {

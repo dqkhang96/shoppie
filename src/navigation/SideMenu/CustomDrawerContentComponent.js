@@ -114,7 +114,7 @@ class CustomDrawerContentComponent extends Component {
   onLogOut = async () => {
     const isLogoutable = await logoutAPI();
     if (isLogoutable) {
-      this.props.logOut();
+      this.props.logOut(this.props.user.accessToken);
     }
     else {
       // Do nothing

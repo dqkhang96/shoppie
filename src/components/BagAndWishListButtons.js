@@ -52,7 +52,7 @@ class BagAndWishListButtons extends React.Component {
         >
           <View style={styles.viewButton} ref={viewButton => this.cartButton = viewButton}
             onLayout={this.onLayoutCartButton}>
-            <SimpleLineIcons name="bag" color='black' size={BUTTON_SIZE - Header.HEIGHT * 0.1} />
+            <SimpleLineIcons name="bag" color='black' size={BUTTON_SIZE - Header.HEIGHT * 0.08} />
             {this.props.cart.length == 0 ? null : (
               <View style={styles.notiBox}>
                 <Text style={styles.notiBoxText}>{this.props.cart.length}</Text>
