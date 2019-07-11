@@ -3,7 +3,6 @@ import {
   View,
   Text,
   TouchableOpacity,
-  StyleSheet,
 } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import styles from '../../theme/screens/RegisterScreen/GoToLoginButton';
@@ -16,11 +15,11 @@ class GoToLoginButton extends Component {
   render() {
     return (
       <View style={styles.goToLogin}>
-        <Text style={styles.text}>Already have an account? </Text>
+        <Text style={styles.text}> {CustomI18n.t('Register').goToLoginText} </Text>
         <TouchableOpacity
           onPress={this.onGoToLogin}
         >
-          <Text style={styles.link}>Login</Text>
+          <Text style={styles.link}> {CustomI18n.t('Register').goToLoginLink} </Text>
         </TouchableOpacity>
       </View>
     )

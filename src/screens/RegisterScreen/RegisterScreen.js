@@ -6,18 +6,26 @@ import {
   TouchableWithoutFeedback,
 } from 'react-native';
 import RegisterIconsContainer from './RegisterIconsContainer';
-import InputEmail from '../../components/InputEmail';
-import InputPassword from '../../components/InputPassword';
-import InputMobile from '../../components/InputMobile';
-import InputName from '../../components/InputName';
 import GoToLoginButton from './GoToLoginButton';
 import BackXButton from '../../components/BackXButton';
 import ColoredButton from '../../components/ColoredButton';
+import InputForm from '../../components/InputForm';
+import CustomI18n from '../../util/i18n';
 
 // Import styles
 import styles from '../../theme/screens/RegisterScreen/RegisterScreen';
 
 export default class RegisterScreen extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      username: '',
+      password: '',
+      name: '',
+      mobile: '',
+    }
+  }
+
   static navigationOptions = {
     header: null,
   }
@@ -38,14 +46,30 @@ export default class RegisterScreen extends Component {
           <RegisterIconsContainer />
 
           <View style={styles.inputFormContainer} >
-            <InputName />
-            <InputEmail setUsername={()=>{}}/>
-            <InputPassword setPassword={()=>{}}/>
-            <InputMobile />
+            <InputForm
+              setValue={(name) => this.setState({ name })}
+              title={CustomI18n.t('Register').nameInput}
+              keyboardType='default'
+              isSecureTextEntry={false} />
+            <InputForm
+              setValue={(username) => this.setState({ username })}
+              title={CustomI18n.t('Register').emailInput}
+              keyboardType='email-address'
+              isSecureTextEntry={false} />
+            <InputForm
+              setValue={(password) => this.setState({ password })}
+              title={CustomI18n.t('Register').passwordInput}
+              keyboardType='default'
+              isSecureTextEntry={true} />
+            <InputForm
+              setValue={(mobile) => this.setState({ mobile })}
+              title={CustomI18n.t('Register').mobileInput}
+              keyboardType='phone-pad'
+              isSecureTextEntry={false} />
           </View>
 
           <View style={styles.buttonContainer} >
-            <ColoredButton title='Sign Up' method={this.onSignup} />
+            <ColoredButton title={CustomI18n.t('Register').signupButton} method={this.onSignup} />
           </View>
           <GoToLoginButton />
         </ScrollView>

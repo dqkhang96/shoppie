@@ -1,14 +1,17 @@
 import axios from 'axios';
 import Utils from '../util/utils';
 import Config from './config';
+import Constant, { Url } from '../util/constants';
+
 import AsyncStorage from '@react-native-community/async-storage';
 // Import Facebook Login
 import { AccessToken, LoginManager, GraphRequest, GraphRequestManager, LoginButton } from 'react-native-fbsdk';
 // Import GG Login
 import { GoogleSignin, statusCodes } from 'react-native-google-signin';
 
+
 export const loginNormalAPI = async (username, password) => {
-  url = Config.LOGIN_NORMAL_URL;
+  url = Url.LOGIN;
   method = 'POST';
   options = {
     url: url,

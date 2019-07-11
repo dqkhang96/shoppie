@@ -4,7 +4,6 @@ import android.app.Application;
 
 import com.facebook.react.ReactApplication;
 import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
-import co.apptailor.googlesignin.RNGoogleSigninPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.swmansion.reanimated.ReanimatedPackage;
 import com.horcrux.svg.SvgPackage;
@@ -18,7 +17,13 @@ import com.facebook.soloader.SoLoader;
 import java.util.Arrays;
 import java.util.List;
 
-//Facebook Login
+// Localize
+import com.reactcommunity.rnlocalize.RNLocalizePackage; 
+
+// Google Login
+import co.apptailor.googlesignin.RNGoogleSigninPackage;
+
+// Facebook Login
 import com.facebook.CallbackManager;
 import com.facebook.FacebookSdk;
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
@@ -48,7 +53,8 @@ public class MainApplication extends Application implements ReactApplication {
             new ReanimatedPackage(),
             new SvgPackage(),
             new RNCViewPagerPackage(),
-            new RNGestureHandlerPackage()
+            new RNGestureHandlerPackage(),
+            new RNLocalizePackage()
       );
     }
 

@@ -6,10 +6,11 @@ import {
   Keyboard,
   TouchableWithoutFeedback,
 } from 'react-native';
-import InputEmail from '../../components/InputEmail';
 import ForgotIconsContainer from './ForgotIconsContainer';
 import BackXButton from '../../components/BackXButton';
 import ColoredButton from '../../components/ColoredButton';
+import InputForm from '../../components/InputForm';
+import CustomI18n from '../../util/i18n';
 
 // Import styles
 import styles from '../../theme/screens/ForgotPasswordScreen/ForgotPasswordScreen';
@@ -17,6 +18,13 @@ import styles from '../../theme/screens/ForgotPasswordScreen/ForgotPasswordScree
 export default class ForgotPasswordScreen extends Component {
   static navigationOptions = {
     header: null,
+  }
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      username: '',
+    }
   }
 
   onBack = () => {
@@ -32,15 +40,15 @@ export default class ForgotPasswordScreen extends Component {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <ScrollView style={styles.container}>
           <BackXButton onBack={this.onBack} />
-          <Text style={styles.title}>Forgot your password?</Text>
+          <Text style={styles.title}>{CustomI18n.t('ForgotPassword').header}</Text>
           <View style={styles.textContainer}>
-            <Text style={styles.text}>Enter your email below to receive your password reset instructions.</Text>
-            <InputEmail />
+            <Text style={styles.text}>{CustomI18n.t('ForgotPassword').paragraph}</Text>
+            <InputForm setValue={(username) => this.setState({ username })} title={CustomI18n.t('ForgotPassword').emailInput} keyboardType='email-address' isSecureTextEntry={false} />
           </View>
 
           <View style={styles.body}>
             <View style={styles.buttonContainer} >
-              <ColoredButton title='Reset Password' method={this.onReset} />
+              <ColoredButton title={CustomI18n.t('ForgotPassword').resetPassword} method={this.onReset} />
             </View>
             <ForgotIconsContainer />
           </View>

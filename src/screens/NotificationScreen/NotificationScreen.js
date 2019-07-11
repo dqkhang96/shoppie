@@ -6,6 +6,7 @@ import {
 import BackXButton from '../../components/BackXButton';
 import ListItems from './ListItems';
 import ColoredButton from '../../components/ColoredButton';
+import CustomI18n from '../../util/i18n';
 
 // Import styles
 import styles from '../../theme/screens/NotificationScreen/NotificationScreen';
@@ -33,11 +34,11 @@ class NotificationScreen extends Component {
       <View style={styles.container}>
         <BackXButton />
         <View style={styles.textContainer}>
-          <Text style={styles.title}>Enable Notifications and we will inform you about:</Text>
+          <Text style={styles.title}>{CustomI18n.t('Notification').header}</Text>
           <ListItems />
         </View>
         <View style={styles.buttonContainer}>
-          <ColoredButton title='Continue' method={this.onContinue}/>
+          <ColoredButton title={CustomI18n.t('Notification').continueButton} method={this.onContinue} />
         </View>
       </View>
     );

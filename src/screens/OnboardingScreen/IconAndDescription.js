@@ -3,6 +3,7 @@ import {
   View,
   Text,
 } from 'react-native';
+import CustomI18n from '../../util/i18n';
 
 // Import style
 import styles from '../../theme/screens/OnboardingScreen/IconAndDescription';
@@ -20,9 +21,9 @@ class IconAndDescription extends Component {
     return (
       <View style={styles.iconAndDesContainer}>
         <View style={styles.appIconContainer} />
-        {this.props.currentIndex == 0 ? <Text style={styles.text}>Treat yourself with great and updated collections</Text>
-          : this.props.currentIndex == 1 ? <Text style={styles.text}>The most fulfilling shopping experience</Text>
-            : <Text style={styles.text}>Free beauty samples what they are and how to find them</Text>}
+        {this.props.currentIndex == 0 ? <Text style={styles.text}>{CustomI18n.t('Onboard').text1}</Text>
+          : this.props.currentIndex == 1 ? <Text style={styles.text}>{CustomI18n.t('Onboard').text2}</Text>
+            : <Text style={styles.text}>{CustomI18n.t('Onboard').text3}</Text>}
       </View>
     );
   }

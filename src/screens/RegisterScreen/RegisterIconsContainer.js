@@ -5,6 +5,7 @@ import {
 } from 'react-native';
 import LoginFacebookButton from '../../components/LoginFacebookButton';
 import LoginGoogleButton from '../../components/LoginGoogleButton';
+import CustomI18n from '../../util/i18n';
 
 // Import styles
 import styles from '../../theme/screens/RegisterScreen/RegisterIconsContainer';
@@ -15,7 +16,7 @@ export default class RegisterIconsContainer extends Component {
       <View style={styles.iconsContainer}>
         <View style={styles.appIconContainer} />
 
-        <Text style={styles.text}>SIGN UP WITH</Text>
+        <Text style={styles.text}> {CustomI18n.t('Register').textIcon1} </Text>
 
         <View style={styles.fbggContainer}>
           <LoginFacebookButton />
@@ -25,7 +26,7 @@ export default class RegisterIconsContainer extends Component {
         <View style={styles.orSignInWithContainer}>
           <View style={styles.orSignInWith} />
           <View>
-            <Text style={styles.text}>Or sign up with</Text>
+            <Text style={styles.text}> {CustomI18n.t('Register').textIcon2} </Text>
           </View>
           <View style={styles.orSignInWith} />
         </View>

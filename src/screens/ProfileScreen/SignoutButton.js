@@ -6,7 +6,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import { withNavigation } from 'react-navigation';
-import AsyncStorage from '@react-native-community/async-storage';
+import CustomI18n from '../../util/i18n';
 
 // Import styles
 import styles from '../../theme/screens/ProfileScreen/SignoutButton';
@@ -37,7 +37,7 @@ class SignoutButton extends Component {
       this.props.user.isLogin
         ? <View style={styles.footer}>
           <TouchableOpacity style={styles.signOutButton} onPress={this.onSignOut}>
-            <Text>Sign Out</Text>
+            <Text> {CustomI18n.t('Profile').signoutButton} </Text>
           </TouchableOpacity>
         </View>
         : <View />
