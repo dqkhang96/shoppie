@@ -1,5 +1,5 @@
 import React from 'react';
-import * as Config from '../config/config';
+import Config from '../config/config';
 
 export const Url = {
    LOGIN: Config.REST_URL + '/integration/customer/token',

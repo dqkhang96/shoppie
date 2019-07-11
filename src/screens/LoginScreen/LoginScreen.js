@@ -28,10 +28,18 @@ export default class LoginScreen extends Component {
     this.state = {
       username: '',
       password: '',
+      changeLanguage: true,
     }
   }
 
   onBack = () => {
+    if (this.state.changeLanguage) {
+      CustomI18n.locale = 'en-GB';
+    }
+    else {
+      CustomI18n.locale = 'vi-VN';
+    }
+    this.setState({changeLanguage: !this.state.changeLanguage});
     this.props.navigation.goBack();
   }
 

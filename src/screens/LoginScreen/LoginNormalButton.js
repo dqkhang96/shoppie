@@ -49,11 +49,7 @@ class LoginNormalButton extends Component {
       this.setState({ isLoginLoading: false })
       this.props.navigation.goBack();
     } catch (err) {
-      // If Login Normal failed, refresh all from AsyncStorage
       this.setState({ isLoginLoading: false });
-      await AsyncStorage.setItem('username', '');
-      await AsyncStorage.setItem('password', '');
-      await AsyncStorage.setItem('isLoginNormal', 'false');
 
       alert(`Normal Login failed with: ${err}`);
     }
