@@ -9,12 +9,17 @@ import BagAndWishListButtons from '../../components/BagAndWishListButtons.js'
 import styles from '../../theme/screens/HomeScreen/HomeScreen'
 import { Size, sp, SCREEN_WIDTH } from '../../theme/sizes'
 import data from '../../../res/data'
+
 export default class HomeScreen extends React.Component {
     static navigationOptions = {
         title: 'Shoppiee',
         headerLeft: <ButtonMenu />,
         headerRight: <BagAndWishListButtons />
     };
+
+    constructor(props){
+        super(props)
+    }
 
     _renderNewArrival() {
         return (
@@ -144,4 +149,6 @@ export default class HomeScreen extends React.Component {
         )
     }
 }
+
+
 

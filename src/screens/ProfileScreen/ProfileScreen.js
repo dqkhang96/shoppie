@@ -10,7 +10,6 @@ import SignoutButton from './SignoutButton';
 import ListButtons from './ListButtons';
 import BagAndWishListButtons from '../../components/BagAndWishListButtons';
 import CustomI18n from '../../util/i18n';
-
 // Import styles
 import styles from '../../theme/screens/ProfileScreen/ProfileScreen';
 
