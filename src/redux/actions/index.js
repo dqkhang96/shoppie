@@ -2,7 +2,7 @@ import {
   TO1STEP, TO2STEP, TOBACKSTEP, TONEXTSTEP,
   FOCUSEMAIL, FOCUSPASSWORD, FOCUSMOBILE, FOCUSNAME,
   NOTFOCUSEMAIL, NOTFOCUSPASSWORD, NOTFOCUSMOBILE, NOTFOCUSNAME,
-  LOGINFB, LOGINGG, LOGINNORMAL, LOGOUT,
+  LOGINFB, LOGINGG, LOGINNORMAL, LOGOUT,LIKE_PRODUCT,REMOVE_LIKE_PRODUCT,ADD_TO_CART
 } from './type';
 
 export const to1step = () => ({ type: TO1STEP });
@@ -33,3 +33,16 @@ export const logInNormal = (USER) => ({
   user: USER,
 });
 export const logOut = () => ({ type: LOGOUT });
+export const likeProduct=(product)=>({
+  type:LIKE_PRODUCT,
+  product :product
+})
+export const removeLikeProduct=(id)=>({
+  type:REMOVE_LIKE_PRODUCT,
+  id:id
+})
+export const addToCart=(product)=>{
+  return {
+    type:ADD_TO_CART,
+    product : product}
+}

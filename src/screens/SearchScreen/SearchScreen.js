@@ -19,19 +19,23 @@ export default class SearchScreen extends Component {
     }
     _renderItemRecommend() {
         return (
-            <TouchableOpacity onPress={()=>this.props.navigation.navigate('Product') }>
-                <View style={styles.renderItemRecommend}>
-                <View style={styles.Information}>
-                    <View style={{ padding: 5 }}>
-                        <Text style={styles.text}>Get Min. 40% Off</Text>
-                        <Text style={{ fontSize: 10, textAlign: 'center' }}>Grab These Easy-Going Styles</Text>
-                    </View>
-                    <View style={styles.Brand}>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('Product')}>
+                <View style={{
+                    borderWidth: 1,
+                    borderColor: '#eaeaea',
+                }}>
+                    <View style={styles.renderItemRecommend}>
+                        <View style={styles.Brand}>
                         <MasterCard height={40} width={40}></MasterCard>
                     </View>
+                    </View>
+                    <View style={styles.Information}>
+                        <View style={{ padding: 5 }}>
+                            <Text style={styles.text}>Get Min. 40% Off</Text>
+                            <Text style={{ fontSize: 10, textAlign: 'center' }}>Grab These Easy-Going Styles</Text>
+                        </View>
+                    </View>
                 </View>
-
-            </View>
             </TouchableOpacity>
         )
     }
@@ -58,11 +62,11 @@ export default class SearchScreen extends Component {
                             style={{ padding: 20 }}
                         />
                     </View>
-                    <View style={{ paddingHorizontal: 10, backgroundColor:  Colors.ItemMenu.background, marginTop: 10 }}>
+                    <View style={{ paddingHorizontal: 10, backgroundColor: Colors.ItemMenu.background, marginTop: 10 }}>
                         <FlatList data={[1, 2, 3, 4, 5, 6, 7, 8]}
                             renderItem={({ item }) => (
                                 <View style={styles.ItemCategory}>
-                                    <Text style={{ padding: 5,fontSize:Size.Text.normal }} >DTN ABC</Text>
+                                    <Text style={{ padding: 5, fontSize: Size.Text.normal }} >DTN ABC</Text>
                                 </View>
 
                             )}
@@ -72,7 +76,7 @@ export default class SearchScreen extends Component {
                             style={{ padding: 20 }}
                         />
                     </View>
-                    <View style={{ paddingHorizontal: 10, backgroundColor: Colors.ItemMenu.background , marginTop: 10 }}>
+                    <View style={{ paddingHorizontal: 10, backgroundColor: Colors.ItemMenu.background, marginTop: 10 }}>
                         <Text style={styles.sectiontitle}>Recommended For You</Text>
                         <FlatList data={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
                             renderItem={({ item }) => (
@@ -87,7 +91,7 @@ export default class SearchScreen extends Component {
                             style={{ padding: 10 }}
                         />
                     </View>
-                    <View style={{ paddingHorizontal: 10, backgroundColor:  Colors.ItemMenu.background, marginTop: 10 }}>
+                    <View style={{ paddingHorizontal: 10, backgroundColor: Colors.ItemMenu.background, marginTop: 10 }}>
                         <Text style={styles.sectiontitle}>Hot seller Brands</Text>
                         <FlatList data={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
                             renderItem={({ item }) => (

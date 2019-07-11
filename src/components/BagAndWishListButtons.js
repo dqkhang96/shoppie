@@ -3,7 +3,9 @@ import { View, TouchableOpacity, Text } from 'react-native'
 import { withNavigation, Header } from 'react-navigation'
 import styles from '../theme/components/BagAndWishListButtons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import Icons from '../../res/icons'
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
+import { connect } from 'react-redux';
 
 const BUTTON_SIZE = Header.HEIGHT * 0.5
 class BagAndWishListButtons extends React.Component {
@@ -47,7 +49,7 @@ class BagAndWishListButtons extends React.Component {
           <View style={styles.viewButton} ref={viewButton => this.likeButton = viewButton}
             onLayout={this.onLayoutLikeButton}
           >
-            <Ionicons name="md-heart-empty" color='black' size={BUTTON_SIZE} />
+            <Icons.Hea name="md-heart-empty" color='black' size={BUTTON_SIZE} />
             <View style={styles.notiBox}>
               <Text style={styles.notiBoxText}>1</Text>
             </View>
@@ -70,6 +72,8 @@ class BagAndWishListButtons extends React.Component {
 }
 
 
+const mapStateToProp = (state) => {
+  return { cart: state.cart }
+}
 
-
-export default withNavigation(BagAndWishListButtons)
+export default connect(mapStateToProp)(withNavigation(BagAndWishListButtons))

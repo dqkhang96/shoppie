@@ -2,14 +2,14 @@ import React from 'react'
 import Swiper from '../../components/Swiper'
 import CircleView from '../../components/CircleView'
 import Card, { CardBody, CardView } from '../../components/Card'
-import { ScrollView, FlatList, View, StyleSheet, Text, } from 'react-native';
+import { ScrollView, FlatList, View, StyleSheet, Text, Image} from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import ButtonMenu from '../../components/ButtonMenu'
 import BagAndWishListButtons from '../../components/BagAndWishListButtons.js'
 import styles from '../../theme/screens/HomeScreen/HomeScreen'
 import { Size, sp, SCREEN_WIDTH } from '../../theme/sizes'
 import MasterCard from '../../../res/icons/MasterCard.js'
-
+import data from '../../../data'
 export default class HomeScreen extends React.Component {
     static navigationOptions = {
         title: 'Shoppiee',
@@ -42,7 +42,7 @@ export default class HomeScreen extends React.Component {
         return (
             <View style={styles.hotBrands}>
                 <Text style={styles.textHotBrand}>HOT SELLER BRANDS</Text>
-                <FlatList data={[1, 2, 3, 4, 5, 6]}
+                <FlatList data={data}
                     numColumns={3}
                     showsHorizontalScrollIndicator={false}
                     keyExtractor={(item, index) => "brand-" + index}
@@ -52,9 +52,11 @@ export default class HomeScreen extends React.Component {
                         >
                             <Card style={[styles.hotBrandCard, { marginLeft: index % 3 != 0 ? MARGIN_LEFT : 0 }]}>
                                 <CardView footer={(<View style={{ height: sp(5), width: sp(20), backgroundColor: 'white', justifyContent: 'center' }}><Text style={{ textAlign: 'center' }}>MEN</Text></View>)}>
-                                    <View style={{ height: sp(28), width: sp(28), backgroundColor: '#EEEEEE' }} />
+                                    <Image style={{ height: sp(28), width: sp(28), backgroundColor: '#EEEEEE' }}
+                                    source={{uri:item.urlImage}}
+                                    />
                                 </CardView>
-                                <CardBody><View style={{ width: sp(28) }}><Text style={{ textAlign: 'center', fontSize: Size.Text.normal }}>Shit</Text></View></CardBody>
+                                <CardBody><View style={{ width: sp(28) }}><Text style={{ textAlign: 'center', fontSize: Size.Text.normal }}>{item.name}</Text></View></CardBody>
                             </Card>
                         </TouchableOpacity>
                     )}
@@ -67,24 +69,26 @@ export default class HomeScreen extends React.Component {
         return (
             <View style={styles.trendings}>
                 <Text style={styles.trendingText}>TRENDING</Text>
-                <FlatList data={[1, 2, 3]}
+                <FlatList data={data}
                     horizontal
                     showsHorizontalScrollIndicator={false}
                     keyExtractor={(item, index) => "trending-" + index}
                     renderItem={({ item, index }) => (
                         <TouchableOpacity
                             onPress={() => {
-                                this.props.navigation.navigate("Product")
+                                this.props.navigation.navigate("Product",{id:item.id})
 
                             }}
                         >
                             <Card style={[styles.trendingCard, { marginLeft: index > 0 ? sp(3) : 0 }]}>
-                                <CardView footer={(<View style={{ height: sp(5), width: sp(50), backgroundColor: 'white', justifyContent: 'center' }}><Text style={{ textAlign: 'center' }}>MEN</Text></View>)}>
-                                    <View style={{ height: sp(60), width: sp(60), backgroundColor: '#EEEEEE' }} />
+                                <CardView footer={(<View style={{  width: sp(50), backgroundColor: 'white', justifyContent: 'center' }}><Text style={{ textAlign: 'center' }}>{item.name}</Text></View>)}>
+                                    <Image style={{ height: sp(60), width: sp(60), backgroundColor: '#EEEEEE' }} 
+                                    source={{uri:item.urlImage}}
+                                    />
                                 </CardView>
                                 <CardBody>
                                     <View style={{ width: sp(60) }}>
-                                        <Text style={{ textAlign: 'center' }}>Shit</Text>
+                                        <Text style={{ textAlign: 'center' }}>{item.des}</Text>
                                     </View>
                                 </CardBody>
                             </Card>
@@ -99,9 +103,9 @@ export default class HomeScreen extends React.Component {
             <View style={styles.newSessionStyle}>
                 <Text style={styles.newSessionStyleText}>NEW SESSION STYLE</Text>
                 <View style={styles.nSSContainer}>
-                    <View style={styles.nSSContent}>
-
-                    </View>
+                    <Image style={styles.nSSContent}
+                    source={{uri:data[0].urlImage}}
+                    />
 
                 </View>
 
@@ -128,9 +132,7 @@ export default class HomeScreen extends React.Component {
                     </View>
                     <View style={{ height: sp(40) }}>
                         <Swiper autoplay autoplayTimeout={5} showsPagination={false}>
-                            <View style={{ width: SCREEN_WIDTH, height: sp(40), backgroundColor: 'red' }} />
-                            <View style={{ width: SCREEN_WIDTH, height: sp(40), backgroundColor: 'blue' }} />
-                            <View style={{ width: SCREEN_WIDTH, height: sp(40), backgroundColor: 'green' }} />
+                            {data.map((product,key)=><Image source={{uri:product.urlImage}} style={{height:SCREEN_WIDTH,width:SCREEN_WIDTH}} key={product.id} />)}
                         </Swiper>
                     </View>
                     {this._renderNewArrival()}

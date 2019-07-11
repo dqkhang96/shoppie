@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, ScrollView, Text } from 'react-native'
+import { View, ScrollView, Text,Image } from 'react-native'
 import Swiper from '../../components/Swiper'
 import Icons from '../../../res/icons'
 import SizePicker from './SizePicker'
@@ -9,19 +9,22 @@ import ButtonGradient from '../../components/ButtonGradient';
 import styles from '../../theme/screens/ProductScreen/ProductScreen'
 import Color from '../../theme/colors';
 import {wp} from '../../theme/sizes'
-import BagAndWishListButton from '../../components/BagAndWishListButtons'
-
-export default class ProductScreen extends React.Component {
+import data from '../../../data'
+import {connect} from 'react-redux';
+import {likeProduct,addToCart} from '../../redux/actions/index';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+ class ProductScreen extends React.Component {
     static navigationOptions = {
         title:"Product",
         headerRight:<BagAndWishListButton/>
     };
-
-    constructor(props){
-        super(props)
-
+ constructor(props){
+    super(props)
+    this.state={
+        product:data.find(pr=>pr.id===this.props.navigation.getParam('id')),
+        isliked:false,
     }
-
+ }
     _renderInforPrice() {
         return (
             <View style={styles.priceInfor}>
@@ -29,18 +32,21 @@ export default class ProductScreen extends React.Component {
                     <Text style={styles.newLabel}>NEW</Text>
                 </View>
                 <View>
-                    <Text style={styles.nameProduct}>{"MONTEIL & MUNERO"}</Text>
+                    <Text style={styles.nameProduct}>{this.state.product.name}</Text>
                 </View>
                 <View style={styles.priceWrap}>
-                    <Text style={styles.price}>Rs. 2,100</Text>
+                    <Text style={styles.price}>{this.state.product.des}</Text>
                     <Text style={styles.priceRoot}>Rs. 5,999</Text>
                     <Text style={styles.saleOff}>65% off</Text>
                 </View>
                 <View>
                     <Text style={styles.nameProduct}>{"Men Solid Bomber Jacket"}</Text>
                 </View>
+                
                 <View style={styles.like}>
-                    <Icons.Heart width={styles.like.width} height={styles.like.height} fill={Color.primary} />
+                   <TouchableOpacity onPress={()=>this.props.likeProduct(this.state.product)}>
+                   <Icons.Heart width={styles.like.width} height={styles.like.height} fill={Color.primary} />
+                   </TouchableOpacity>
                 </View>
             </View>
         )
@@ -54,11 +60,12 @@ export default class ProductScreen extends React.Component {
                 }}
             >
                 <Swiper>
-                    <View style={{
+                    <Image style={{
                         height: wp(100),
                         width: wp(100),
                         backgroundColor: "#EEEEEE"
-                    }} />
+                        
+                    }} source={{uri:this.state.product.urlImage}} />
                     <View style={{
                         height: wp(100),
                         width: wp(100),
@@ -130,16 +137,14 @@ export default class ProductScreen extends React.Component {
                     fromColor={Color.Button.PrimaryGradient.fromColor} 
                     toColor={Color.Button.PrimaryGradient.toColor}
                     title="Add to cart"
-                    onPress={(event)=>{
-                        console.log(this.props.navigation.state)
-                        console.log(event.nativeEvent)
-                    }}
+                    onPress={()=>this.props.addToCart(this.state.product)}
                     />
             </View>
         )
     }
 
     render() {
+        
         return (
             <View style={styles.container}>
                 <ScrollView>
@@ -156,3 +161,9 @@ export default class ProductScreen extends React.Component {
     }
 }
 
+const mapStateToDispatch= dispatch => {
+    return {likeProduct:(product)=>dispatch(likeProduct(product)),
+    addToCart :(product)=>dispatch(addToCart(product))
+    }
+}
+export default  connect(null,mapStateToDispatch)(ProductScreen)
