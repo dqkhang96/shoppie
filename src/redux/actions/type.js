@@ -16,4 +16,5 @@ export const LOGINNORMAL = 'loginnormal'
 export const LOGOUT = 'logout';
 export const LIKE_PRODUCT= 'like_product'
 export const REMOVE_LIKE_PRODUCT='remove_like_product'
-export const ADD_TO_CART='12325345'
+export const ADD_TO_CART='ADD_TO_CART'
+export const REMOVE_FROM_CART='REMOVE_FROM_CART'

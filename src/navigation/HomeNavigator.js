@@ -19,7 +19,6 @@ import Size from '../theme/sizes'
 
 
 export const HomeStack = createStackNavigator({
-
   Home: {
     screen: HomeScreen,
   },

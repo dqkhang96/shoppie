@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, ScrollView, Text, Image, TouchableOpacity } from 'react-native'
+import { View, ScrollView, Text, Image, TouchableWithoutFeedback, Animated ,Easing } from 'react-native'
 import Swiper from '../../components/Swiper'
 import Icons from '../../../res/icons'
 import SizePicker from './SizePicker'
@@ -8,25 +8,59 @@ import CheckDelivery from '../../components/CheckDelivery'
 import ButtonGradient from '../../components/ButtonGradient';
 import styles from '../../theme/screens/ProductScreen/ProductScreen'
 import Color from '../../theme/colors';
-import { wp } from '../../theme/sizes'
+import Size, { wp } from '../../theme/sizes'
 import data from '../../../res/data'
+import {Header,HeaderBackButton} from 'react-navigation'
 import { connect } from 'react-redux';
-import { likeProduct, addToCart } from '../../redux/actions/index';
+import { likeProduct, addToCart ,removeLikeProduct} from '../../redux/actions/index';
 import BagAndWishListButtons from '../../components/BagAndWishListButtons'
+import HeaderBar from '../../components/HeadBar'
 
 class ProductScreen extends React.Component {
     static navigationOptions = {
-        title: "Product",
-        headerRight: <BagAndWishListButtons />
+        header:()=>null
     };
     constructor(props) {
         super(props)
         this.state = {
             product: data.find(pr => pr.id === this.props.navigation.getParam('id')),
-            isliked: false,
+            isLiked: this.props.wishList.find(pr=>pr.id===this.props.navigation.getParam('id'))?true:false,
+            isAnimationAddToBagRun:false            
         }
+        this.animationLike=new Animated.Value(0)
+        this.toggleLike = this.toggleLike.bind(this)
+        this.onPressButtonAddToCart=this.onPressButtonAddToCart.bind(this)
+        this.animationScaleAddToBag=new Animated.Value(0)
     }
+
+    toggleLike(){
+        if(this.state.isLiked){
+            this.setState({isLiked:false})
+            this.props.removeLikeProduct(this.state.product.id)
+        }
+        else{
+            this.setState({isLiked:!this.state.isLiked},()=>{
+               if(this.state.isLiked){
+                   this.animationLike.setValue(0)             
+                    Animated.timing(this.animationLike,{
+                        toValue:1,
+                        duration:350,
+                        easing:Easing.linear,
+                        useNativeDriver:true
+                    }).start(()=>this.props.likeProduct(this.state.product))
+               }
+                
+            })
+        }
+        
+    }
+
     _renderInforPrice() {
+        let viewScale=this.animationLike.interpolate({
+            inputRange:[0,0.5,1],
+            outputRange:[1,1.8,1]
+        })
+        let transformStyle = { ...styles.like, transform: [{ scale: viewScale}] };
         return (
             <View style={styles.priceInfor}>
                 <View style={styles.newLabelWrap}>
@@ -44,11 +78,14 @@ class ProductScreen extends React.Component {
                     <Text style={styles.nameProduct}>{"Men Solid Bomber Jacket"}</Text>
                 </View>
 
-                <View style={styles.like}>
-                    <TouchableOpacity onPress={() => this.props.likeProduct(this.state.product)}>
-                        <Icons.Heart width={styles.like.width} height={styles.like.height} fill={Color.primary} />
-                    </TouchableOpacity>
-                </View>
+                <Animated.View style={transformStyle}>
+                    <TouchableWithoutFeedback onPress={this.toggleLike}>
+                        {this.state.isLiked ?
+                            <Icons.Like width={styles.like.width} height={styles.like.height} fill="red"/> :
+                            <Icons.Heart width={styles.like.width} height={styles.like.height} fill={Color.primary} />
+                        }
+                    </TouchableWithoutFeedback>
+                </Animated.View>
             </View>
         )
     }
@@ -130,24 +167,71 @@ class ProductScreen extends React.Component {
             </React.Fragment >
         )
     }
+    onPressButtonAddToCart(event){
+        if(this.props.cart.find(pr=>pr.id==this.state.product.id))
+            return
+        const {pageX,pageY}=event.nativeEvent
+        const {positionCartButton}=this.state
+        this.animationAddToBag=new Animated.ValueXY({
+            x:pageX-styles.miniProductImage.width,
+            y:pageY
+        })
+        this.animationScaleAddToBag=new Animated.Value(0)
+        this.setState({isAnimationAddToBagRun:true},()=>{
+            Animated.parallel([
+                Animated.timing(this.animationAddToBag,{
+                    toValue:{
+                        x:positionCartButton.pageX-Header.HEIGHT * 0.25-Size.Section.padding,
+                        y:positionCartButton.pageY-Header.HEIGHT/4  
+                    },
+                    duration:900,
+                    easing:Easing.linear
+                }),
+                Animated.timing(this.animationScaleAddToBag,{
+                    toValue:1,
+                    duration:900,
+                    easing:Easing.linear
+                })
+            ]).start(()=>{
+                this.setState({isAnimationAddToBagRun:false})
+                this.props.addToCart(this.state.product)
+            })
+        })
+        
+    }
 
     _renderButtonAddToCart() {
         return (
-            <View style={styles.buttonAddToCart}>
+            <View style={styles.buttonAddToCart}
+            >
                 <ButtonGradient style={styles.gradientAddToCart}
                     fromColor={Color.Button.PrimaryGradient.fromColor}
                     toColor={Color.Button.PrimaryGradient.toColor}
                     title="Add to cart"
-                    onPress={() => this.props.addToCart(this.state.product)}
+                    onPress={this.onPressButtonAddToCart}
                 />
             </View>
         )
     }
 
     render() {
-
+        
+        let scaleProductImage=this.animationScaleAddToBag.interpolate({
+            inputRange:[0,0.5,1],
+            outputRange:[1,0.8,0.3]
+        })
         return (
             <View style={styles.container}>
+                <HeaderBar
+                    title="Product"
+                    headerLeft={<HeaderBackButton onPress={()=>this.props.navigation.goBack(null)}/>}
+                    headerRight={<BagAndWishListButtons setPositionBagButton={(x,y)=>this.setState({
+                        positionCartButton:{
+                            pageX:x,pageY:y
+                        }
+                    })}
+                    />}
+                />
                 <ScrollView>
                     {this._renderSwiper()}
                     {this._renderInforPrice()}
@@ -157,15 +241,24 @@ class ProductScreen extends React.Component {
                     {this._renderOther()}
                 </ScrollView>
                 {this._renderButtonAddToCart()}
+                {this.state.isAnimationAddToBagRun?
+                    <Animated.Image style={[styles.miniProductImage,this.animationAddToBag.getLayout(),{transform:[{scale:scaleProductImage}]}]} source={{uri:this.state.product.urlImage}}/>
+                :null}
             </View>
         )
     }
 }
 
-const mapStateToDispatch = dispatch => {
+const mapDispatchToDispatchProps = dispatch => {
     return {
         likeProduct: (product) => dispatch(likeProduct(product)),
+        removeLikeProduct:(id)=>dispatch(removeLikeProduct(id)),
         addToCart: (product) => dispatch(addToCart(product))
     }
 }
-export default connect(null, mapStateToDispatch)(ProductScreen)
+
+const mapStateToProps=state=>({
+    cart:state.cart,
+    wishList:state.wishList
+})
+export default connect(mapStateToProps, mapDispatchToDispatchProps)(ProductScreen)

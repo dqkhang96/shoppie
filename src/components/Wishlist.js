@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Text, View, TouchableOpacity, ScrollView, Image } from 'react-native'
-import {removeLikeProduct,addToCart} from '../redux/actions'
-import {connect} from 'react-redux';
- class Wishlist extends Component {
+import { removeLikeProduct, addToCart } from '../redux/actions'
+import { connect } from 'react-redux';
+class Wishlist extends Component {
     render() {
         const { product } = this.props
         return (
@@ -25,20 +25,21 @@ import {connect} from 'react-redux';
                 <View style={{ width: '100%', borderBottomWidth: 1, borderColor: '#eaeaea', marginTop: 15 }}></View>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginTop: 15 }}>
                     <TouchableOpacity
-                    onPress={()=>this.props.remove(product.id)}
+                        onPress={() => this.props.remove(product.id)}
                     ><Text>Remove</Text></TouchableOpacity>
                     <Text>|</Text>
                     <TouchableOpacity
-                    onPress={()=>this.props.addToCart(this.props.product)}
+                        onPress={() => this.props.addToCart(this.props.product)}
                     ><Text style={{ color: '#08D6CC' }}>Move To Bag</Text></TouchableOpacity>
                 </View>
             </View>
         )
     }
 }
-const mapDispatchToProp =(dispatch)=>{
-    return {remove: (id)=>{dispatch(removeLikeProduct(id))},
-            addToCart:(product)=>dispatch(addToCart(product))
+const mapDispatchToProp = (dispatch) => {
+    return {
+        remove: (id) => { dispatch(removeLikeProduct(id)) },
+        addToCart: (product) => dispatch(addToCart(product))
+    }
 }
-}
-export default connect (null,mapDispatchToProp)(Wishlist)
+export default connect(null, mapDispatchToProp)(Wishlist)

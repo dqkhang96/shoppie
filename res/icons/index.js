@@ -43,10 +43,12 @@ import Bag from './Bag'
 import Profile from './Profile'
 import Close from './Close.js'
 import CaretDown from './CaretDown'
+import Like from './Like'
+
 const Icons={BackgroundColor,Checked,Location,Gift,Dress,Right,Home,
                 TextColor,TextStyle,Save,Pause,Back,Up,Circle,Percel,List,Bag,
                 Remove,More,Link,Document,Profile,Close,
-                Audio,Check,CaretDown,
+                Audio,Check,CaretDown,Like,
                 Normal,Event,Position,Play,Menu,Camera,Trash,Edit,Down,LeftArrow,
                 Sort,Filter,ShoppingBag,Search,Heart,ArrowRight,Cancel}
 

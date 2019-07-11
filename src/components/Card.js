@@ -1,5 +1,6 @@
 import React from 'react'
-import { View, StyleSheet } from 'react-native'
+import { View} from 'react-native'
+import styles from '../theme/components/Card'
 
 export const CardBody = ({ children, style }) => (
     <View
@@ -41,10 +42,3 @@ export default class Card extends React.Component {
     }
 }
 
-const styles = StyleSheet.create({
-    container: {
-        alignItems: 'flex-start',
-        borderWidth: 1,
-        borderColor: "#EEEEEE"
-    }
-})

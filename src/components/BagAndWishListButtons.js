@@ -18,30 +18,21 @@ class BagAndWishListButtons extends React.Component {
   onLayoutLikeButton({ nativeEvent }) {
     if (this.likeButton) {
       this.likeButton.measure((x, y, width, height, pageX, pageY) => {
-        this.props.navigation.setParams({
-          positionLikeButton: {
-            pageX, pageY
-          }
-        })
+        this.props.setPositionWishListButton && this.props.setPositionWishListButton(pageX,pageY)
       })
     }
   }
 
   onLayoutCartButton({ nativeEvent }) {
     if (this.cartButton) {
-      this.cartButton.measure((x, y, width, height, pageX, pageY) => {
-        this.props.navigation.setParams({
-          positionCartButton: {
-            pageX, pageY
-          }
-        })
-      })
-    }
+      this.cartButton.measure((x, y, width, height, pageX, pageY) => 
+        this.props.setPositionBagButton && this.props.setPositionBagButton(pageX, pageY))
+      }
   }
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={styles.container} onLayout={this.props.onLayout}>
         <TouchableOpacity
           onPress={() => this.props.navigation.navigate("BagAndWishList", { index: 1 })}
         >
@@ -51,7 +42,7 @@ class BagAndWishListButtons extends React.Component {
             <Ionicons name="md-heart-empty" color='black' size={BUTTON_SIZE} />
             {this.props.wishList.length == 0 ? null : (
               <View style={styles.notiBox}>
-                <Text style={styles.notiBoxText}>1</Text>
+                <Text style={styles.notiBoxText}>{this.props.wishList.length}</Text>
               </View>
             )}
           </View>

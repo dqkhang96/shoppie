@@ -1,12 +1,14 @@
 import React from 'react'
-import { View, Text,  TouchableNativeFeedback,Image } from 'react-native'
+import { View, Text,  TouchableNativeFeedback,TouchableOpacity,Image } from 'react-native'
 import Icons from '../../../res/icons';
 import Size from '../../theme/sizes';
 import styles from '../../theme/screens/BagAndWishListScreen/BagItem'
 import Menu, { MenuItem } from 'react-native-material-menu';
+import Color from '../../theme/colors';
+import {connect} from 'react-redux'
+import {removeFromCart} from '../../redux/actions'
 
-
-export default class BagItem extends React.Component {
+class BagItem extends React.Component {
     constructor(props) {
         super(props)
         this.state={
@@ -105,11 +107,25 @@ export default class BagItem extends React.Component {
                 <Text style={styles.gift}>Gift Wrap available</Text>
                 <View style={styles.devide} />
                 <View style={styles.offer}>
-                    <Icons.Percel width={Size.Icon.width} height={Size.Icon.height} fill="#08D6CC" />
+                    <Icons.Percel width={Size.Icon.width} height={Size.Icon.height} fill={Color.primary} />
                     <Text style={styles.titleOffer}>2 Offers Applicable for this Product</Text>
+                </View>
+
+                <View style={styles.deleteBagItem}>
+                    <TouchableOpacity
+                        onPress={()=>this.props.remove(this.props.product.id)}
+                    >
+                        <Icons.Trash height={Size.Icon.height} width={Size.Icon.width} fill={Color.primary}/>
+                     </TouchableOpacity>
                 </View>
             </View>
         )
     }
 }
+
+const mapDispatchToProp=dispatch=>({
+    remove:(id)=>dispatch(removeFromCart(id))
+})
+
+export default connect(null,mapDispatchToProp)(BagItem)
 

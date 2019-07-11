@@ -106,5 +106,10 @@ export default styles = StyleSheet.create({
     viewPrice: {
         flexDirection: "row",
         alignItems: 'center'
+    },
+    deleteBagItem:{
+        position:'absolute',
+        top:Size.Section.padding*2,
+        right:Size.Section.padding*2
     }
 })

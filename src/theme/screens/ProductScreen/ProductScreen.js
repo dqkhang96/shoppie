@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native'
-import {Size,wp} from '../../sizes'
+import {Size,wp,sp} from '../../sizes'
 import Color from '../../colors'
 
 export default styles = StyleSheet.create({
@@ -46,8 +46,8 @@ export default styles = StyleSheet.create({
     },
     like: {
         position: 'absolute',
-        top: Size.Section.padding,
-        right: Size.Section.padding,
+        top: Size.Section.padding*2,
+        right: Size.Section.padding*2,
         height:Size.Icon.height,
         width:Size.Icon.width
     },
@@ -96,4 +96,11 @@ export default styles = StyleSheet.create({
         width: wp(100),
         fontSize:Size.Button.textSize
     },
+    miniProductImage:{
+        height:sp(17),
+        width:sp(15),
+        position:'absolute',
+        opacity:0.7,
+        zIndex:100
+    }
 })
