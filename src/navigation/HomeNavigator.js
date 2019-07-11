@@ -19,13 +19,13 @@ import Size from '../theme/sizes'
 
 
 export const HomeStack = createStackNavigator({
-  Product: {
-    screen: ProductScreen,
-  },
+
   Home: {
     screen: HomeScreen,
   },
-
+  Product: {
+    screen: ProductScreen,
+  },
   Topwear: TopwearScreen,
   Category: CategoryScreen,
   BagAndWishList: BagAndWishListScreen,

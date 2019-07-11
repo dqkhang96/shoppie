@@ -43,7 +43,7 @@ class BagAndWishListButtons extends React.Component {
     return (
       <View style={styles.container}>
         <TouchableOpacity
-          onPress={() => navigation.navigate("BagAndWishList", { index: 1 })}
+          onPress={() => this.props.navigation.navigate("BagAndWishList", { index: 1 })}
         >
           <View style={styles.viewButton} ref={viewButton => this.likeButton = viewButton}
             onLayout={this.onLayoutLikeButton}
@@ -57,7 +57,7 @@ class BagAndWishListButtons extends React.Component {
           </View>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => navigation.navigate("BagAndWishList", { index: 0 })}
+          onPress={() => this.props.navigation.navigate("BagAndWishList", { index: 0 })}
         >
           <View style={styles.viewButton} ref={viewButton => this.cartButton = viewButton}
             onLayout={this.onLayoutCartButton}>

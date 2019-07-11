@@ -8,8 +8,7 @@ import ButtonMenu from '../../components/ButtonMenu'
 import BagAndWishListButtons from '../../components/BagAndWishListButtons.js'
 import styles from '../../theme/screens/HomeScreen/HomeScreen'
 import { Size, sp, SCREEN_WIDTH } from '../../theme/sizes'
-import MasterCard from '../../../res/icons/MasterCard.js'
-import data from '../../../data'
+import data from '../../../res/data'
 export default class HomeScreen extends React.Component {
     static navigationOptions = {
         title: 'Shoppiee',

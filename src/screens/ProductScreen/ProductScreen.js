@@ -9,7 +9,7 @@ import ButtonGradient from '../../components/ButtonGradient';
 import styles from '../../theme/screens/ProductScreen/ProductScreen'
 import Color from '../../theme/colors';
 import { wp } from '../../theme/sizes'
-import data from '../../../data'
+import data from '../../../res/data'
 import { connect } from 'react-redux';
 import { likeProduct, addToCart } from '../../redux/actions/index';
 import BagAndWishListButtons from '../../components/BagAndWishListButtons'
