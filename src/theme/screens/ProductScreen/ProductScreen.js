@@ -101,6 +101,6 @@ export default styles = StyleSheet.create({
         width:sp(15),
         position:'absolute',
         opacity:0.7,
-        zIndex:100
+        zIndex:200
     }
 })

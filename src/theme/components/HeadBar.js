@@ -9,7 +9,7 @@ export default styles = StyleSheet.create({
       backgroundColor: 'white',
       alignItems: 'center',
       width: "100%",
-      elevation:5
+      zIndex:5
     },
     headerLeft: {
   

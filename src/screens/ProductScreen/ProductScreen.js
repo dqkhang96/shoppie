@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, ScrollView, Text, Image, TouchableWithoutFeedback, Animated ,Easing } from 'react-native'
+import { View, ScrollView, Text, Image, TouchableWithoutFeedback, Animated ,Easing,Alert } from 'react-native'
 import Swiper from '../../components/Swiper'
 import Icons from '../../../res/icons'
 import SizePicker from './SizePicker'
@@ -168,8 +168,11 @@ class ProductScreen extends React.Component {
         )
     }
     onPressButtonAddToCart(event){
-        if(this.props.cart.find(pr=>pr.id==this.state.product.id))
+        if(this.props.cart.find(pr=>pr.id==this.state.product.id)){
+            Alert.alert("Alert","Product is realy in bag")
             return
+        }
+            
         const {pageX,pageY}=event.nativeEvent
         const {positionCartButton}=this.state
         this.animationAddToBag=new Animated.ValueXY({
@@ -182,7 +185,7 @@ class ProductScreen extends React.Component {
                 Animated.timing(this.animationAddToBag,{
                     toValue:{
                         x:positionCartButton.pageX-Header.HEIGHT * 0.25-Size.Section.padding,
-                        y:positionCartButton.pageY-Header.HEIGHT/4  
+                        y:positionCartButton.pageY-Header.HEIGHT*0.5
                     },
                     duration:900,
                     easing:Easing.linear
@@ -217,8 +220,8 @@ class ProductScreen extends React.Component {
     render() {
         
         let scaleProductImage=this.animationScaleAddToBag.interpolate({
-            inputRange:[0,0.5,1],
-            outputRange:[1,0.8,0.3]
+            inputRange:[0,1],
+            outputRange:[1,0.25]
         })
         return (
             <View style={styles.container}>
