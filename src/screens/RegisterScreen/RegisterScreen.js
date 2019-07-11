@@ -10,6 +10,7 @@ import GoToLoginButton from './GoToLoginButton';
 import BackXButton from '../../components/BackXButton';
 import ColoredButton from '../../components/ColoredButton';
 import InputForm from '../../components/InputForm';
+import CustomI18n from '../../util/i18n';
 
 // Import styles
 import styles from '../../theme/screens/RegisterScreen/RegisterScreen';
@@ -45,14 +46,30 @@ export default class RegisterScreen extends Component {
           <RegisterIconsContainer />
 
           <View style={styles.inputFormContainer} >
-            <InputForm setValue={(name) => this.setState({ name })} title='Name' keyboardType='default' isSecureTextEntry={false} />
-            <InputForm setValue={(username) => this.setState({ username })} title='Email ID' keyboardType='email-address' isSecureTextEntry={false} />
-            <InputForm setValue={(password) => this.setState({ password })} title='Password' keyboardType='default' isSecureTextEntry={true} />
-            <InputForm setValue={(mobile) => this.setState({ mobile })} title='Mobile Number' keyboardType='phone-pad' isSecureTextEntry={false} />
+            <InputForm
+              setValue={(name) => this.setState({ name })}
+              title={CustomI18n.t('Register').nameInput}
+              keyboardType='default'
+              isSecureTextEntry={false} />
+            <InputForm
+              setValue={(username) => this.setState({ username })}
+              title={CustomI18n.t('Register').emailInput}
+              keyboardType='email-address'
+              isSecureTextEntry={false} />
+            <InputForm
+              setValue={(password) => this.setState({ password })}
+              title={CustomI18n.t('Register').passwordInput}
+              keyboardType='default'
+              isSecureTextEntry={true} />
+            <InputForm
+              setValue={(mobile) => this.setState({ mobile })}
+              title={CustomI18n.t('Register').mobileInput}
+              keyboardType='phone-pad'
+              isSecureTextEntry={false} />
           </View>
 
           <View style={styles.buttonContainer} >
-            <ColoredButton title='Sign Up' method={this.onSignup} />
+            <ColoredButton title={CustomI18n.t('Register').signupButton} method={this.onSignup} />
           </View>
           <GoToLoginButton />
         </ScrollView>

@@ -13,15 +13,13 @@ import ForgotPasswordScreen from '../screens/ForgotPasswordScreen'
 import OnboardingScreen from '../screens/OnboardingScreen'
 import VerifyMobileScreen from '../screens/VerifyMobileScreen'
 import NotificationScreen from '../screens/NotificationScreen'
+import SettingsScreen from '../screens/SettingsScreen/SettingsScreen';
+
 import Icons from '../../res/icons'
 import Color from '../theme/colors'
 import Size from '../theme/sizes'
 
-
 export const HomeStack = createStackNavigator({
-  // Login: {
-  //   screen: LoginScreen,
-  // },
   Home: {
     screen: HomeScreen,
   },
@@ -53,6 +51,9 @@ export const HomeStack = createStackNavigator({
   Register: {
     screen: RegisterScreen,
   },
+  Settings: {
+    screen: SettingsScreen,
+  }
 });
 
 HomeStack.navigationOptions = ({ navigation }) => {

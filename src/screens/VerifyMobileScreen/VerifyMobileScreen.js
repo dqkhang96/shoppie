@@ -12,13 +12,14 @@ import ColoredButton from '../../components/ColoredButton';
 
 // Import styles
 import styles from '../../theme/screens/VerifyMobileScreen/VerifyMobileScreen';
+import CustomI18n from '../../util/i18n';
 
 export default class VerifyMobileScreen extends Component {
   static navigationOptions = {
     header: null,
   }
 
-  onReset = async () => {
+  onResend = async () => {
 
   }
 
@@ -32,9 +33,9 @@ export default class VerifyMobileScreen extends Component {
         <View style={styles.container}>
           <BackXButton />
           <View style={styles.textContainer}>
-            <Text style={styles.title}>Verify your Mobile</Text>
-            <Text style={styles.text}>We send you a code to verify your phone number.</Text>
-            <Text style={[styles.text, { marginTop: 15 }]}>Send to (+84) 989652445</Text>
+            <Text style={styles.title}>{CustomI18n.t('Verify').header}</Text>
+            <Text style={styles.text}>{CustomI18n.t('Verify').paragraph}</Text>
+            <Text style={[styles.text, { marginTop: 15 }]}>{CustomI18n.t('Verify').codeInputText}</Text>
 
             <CodeInput
               keyboardType='phone-pad'
@@ -51,13 +52,13 @@ export default class VerifyMobileScreen extends Component {
 
           <View style={styles.body}>
             <View style={styles.buttonContainer} >
-              <ColoredButton title='Confirm' method={this.onConfirm}/>
+              <ColoredButton title={CustomI18n.t('Verify').confirmButton} method={this.onConfirm}/>
             </View>
 
             <Text />
-            <Text style={[styles.text, { alignSelf: 'center' }]}>I didn't receive a code!</Text>
-            <TouchableOpacity style={{ alignSelf: 'center' }} onPress={this.onReset} >
-              <Text style={styles.link}>Resend</Text>
+            <Text style={[styles.text, { alignSelf: 'center' }]}>{CustomI18n.t('Verify').resendText}</Text>
+            <TouchableOpacity style={{ alignSelf: 'center' }} onPress={this.onResend} >
+              <Text style={styles.link}>{CustomI18n.t('Verify').resendButton}</Text>
             </TouchableOpacity>
           </View>
         </View>

@@ -8,7 +8,7 @@ const CustomI18n = I18n;
 const locales = RNLocalize.getLocales();
 
 if (Array.isArray(locales)) {
-  CustomI18n.locale = locales[0].languageTag;
+  CustomI18n.locale = locales[0].languageTag;       // For example: "vi-VN" or "en-GB"
 }
 
 CustomI18n.fallbacks = true;

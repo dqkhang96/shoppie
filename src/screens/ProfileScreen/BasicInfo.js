@@ -6,6 +6,7 @@ import {
 } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import ColoredButton from '../../components/ColoredButton';
+import CustomI18n from '../../util/i18n';
 
 // Import styles
 import styles from '../../theme/screens/ProfileScreen/BasicInfo';
@@ -36,7 +37,7 @@ class BasicInfo extends Component {
           </Text>
         </View>
         : <View style={styles.basicInfoContainerNotLogin} >
-          <ColoredButton title='Login' method={this.onLogin} />
+          <ColoredButton title={CustomI18n.t('Profile').signinButton} method={this.onLogin} />
         </ View>
     );
   }
