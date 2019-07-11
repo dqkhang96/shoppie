@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {withNavigation} from 'react-navigation';
+import CustomI18n from '../../util/i18n';
 
 // Import styles
 import styles from '../../theme/screens/LoginScreen/GoToForgotPasswordButton';
@@ -20,7 +21,7 @@ class GoToForgotPasswordButton extends Component {
         <TouchableOpacity
           onPress={this.onForgotPassword}
         >
-          <Text style={styles.text}>Forgot Password?</Text>
+          <Text style={styles.text}> {CustomI18n.t("Login").forgotPassword} </Text>
         </TouchableOpacity>
       </View>
     )

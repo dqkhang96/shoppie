@@ -10,13 +10,13 @@ import {
 import GoToForgotPasswordButton from './GoToForgotPasswordButton';
 import GoToRegisterButton from './GoToRegisterButton';
 import LoginIconsContainer from './LoginIconsContainer';
-import InputEmail from '../../components/InputEmail';
-import InputPassword from '../../components/InputPassword';
 import BackXButton from '../../components/BackXButton';
 import LoginNormalButton from './LoginNormalButton';
+import CustomI18n from '../../util/i18n';
 
 // Import styles
 import styles from '../../theme/screens/LoginScreen/LoginScreen';
+import InputForm from '../../components/InputForm';
 
 export default class LoginScreen extends Component {
   static navigationOptions = {
@@ -27,7 +27,7 @@ export default class LoginScreen extends Component {
     super(props)
     this.state = {
       username: '',
-      password: ''
+      password: '',
     }
   }
 
@@ -45,8 +45,8 @@ export default class LoginScreen extends Component {
               <LoginIconsContainer />
 
               <View style={styles.inputFormContainer} >
-                <InputEmail setUsername={(username) => this.setState({ username })} />
-                <InputPassword setPassword={(password) => this.setState({ password: password })} />
+                <InputForm setValue={(username) => this.setState({ username })} title={CustomI18n.t("Login").emailInput} keyboardType='email-address' isSecureTextEntry={false} />
+                <InputForm setValue={(password) => this.setState({ password })} title={CustomI18n.t("Login").passwordInput} keyboardType='default' isSecureTextEntry={true} />
               </View>
 
               <LoginNormalButton username={this.state.username} password={this.state.password} />

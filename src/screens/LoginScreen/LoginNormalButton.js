@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import {
-  View,
-  StyleSheet,
   ActivityIndicator,
 } from 'react-native';
 import { withNavigation } from 'react-navigation';
-import axios from 'axios';
 import AsyncStorage from '@react-native-community/async-storage';
 import ColoredButton from '../../components/ColoredButton';
 import Color from '../../theme/colors';
+import CustomI18n from '../../util/i18n';
+
+// Import styles
 import styles from '../../theme/screens/LoginScreen/LoginNormalButton';
 
 // Import api
@@ -63,7 +63,7 @@ class LoginNormalButton extends Component {
     return (
       this.state.isLoginLoading
         ? <ActivityIndicator size='large' color={Color.primary} style={styles.indicatorContainer} />
-        : <ColoredButton title='Login' method={() => { this.onLoginNormal() }} />
+        : <ColoredButton title={CustomI18n.t("Login").loginButton} method={() => { this.onLoginNormal() }} />
     )
   }
 }
