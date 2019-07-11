@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, ScrollView, Text,Image } from 'react-native'
+import { View, ScrollView, Text, Image, TouchableOpacity } from 'react-native'
 import Swiper from '../../components/Swiper'
 import Icons from '../../../res/icons'
 import SizePicker from './SizePicker'
@@ -8,23 +8,24 @@ import CheckDelivery from '../../components/CheckDelivery'
 import ButtonGradient from '../../components/ButtonGradient';
 import styles from '../../theme/screens/ProductScreen/ProductScreen'
 import Color from '../../theme/colors';
-import {wp} from '../../theme/sizes'
+import { wp } from '../../theme/sizes'
 import data from '../../../data'
-import {connect} from 'react-redux';
-import {likeProduct,addToCart} from '../../redux/actions/index';
-import { TouchableOpacity } from 'react-native-gesture-handler';
- class ProductScreen extends React.Component {
+import { connect } from 'react-redux';
+import { likeProduct, addToCart } from '../../redux/actions/index';
+import BagAndWishListButtons from '../../components/BagAndWishListButtons'
+
+class ProductScreen extends React.Component {
     static navigationOptions = {
-        title:"Product",
-        headerRight:<BagAndWishListButton/>
+        title: "Product",
+        headerRight: <BagAndWishListButtons />
     };
- constructor(props){
-    super(props)
-    this.state={
-        product:data.find(pr=>pr.id===this.props.navigation.getParam('id')),
-        isliked:false,
+    constructor(props) {
+        super(props)
+        this.state = {
+            product: data.find(pr => pr.id === this.props.navigation.getParam('id')),
+            isliked: false,
+        }
     }
- }
     _renderInforPrice() {
         return (
             <View style={styles.priceInfor}>
@@ -42,11 +43,11 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
                 <View>
                     <Text style={styles.nameProduct}>{"Men Solid Bomber Jacket"}</Text>
                 </View>
-                
+
                 <View style={styles.like}>
-                   <TouchableOpacity onPress={()=>this.props.likeProduct(this.state.product)}>
-                   <Icons.Heart width={styles.like.width} height={styles.like.height} fill={Color.primary} />
-                   </TouchableOpacity>
+                    <TouchableOpacity onPress={() => this.props.likeProduct(this.state.product)}>
+                        <Icons.Heart width={styles.like.width} height={styles.like.height} fill={Color.primary} />
+                    </TouchableOpacity>
                 </View>
             </View>
         )
@@ -64,8 +65,8 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
                         height: wp(100),
                         width: wp(100),
                         backgroundColor: "#EEEEEE"
-                        
-                    }} source={{uri:this.state.product.urlImage}} />
+
+                    }} source={{ uri: this.state.product.urlImage }} />
                     <View style={{
                         height: wp(100),
                         width: wp(100),
@@ -90,7 +91,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
         return (
             <View style={styles.colorPicker}>
                 <Text style={styles.titlePickColor}>Select a color</Text>
-                <ColorPicker/>
+                <ColorPicker />
             </View>
         )
     }
@@ -103,7 +104,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
             </View>
         )
     }
-  
+
     _renderOther() {
         return (
             <React.Fragment>
@@ -133,18 +134,18 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
     _renderButtonAddToCart() {
         return (
             <View style={styles.buttonAddToCart}>
-                <ButtonGradient style={styles.gradientAddToCart} 
-                    fromColor={Color.Button.PrimaryGradient.fromColor} 
+                <ButtonGradient style={styles.gradientAddToCart}
+                    fromColor={Color.Button.PrimaryGradient.fromColor}
                     toColor={Color.Button.PrimaryGradient.toColor}
                     title="Add to cart"
-                    onPress={()=>this.props.addToCart(this.state.product)}
-                    />
+                    onPress={() => this.props.addToCart(this.state.product)}
+                />
             </View>
         )
     }
 
     render() {
-        
+
         return (
             <View style={styles.container}>
                 <ScrollView>
@@ -152,7 +153,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
                     {this._renderInforPrice()}
                     {this._renderColorPicker()}
                     {this._renderSizePicker()}
-                    <CheckDelivery/>
+                    <CheckDelivery />
                     {this._renderOther()}
                 </ScrollView>
                 {this._renderButtonAddToCart()}
@@ -161,9 +162,10 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
     }
 }
 
-const mapStateToDispatch= dispatch => {
-    return {likeProduct:(product)=>dispatch(likeProduct(product)),
-    addToCart :(product)=>dispatch(addToCart(product))
+const mapStateToDispatch = dispatch => {
+    return {
+        likeProduct: (product) => dispatch(likeProduct(product)),
+        addToCart: (product) => dispatch(addToCart(product))
     }
 }
-export default  connect(null,mapStateToDispatch)(ProductScreen)
+export default connect(null, mapStateToDispatch)(ProductScreen)
