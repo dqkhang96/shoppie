@@ -16,6 +16,7 @@ const store = createStore(
 );
 
 export default function App(props) {
+
   return (
     <Provider store={store}>
       <View style={styles.container}>

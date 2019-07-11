@@ -31,7 +31,7 @@ class ProductScreen extends React.Component {
         this.toggleLike = this.toggleLike.bind(this)
         this.onPressButtonAddToCart=this.onPressButtonAddToCart.bind(this)
         this.animationScaleAddToBag=new Animated.Value(0)
-        this.animationOpacityAddToBab=new Animated.Value(1)
+        this.animationOpacityAddToBag=new Animated.Value(1)
     }
 
     toggleLike(){
@@ -181,7 +181,7 @@ class ProductScreen extends React.Component {
             y:pageY
         })
         this.animationScaleAddToBag=new Animated.Value(0)
-        this.animationOpacityAddToBab=new Animated.Value(1)
+        this.animationOpacityAddToBag=new Animated.Value(1)
         this.setState({isAnimationAddToBagRun:true},()=>{
             Animated.parallel([
                 Animated.timing(this.animationAddToBag,{
@@ -197,7 +197,7 @@ class ProductScreen extends React.Component {
                     duration:900,
                     easing:Easing.linear
                 }),
-                Animated.timing(this.animationOpacityAddToBab,{
+                Animated.timing(this.animationOpacityAddToBag,{
                     toValue:0.02,
                     duration:1100,
                     easing:Easing.quad
@@ -255,7 +255,7 @@ class ProductScreen extends React.Component {
                     <Animated.Image style={[styles.miniProductImage,
                             this.animationAddToBag.getLayout(),
                             {transform:[{scale:scaleProductImage}],
-                            opacity:this.animationOpacityAddToBab
+                            opacity:this.animationOpacityAddToBag
                         }]} source={{uri:this.state.product.urlImage}}/>
                 :null}
             </View>
