@@ -29,19 +29,17 @@ export default class App extends React.Component {
     }
   }
 
-  async componentWillMount() {
-    const lang = await AsyncStorage.getItem("lang")
-    if (lang){
+  componentWillMount() {
+    AsyncStorage.getItem("lang").then(lang=>{
       CustomI18n.locale = lang
-      this.setState({showAppNavigation:true})
-    }  
-    else {
+        this.setState({showAppNavigation:true}) 
+    }).catch(err=>{
       this.setState({lang:locales[0].languageTag,showAppNavigation:true})
       const locales = RNLocalize.getLocales();
       if (Array.isArray(locales)) {
-        CustomI18n.locale = locales[0].languageTag;      // For example: "vi-VN" or "en-GB"
+        CustomI18n.locale = locales[0].languageTag;   // For example: "vi-VN" or "en-GB"
       }
-    }
+    })
   }
 
   componentDidMount() {
