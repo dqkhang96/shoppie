@@ -106,10 +106,14 @@ export default styles = StyleSheet.create({
     },
     remove:{
         fontSize:Size.Text.normal,
+        textAlign:'center',
+        width:wp(45)
     },
     moveToBag:{
         fontSize:Size.Text.normal,
         color:Color.primary,
+        textAlign:'center',
+        width:wp(45)
     },
     viewPrice: {
         flexDirection: "row",
@@ -120,6 +124,5 @@ export default styles = StyleSheet.create({
         height:"90%",
         borderRightWidth:2,
         borderColor:"#eaeaea",
-        alignSelf:'center'
     }
 })
