@@ -25,7 +25,8 @@ class ProductScreen extends React.Component {
         this.state = {
             product: data.find(pr => pr.id === this.props.navigation.getParam('id')),
             isLiked: this.props.wishList.find(pr=>pr.id===this.props.navigation.getParam('id'))?true:false,
-            isAnimationAddToBagRun:false            
+            isAnimationAddToBagRun:false,
+            enableLikeButton:true        
         }
         this.animationLike=new Animated.Value(0)
         this.toggleLike = this.toggleLike.bind(this)
@@ -40,7 +41,7 @@ class ProductScreen extends React.Component {
             this.props.removeLikeProduct(this.state.product.id)
         }
         else{
-            this.setState({isLiked:!this.state.isLiked},()=>{
+            this.setState({isLiked:!this.state.isLiked,enableLikeButton:false},()=>{
                if(this.state.isLiked){
                    this.animationLike.setValue(0)             
                     Animated.timing(this.animationLike,{
@@ -48,7 +49,10 @@ class ProductScreen extends React.Component {
                         duration:350,
                         easing:Easing.linear,
                         useNativeDriver:true
-                    }).start(()=>this.props.likeProduct(this.state.product))
+                    }).start(()=>{
+                        this.props.likeProduct(this.state.product)
+                        this.setState({enableLikeButton:true})
+                    })
                }
                 
             })
@@ -80,7 +84,7 @@ class ProductScreen extends React.Component {
                 </View>
 
                 <Animated.View style={transformStyle}>
-                    <TouchableWithoutFeedback onPress={this.toggleLike}>
+                    <TouchableWithoutFeedback onPress={this.toggleLike} disabled={!this.state.enableLikeButton}>
                         {this.state.isLiked ?
                             <Icons.Like width={styles.like.width} height={styles.like.height} fill="red"/> :
                             <Icons.Heart width={styles.like.width} height={styles.like.height} fill={Color.primary} />
