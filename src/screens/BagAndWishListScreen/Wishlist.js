@@ -34,8 +34,11 @@ class Wishlist extends Component {
                         onPress={() => {
                             if(this.props.cart.find(pr=>pr.id===this.props.product.id))
                                 Alert.alert(CustomI18n.t('title').alert,CustomI18n.t('message').productIsInBag)
-                            else
-                            this.props.addToCart(this.props.product)
+                            else{
+                                this.props.addToCart(this.props.product)
+                                this.props.moveToBag()
+                                this.props.remove(this.props.product.id)
+                            }
                         }}
                     ><Text style={{ color: '#08D6CC' }}>{CustomI18n.t("BagAndWishListScreen").moveToBag}</Text></TouchableOpacity>
                 </View>

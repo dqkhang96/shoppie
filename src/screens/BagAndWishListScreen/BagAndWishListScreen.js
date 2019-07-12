@@ -7,17 +7,9 @@ import BagAndWishListButtons from '../../components/BagAndWishListButtons.js'
 import ButtonBackAndButtonMenu from '../../components/ButtonBackAndButtonMenu'
 import Color from '../../theme/colors';
 import CustomI18n from '../../util/i18n'
-const FirstRoute = () => (
-  <View style={{flex:1}}>
-      <BagTab></BagTab>
-  </View>
-);
 
-const SecondRoute = () => (
-  <View style={{flex:1}}>
-      <WishlistTab></WishlistTab>
-  </View>
-);
+
+
 
 export default class TabViewExample extends React.Component {
     static navigationOptions = {
@@ -29,6 +21,8 @@ export default class TabViewExample extends React.Component {
   
     constructor(props){
       super(props)
+      this.bagTab=()=><BagTab/>
+      this.wishlistTab=()=><WishlistTab moveToBag={this.moveToBag}/>
       this.state = {
         index: this.props.navigation.getParam('index',0),
         routes: [
@@ -36,11 +30,16 @@ export default class TabViewExample extends React.Component {
           { key: 'second', title: CustomI18n.t("BagAndWishListScreen").wishlist },
         ],
       };
+      this.moveToBag=this.moveToBag.bind(this)
     }
   
   componentWillReceiveProps(nextProps){
     if(nextProps.navigation.getParam('index')!=this.state.index)
       this.setState({index:nextProps.navigation.getParam('index')})
+  }
+
+  moveToBag(){
+    this.setState({index:0})
   }
 
   render() {
@@ -58,8 +57,8 @@ export default class TabViewExample extends React.Component {
         }
         style={{ backgroundColor: 'white' }}
         renderScene={SceneMap({
-          first: FirstRoute,
-          second: SecondRoute,
+          first:this.bagTab,
+          second:this.wishlistTab
         })}
         onIndexChange={index => this.setState({ index })}
         initialLayout={{ width: Dimensions.get('window').width }}

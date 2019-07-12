@@ -7,7 +7,7 @@ class WishlishTab extends Component {
         return (
             <View style={{ flex: 1 }}>
                 <ScrollView>
-                    {this.props.wishList.map((value,key)=><Wishlist key={key} product={value}/>)}
+                    {this.props.wishList.map((value,key)=><Wishlist key={key} product={value} moveToBag={this.props.moveToBag}/>)}
                 </ScrollView>
             </View>
         )
