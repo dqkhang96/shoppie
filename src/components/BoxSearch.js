@@ -1,9 +1,8 @@
 import React from 'react'
 import { View, TextInput, StyleSheet, TouchableOpacity ,TouchableWithoutFeedback} from 'react-native'
-import { sp } from '../theme/sizes'
 import Icons from '../../res/icons'
 import styles from '../theme/components/BoxSearch'
-
+import CustomI18n from '../util/i18n'
 export default class BoxSearch extends React.Component {
 
     constructor(props) {
@@ -19,7 +18,7 @@ export default class BoxSearch extends React.Component {
 
         return (
             <View style={styles.container}>
-                <TextInput style={[styles.input,{fontSize:heightHeader*0.35}]} placeholder="Search for products" />
+                <TextInput style={[styles.input,{fontSize:heightHeader*0.35}]} placeholder={CustomI18n.t('title').searchProduct} />
                 <View style={styles.searchIcon}>
                     <Icons.Search width={sizeIcon} height={sizeIcon} />
                 </View>

@@ -7,7 +7,8 @@ export default ButtonGradient = ({fromColor, toColor ,title,style ,onPress}) => 
         <View
         style={[{
             justifyContent:'center',
-            alignItems:'center'
+            alignItems:'center',
+            overflow:'hidden'
         },style]}
     >
         <View style={{

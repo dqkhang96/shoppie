@@ -1,10 +1,10 @@
 import React from 'react'
-import { View, Text, TextInput, StyleSheet } from 'react-native'
+import { View, Text, TextInput } from 'react-native'
 import Icons from '../../res/icons'
 import { Svg, Defs, Stop, Circle, LinearGradient } from 'react-native-svg'
-import {sp,Size} from '../theme/sizes'
 import styles from '../theme/components/CheckDelivery'
 import Color from '../theme/colors';
+import CustomI18n from '../util/i18n'
 
 
 
@@ -15,9 +15,9 @@ export default class CheckDelivery extends React.Component {
         
         return (
             <View style={[styles.checkDeliver,this.props.style]}>
-                <Text style={styles.title}>Check Delivery and COD Options</Text>
+                <Text style={styles.title}>{CustomI18n.t("CheckDelivery").title}</Text>
                 <View style={styles.wrapInputDeliver}>
-                    <TextInput style={styles.inputDeliver} placeholder="Delivery" placeholderTextColor="#707070" />
+                    <TextInput style={styles.inputDeliver} placeholder={CustomI18n.t("CheckDelivery").delivery} placeholderTextColor="#707070" />
                     <View style={styles.position}>
                         <Icons.Position height={styles.position.height} width={styles.position.width} fill="#707070" />
                     </View>
@@ -46,9 +46,9 @@ export default class CheckDelivery extends React.Component {
                         <Icons.ArrowRight height={SIZE_BUTTON * 0.5} width={SIZE_BUTTON * 0.5} fill="white" />
                     </View>
                 </View>
-                <Text style={styles.minText}>Free shipping on orders above Rs. 500*</Text>
+                <Text style={styles.minText}>{CustomI18n.t("CheckDelivery").freeShipping}</Text>
                 <Text style={styles.link}>
-                    For more details read our Shipping Policy
+                    {CustomI18n.t("CheckDelivery").policy}
                 </Text>
 
             </View >

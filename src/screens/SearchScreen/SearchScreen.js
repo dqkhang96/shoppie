@@ -26,7 +26,8 @@ export default class SearchScreen extends Component {
                 }}>
                     <View style={styles.renderItemRecommend}>
                         <View style={styles.Brand}>
-                        <MasterCard height={40} width={40}></MasterCard>
+                        {/* <MasterCard height={40} width={40}></MasterCard> */}
+                        <Text>Master</Text>
                     </View>
                     </View>
                     <View style={styles.Information}>

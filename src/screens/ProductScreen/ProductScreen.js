@@ -15,7 +15,7 @@ import { connect } from 'react-redux';
 import { likeProduct, addToCart ,removeLikeProduct} from '../../redux/actions/index';
 import BagAndWishListButtons from '../../components/BagAndWishListButtons'
 import HeaderBar from '../../components/HeadBar'
-
+import CustomI18n from '../../util/i18n'
 class ProductScreen extends React.Component {
     static navigationOptions = {
         header:()=>null
@@ -65,7 +65,7 @@ class ProductScreen extends React.Component {
         return (
             <View style={styles.priceInfor}>
                 <View style={styles.newLabelWrap}>
-                    <Text style={styles.newLabel}>NEW</Text>
+                    <Text style={styles.newLabel}>{CustomI18n.t('Product').new.toUpperCase()}</Text>
                 </View>
                 <View>
                     <Text style={styles.nameProduct}>{this.state.product.name}</Text>
@@ -128,7 +128,7 @@ class ProductScreen extends React.Component {
     _renderColorPicker() {
         return (
             <View style={styles.colorPicker}>
-                <Text style={styles.titlePickColor}>Select a color</Text>
+                <Text style={styles.titlePickColor}>{CustomI18n.t('Product').selectColor}</Text>
                 <ColorPicker />
             </View>
         )
@@ -137,7 +137,7 @@ class ProductScreen extends React.Component {
     _renderSizePicker() {
         return (
             <View style={styles.sizePicker}>
-                <Text style={styles.titleSizePicker}>Select a Size</Text>
+                <Text style={styles.titleSizePicker}>{CustomI18n.t('Product').selectSize} </Text>
                 <SizePicker listSizes={["XL", "S", "L", "XXL"]} />
             </View>
         )
@@ -147,13 +147,13 @@ class ProductScreen extends React.Component {
         return (
             <React.Fragment>
                 <View style={styles.content}>
-                    <Text style={styles.title}>Product Summary</Text>
+                    <Text style={styles.title}>{CustomI18n.t('Product').productSummary}</Text>
                     <Text style={styles.contentText}>
                         Flaunt a stylish look by wearing this jacket on any casual day out. Available in a slim fit, it will go well with a pair of cargo pants and boat shoes.
                     </Text>
                 </View>
                 <View style={styles.content}>
-                    <Text style={styles.title}>{'Product Info & Care'}</Text>
+                    <Text style={styles.title}>{CustomI18n.t('Product').productInforAndCare}</Text>
                     <Text style={styles.contentText}>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras dui nisi, dignissim quis euismod eget, efficitur ac ligula. Nunc laoreet fermentum odio eu cursus. Nulla non turpis nisi. Cras aliquet cursus pretium. Praesent sed nibh sapien.
                         </Text>
@@ -170,7 +170,7 @@ class ProductScreen extends React.Component {
     }
     onPressButtonAddToCart(event){
         if(this.props.cart.find(pr=>pr.id==this.state.product.id)){
-            Alert.alert("Alert","Product is realy in bag")
+            Alert.alert(CustomI18n.t('title').alert,CustomI18n.t('message').productIsInBag)
             return
         }
             
@@ -217,7 +217,7 @@ class ProductScreen extends React.Component {
                 <ButtonGradient style={styles.gradientAddToCart}
                     fromColor={Color.Button.PrimaryGradient.fromColor}
                     toColor={Color.Button.PrimaryGradient.toColor}
-                    title="Add to cart"
+                    title={CustomI18n.t('Product').addToCart}
                     onPress={this.onPressButtonAddToCart}
                 />
             </View>

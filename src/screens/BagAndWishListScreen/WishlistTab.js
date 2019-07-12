@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View, ScrollView } from 'react-native'
-import Wishlist from '../../components/Wishlist'
+import Wishlist from './Wishlist'
 import {connect} from 'react-redux'
 class WishlishTab extends Component {
     render() {

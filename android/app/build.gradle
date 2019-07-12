@@ -115,6 +115,10 @@ android {
         keyAlias MY_AWESOME_PROJECT_RELEASE_KEY_ALIAS
         keyPassword MY_AWESOME_PROJECT_RELEASE_KEY_PASSWORD
     }
+    packagingOptions {
+       pickFirst '**/libjsc.so'
+       pickFirst '**/libc++_shared.so'
+    }
 }
     splits {
         abi {
@@ -148,6 +152,7 @@ android {
 }
 
 dependencies {
+    implementation "org.webkit:android-jsc:r241213"
     implementation project(':react-native-localize')
     implementation project(':@react-native-community_async-storage')
     implementation project(':react-native-google-signin')

@@ -9,19 +9,20 @@ import {withNavigation} from 'react-navigation'
 import styles from '../../theme/screens/BagAndWishListScreen/BagTab'
 import Color from '../../theme/colors';
 import {connect} from 'react-redux';
+import CustomI18n from '../../util/i18n'
 
  class BagTab extends React.Component {
 
     _renderCoupons() {
         return (
             <View style={styles.coupons}>
-                <Text style={styles.titleCoupons}>Coupons</Text>
+                <Text style={styles.titleCoupons}>{CustomI18n.t("BagAndWishListScreen").coupons}</Text>
                 <View style={styles.inputViewCoupons}>
                     <View style={styles.iconPercel}>
                         <Icons.Percel with={Size.Icon.width} height={Size.Icon.height} fill="gray" />
                     </View>
-                    <TextInput style={styles.inputCoupons} placeholder="Enter coupon code" />
-                    <ButtonGradient style={styles.buttonCoupons} title="APPLY" fromColor="#00BBE1" toColor="#08D6CC" />
+                    <TextInput style={styles.inputCoupons} placeholder={CustomI18n.t("BagAndWishListScreen").enterCoupon} />
+                    <ButtonGradient style={styles.buttonCoupons} title={CustomI18n.t("BagAndWishListScreen").apply.toUpperCase()} fromColor="#00BBE1" toColor="#08D6CC" />
                 </View>
             </View>
         )
@@ -31,20 +32,20 @@ import {connect} from 'react-redux';
     _renderOrderSummary(){
         return(
             <View style={styles.orderSummaryContainer}>  
-                <Text style={styles.orderSummaryTitle}>Order Summary</Text>
+                <Text style={styles.orderSummaryTitle}>{CustomI18n.t("BagAndWishListScreen").orderSummary}</Text>
                 <View style={styles.orderSummaryContent}>
                     <View style={styles.orderSummaryItem}>
-                        <Text style={styles.summaryTitle}>Sub Total</Text>
+                        <Text style={styles.summaryTitle}>{CustomI18n.t("BagAndWishListScreen").subTotal}</Text>
                         <Text style={styles.summaryValue}>Rs. 5700</Text>
                     </View>
                     <View style={styles.devideDash}/>
                     <View style={styles.orderSummaryItem}>
-                        <Text style={styles.summaryTitle}>Delivery Charges</Text>
-                        <Text style={styles.summaryValue}>Free</Text>
+                        <Text style={styles.summaryTitle}>{CustomI18n.t("BagAndWishListScreen").deliveryCharges}</Text>
+                        <Text style={styles.summaryValue}>{CustomI18n.t("BagAndWishListScreen").free}</Text>
                     </View>
                     <View style={styles.devideDash}/>
                     <View style={styles.orderSummaryItem}>
-                        <Text style={styles.summaryTitle}>Total Payable Amount</Text>
+                        <Text style={styles.summaryTitle}>{CustomI18n.t("BagAndWishListScreen").totalPayableAmount}</Text>
                         <Text style={styles.summaryValue}>Rs. 5700</Text>
                     </View>
                 </View>
@@ -60,7 +61,7 @@ import {connect} from 'react-redux';
                 <View style={styles.gift}>
                     <View style={styles.giftContent}>
                         <Icons.Gift width={Size.Icon.width} height={Size.Icon.height} fill="#cccccc" />
-                        <Text style={styles.giftText}>Gift wrap for this gift for free</Text>
+                        <Text style={styles.giftText}>{CustomI18n.t("BagAndWishListScreen").gift}</Text>
                     </View>
                     <View style={styles.goGift}>
                         <Icons.Right width={Size.Icon.width} height={Size.Icon.height} fill="black" />
@@ -72,7 +73,7 @@ import {connect} from 'react-redux';
                 <View style={styles.totalPriceOrder}><Text style={styles.textTotalPriceOrder}>Rs .5700</Text></View>
                 <ButtonGradient style={styles.buttonPlaceOrder} 
                         fromColor={Color.Button.PrimaryGradient.fromColor} 
-                        toColor={Color.Button.PrimaryGradient.toColor} title={'Place Order'}
+                        toColor={Color.Button.PrimaryGradient.toColor} title={CustomI18n.t("BagAndWishListScreen").placeOrder}
                 onPress={()=>this.props.navigation.navigate('Payment')}/>
             </View>
         </View>)

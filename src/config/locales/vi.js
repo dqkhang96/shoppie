@@ -1,4 +1,11 @@
 export default {
+  title:{
+    searchProduct: "Tìm kiếm sản phẩm",
+    alert:"Thông báo"
+  },
+  message:{
+    productIsInBag:"Sản phẩm đã có trong giỏ hàng"
+  },
   Navigation: {
     Profile: 'Tài khoản',
     ShoppingBag: 'Giỏ hàng',
@@ -71,4 +78,50 @@ export default {
     text2: 'Một trải nghiệm mua sắm đầy đủ và tiện nghi',
     text3: 'Free beauty samples what they are and how to find them',
   },
+  Home:{
+    newArrival:"Hàng mới",
+    hotSellerBrands:"Thương hiệu",
+    trending:"Xu thế",
+    newSessionStyle:"Thời trang",
+  },
+  BagAndWishListScreen:{
+    shoppingBag:"Giỏ hàng",
+    myBag:"Giỏ hàng",
+    wishlist:"Yêu thích",
+    placeOrder:"Đặt hàng",
+    coupons:"Mã giảm giá",
+    orderSummary:"Thống kê đơn hàng",
+    deliveryCharges:"Phí vận chuyển",
+    free:"Miễn phí",
+    subTotal:"Đơn giá",
+    totalPayableAmount:"Tổng đơn hàng",
+    gift:"Quà tặng đi kèm",
+    enterCoupon:"Nhập mã giảm giá",
+    apply:"Áp dụng",
+    moveToBag:"Chuyển sang giỏ hàng",
+    remove:"Xóa"
+  },
+  CheckDelivery:{
+    title:"Kiểm tra giao hàng và tùy chọn COD",
+    freeShipping:"Miễn phí giao hàng cho đơn hàng trên 500 USD",
+    policy:"Tìm hiểu thêm về chính sách của chúng tôi",
+    delivery:"Giao hàng"
+  },
+  Product:{
+    new:"Mới",
+    selectColor:"Lựa chọn màu",
+    selectSize:"Lựa chọn kích cỡ",
+    productSummary:"Tóm tắt sản phẩm",
+    productInforAndCare:"Thông tin sản phẩm và bao hành",
+    addToCart:"Thêm vào giỏ hàng"
+  },
+  Payment:{
+    useCard:"Sử dụng thẻ",
+    otherPayment:"Thanh toán bằng phương thức khác",
+    deliverTo:"Chuyển đến",
+    changeAddress:'Đổi địa chỉ',
+    viewDetails:"Chi tiết",
+    payNow: "Mua ngay",
+    select:"Lựa chọn"
+  }
 };

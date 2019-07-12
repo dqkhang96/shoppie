@@ -18,8 +18,8 @@ export default styles = StyleSheet.create({
     },
     headerTitleText: {
       textAlign: 'center',
-      fontSize:Header.HEIGHT*0.45,
-      fontWeight:'500'
+      fontSize:Header.HEIGHT*0.4,
+      fontWeight:'400'
     },
     headerRight: {
   

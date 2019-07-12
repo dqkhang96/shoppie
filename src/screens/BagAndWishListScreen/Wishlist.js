@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
-import { Text, View, TouchableOpacity, ScrollView, Image } from 'react-native'
-import { removeLikeProduct, addToCart } from '../redux/actions'
+import { Text, View, TouchableOpacity, Alert, Image } from 'react-native'
+import { removeLikeProduct, addToCart } from '../../redux/actions'
 import { connect } from 'react-redux';
+import CustomI18n from '../../util/i18n'
+
 class Wishlist extends Component {
     render() {
         const { product } = this.props
@@ -26,20 +28,28 @@ class Wishlist extends Component {
                 <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginTop: 15 }}>
                     <TouchableOpacity
                         onPress={() => this.props.remove(product.id)}
-                    ><Text>Remove</Text></TouchableOpacity>
+                    ><Text>{CustomI18n.t("BagAndWishListScreen").remove}</Text></TouchableOpacity>
                     <Text>|</Text>
                     <TouchableOpacity
-                        onPress={() => this.props.addToCart(this.props.product)}
-                    ><Text style={{ color: '#08D6CC' }}>Move To Bag</Text></TouchableOpacity>
+                        onPress={() => {
+                            if(this.props.cart.find(pr=>pr.id===this.props.product.id))
+                                Alert.alert(CustomI18n.t('title').alert,CustomI18n.t('message').productIsInBag)
+                            else
+                            this.props.addToCart(this.props.product)
+                        }}
+                    ><Text style={{ color: '#08D6CC' }}>{CustomI18n.t("BagAndWishListScreen").moveToBag}</Text></TouchableOpacity>
                 </View>
             </View>
         )
     }
 }
-const mapDispatchToProp = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
     return {
         remove: (id) => { dispatch(removeLikeProduct(id)) },
         addToCart: (product) => dispatch(addToCart(product))
     }
 }
-export default connect(null, mapDispatchToProp)(Wishlist)
+const mapStateToProps= state=>({
+    cart:state.cart
+})
+export default connect(mapStateToProps, mapDispatchToProps)(Wishlist)

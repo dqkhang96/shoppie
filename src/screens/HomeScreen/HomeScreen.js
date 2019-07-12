@@ -9,6 +9,7 @@ import BagAndWishListButtons from '../../components/BagAndWishListButtons.js'
 import styles from '../../theme/screens/HomeScreen/HomeScreen'
 import { Size, sp, SCREEN_WIDTH } from '../../theme/sizes'
 import data from '../../../res/data'
+import CustomI18n from  '../../util/i18n'
 
 export default class HomeScreen extends React.Component {
     static navigationOptions = {
@@ -24,7 +25,7 @@ export default class HomeScreen extends React.Component {
     _renderNewArrival() {
         return (
             <View style={styles.newArrival}>
-                <Text style={styles.textNewArrival}>NEW ARRIVAL</Text>
+                <Text style={styles.textNewArrival}>{CustomI18n.t('Home').newArrival.toUpperCase()}</Text>
                 <FlatList horizontal
                     keyExtractor={(item, index) => "arrival-" + index}
                     showsHorizontalScrollIndicator={false}
@@ -45,7 +46,7 @@ export default class HomeScreen extends React.Component {
         const MARGIN_LEFT = (SCREEN_WIDTH - 2 * Size.Section.padding - 3 * sp(28)) / 2
         return (
             <View style={styles.hotBrands}>
-                <Text style={styles.textHotBrand}>HOT SELLER BRANDS</Text>
+                <Text style={styles.textHotBrand}>{CustomI18n.t('Home').hotSellerBrands.toUpperCase()}</Text>
                 <FlatList data={data}
                     numColumns={3}
                     showsHorizontalScrollIndicator={false}
@@ -72,7 +73,7 @@ export default class HomeScreen extends React.Component {
     _renderTrend() {
         return (
             <View style={styles.trendings}>
-                <Text style={styles.trendingText}>TRENDING</Text>
+                <Text style={styles.trendingText}>{CustomI18n.t('Home').trending.toUpperCase()}</Text>
                 <FlatList data={data}
                     horizontal
                     showsHorizontalScrollIndicator={false}
@@ -105,7 +106,7 @@ export default class HomeScreen extends React.Component {
     _renderNewStyle() {
         return (
             <View style={styles.newSessionStyle}>
-                <Text style={styles.newSessionStyleText}>NEW SESSION STYLE</Text>
+                <Text style={styles.newSessionStyleText}>{CustomI18n.t('Home').newSessionStyle.toUpperCase()}</Text>
                 <View style={styles.nSSContainer}>
                     <Image style={styles.nSSContent}
                     source={{uri:data[0].urlImage}}
@@ -124,7 +125,7 @@ export default class HomeScreen extends React.Component {
                     <View style={{ paddingHorizontal: sp(1) }}>
                         <FlatList data={[1, 2, 3, 4, 5, 6, 7, 8]}
                             renderItem={({ item }) => (
-                                <CircleView style={{ marginRight: sp(5) }} label="KHANG">
+                                <CircleView style={{ marginRight: sp(5) }} label="MEN">
                                     <View style={{ height: sp(6), width: sp(6) }} />
                                 </CircleView>
                             )}

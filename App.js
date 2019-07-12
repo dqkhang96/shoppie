@@ -25,15 +25,18 @@ export default class App extends React.Component {
     super(props)
     this.state = {
       lang: store.getState().app.lang,
-      showAppNavigation: true
+      showAppNavigation: false
     }
   }
 
   async componentWillMount() {
     const lang = await AsyncStorage.getItem("lang")
-    if (lang)
+    if (lang){
       CustomI18n.locale = lang
+      this.setState({showAppNavigation:true})
+    }  
     else {
+      this.setState({lang:locales[0].languageTag,showAppNavigation:true})
       const locales = RNLocalize.getLocales();
       if (Array.isArray(locales)) {
         CustomI18n.locale = locales[0].languageTag;      // For example: "vi-VN" or "en-GB"

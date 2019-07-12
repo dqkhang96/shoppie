@@ -1,4 +1,11 @@
 export default {
+  title:{
+    searchProduct: "Search for products",
+    alert:"Alert"
+  },
+  message:{
+    productIsInBag:"Products already in the bag"
+  },
   Navigation: {
     Profile: 'Profile',
     ShoppingBag: 'Shopping Bag',
@@ -71,4 +78,50 @@ export default {
     text2: 'The most fulfilling shopping experience',
     text3: 'Free beauty samples what they are and how to find them',
   },
+  Home:{
+    newArrival:"New arrival",
+    hotSellerBrands:"Hot seller brands",
+    trending:"Trending",
+    newSessionStyle:"New session style",
+  },
+  BagAndWishListScreen:{
+    shoppingBag:"Shopping Bag",
+    myBag:"My bag",
+    wishlist:"Wish list",
+    placeOrder:"Place order",
+    coupons:"Coupons",
+    orderSummary:"Order Summary",
+    deliveryCharges:"Delivery Charges",
+    free:"Free",
+    subTotal:"Sub Total",
+    totalPayableAmount:"Total Payable Amount",
+    gift:"Gift wrap for this gift for free",
+    enterCoupon:"Enter coupon code",
+    apply:"Apply",
+    moveToBag:"Move To Bag",
+    remove:"Remove"
+  },
+  CheckDelivery:{
+    title:"Check Delivery and COD Options",
+    freeShipping:"Free shipping on orders above Rs. 500*",
+    policy:"For more details read our Shipping Policy",
+    delivery:"Delivery"
+  },
+  Product:{
+    new:"New",
+    selectColor:"Select a Color",
+    selectSize:"Select a size",
+    productSummary:"Product Summary",
+    productInforAndCare:"Product Infor & Care",
+    addToCart:"Add To Cart"
+  },
+  Payment:{
+    useCard:"Pay using saved cards",
+    otherPayment:"Other Payment Options",
+    deliverTo:'Deliver To',
+    viewDetails:"View Details",
+    payNow:"Pay Now",
+    changeAddress:"Change Address",
+    select:"Select"
+  }
 };

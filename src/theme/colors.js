@@ -33,8 +33,8 @@ const Color = {
       text: '#fff',
     },
     PrimaryGradient:{
-      fromColor:"#08d6cc",
-      toColor:"#00BBE1"
+      fromColor:"#13cff4",
+      toColor:"#05a4c4"
     },
     Secondary:{
       background: COLOR_SECONDARY,

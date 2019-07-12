@@ -1,24 +1,17 @@
 import {
   StyleSheet,
 } from 'react-native';
-import Color from '../colors';
-import Size, { SCREEN_HEIGHT } from '../sizes';
+
+import Size, { SCREEN_HEIGHT, sp } from '../sizes';
 
 const styles = StyleSheet.create({
-  text: {
-    fontSize: Size.Text.normal,
-    color: Color.Text.button,
-    textAlign: 'center'
-  },
-  coloredButtonsContainer: {
-    height: SCREEN_HEIGHT * 0.07,
-    justifyContent: 'center',
-    paddingHorizontal: 30,
-  },
   coloredButton: {
     borderRadius: Size.Button.borderRadius,
+    height:Size.Button.height*0.8,
+    width:sp(80),
+    alignSelf:'center',
     padding: 10,
-    backgroundColor: Color.primary,
+    fontSize:Size.Button.textSize,
     shadowOffset: { width: 10, height: 10, },
     shadowColor: 'black',
     shadowOpacity: 0.2,

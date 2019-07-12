@@ -6,6 +6,7 @@ import WishlistTab from './WishlistTab'
 import BagAndWishListButtons from '../../components/BagAndWishListButtons.js'
 import ButtonBackAndButtonMenu from '../../components/ButtonBackAndButtonMenu'
 import Color from '../../theme/colors';
+import CustomI18n from '../../util/i18n'
 const FirstRoute = () => (
   <View style={{flex:1}}>
       <BagTab></BagTab>
@@ -31,8 +32,8 @@ export default class TabViewExample extends React.Component {
       this.state = {
         index: this.props.navigation.getParam('index',0),
         routes: [
-          { key: 'first', title: 'My Bag' },
-          { key: 'second', title: 'Wishlist' },
+          { key: 'first', title: CustomI18n.t("BagAndWishListScreen").myBag },
+          { key: 'second', title: CustomI18n.t("BagAndWishListScreen").wishlist },
         ],
       };
     }

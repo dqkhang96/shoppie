@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
         borderColor: '#eaeaea'
     },
     totalpayable: {
-        paddingHorizontal: 30,
+        paddingHorizontal: 15,
         flexDirection: 'row',
         justifyContent: 'space-between'
     },
