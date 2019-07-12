@@ -5,7 +5,7 @@ import {connect} from 'react-redux'
 class WishlishTab extends Component {
     render() {
         return (
-            <View style={{ flex: 1 }}>
+            <View style={{ flex: 1 ,backgroundColor:"#eaeaea"}}>
                 <ScrollView>
                     {this.props.wishList.map((value,key)=><Wishlist key={key} product={value} moveToBag={this.props.moveToBag}/>)}
                 </ScrollView>

@@ -10,7 +10,7 @@ export default styles = StyleSheet.create({
     marginRight: Size.Section.padding
   },
   viewButton: {
-    marginHorizontal: Header.HEIGHT * 0.2,
+    marginHorizontal: Header.HEIGHT * 0.1,
     flexDirection: 'row',
     alignItems: 'center',
   },

@@ -291,7 +291,7 @@ export default class TopwearScreen extends React.Component {
                                     <Text style={styles.textButtonFilter}>Clear all</Text>
                                 </View>
                             </TouchableNativeFeedback>
-                            <Text>|</Text>
+                            <View style={styles.devideVertical}/>
                             <TouchableNativeFeedback
                                 onPress={this.applyFilter}
                             >

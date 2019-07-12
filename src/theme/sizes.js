@@ -83,13 +83,13 @@ export const Size = {
 
   Section: {
     Margin: {
-      top: 5,
-      left: 5,
-      right: 5,
-      bottom: 5
+      top: 8,
+      left: 8,
+      right: 8,
+      bottom: 8
     },
-    padding: 5,
-    margin: 5
+    padding: 8,
+    margin: 8
   }
 };
 

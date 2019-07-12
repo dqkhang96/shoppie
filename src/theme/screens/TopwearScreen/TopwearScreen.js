@@ -178,5 +178,11 @@ export default styles = StyleSheet.create({
     textButtonFilter: {
         fontSize: Size.Button.textSize,
         textAlign: 'center'
+    },
+    devideVertical:{
+        width:0,
+        height:"65%",
+        borderRightWidth:2,
+        borderColor:"#eaeaea"
     }
 })
