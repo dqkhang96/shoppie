@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text,  TouchableNativeFeedback,TouchableOpacity,Image } from 'react-native'
+import { View, Text,  TouchableNativeFeedback,TouchableOpacity,Image,LayoutAnimation } from 'react-native'
 import Icons from '../../../res/icons';
 import Size from '../../theme/sizes';
 import styles from '../../theme/screens/BagAndWishListScreen/BagItem'
@@ -7,6 +7,7 @@ import Menu, { MenuItem } from 'react-native-material-menu';
 import Color from '../../theme/colors';
 import {connect} from 'react-redux'
 import {removeFromCart} from '../../redux/actions'
+import { animationChangeListProduct } from '../../util/constants';
 
 class BagItem extends React.Component {
     constructor(props) {
@@ -123,8 +124,13 @@ class BagItem extends React.Component {
     }
 }
 
+
 const mapDispatchToProp=dispatch=>({
-    remove:(id)=>dispatch(removeFromCart(id))
+    remove:(id)=>{
+        dispatch(removeFromCart(id))
+        LayoutAnimation.configureNext(animationChangeListProduct)
+    }
+
 })
 
 export default connect(null,mapDispatchToProp)(BagItem)

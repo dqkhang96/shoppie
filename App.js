@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Platform, StatusBar, StyleSheet, View } from 'react-native';
+import { Platform, StatusBar, StyleSheet, View ,UIManager} from 'react-native';
 
 //import redux
 import { Provider } from 'react-redux';
@@ -12,7 +12,9 @@ import CustomI18n from './src/util/i18n'
 import AppNavigator from './src/navigation/AppNavigator';
 import thunk from 'redux-thunk';
 import * as RNLocalize from "react-native-localize";
-
+if (Platform.OS === 'android') {
+  UIManager.setLayoutAnimationEnabledExperimental &&   UIManager.setLayoutAnimationEnabledExperimental(true);
+}
 const store = createStore(
   reducers,
   applyMiddleware(thunk),
