@@ -181,7 +181,7 @@ class ProductScreen extends React.Component {
         const { pageX, pageY } = event.nativeEvent
         const { positionCartButton } = this.state
         this.animationAddToBag = new Animated.ValueXY({
-            x: pageX - styles.miniProductImage.width/2,
+            x: pageX - styles.miniProductImage.width / 2,
             y: pageY
         })
         this.animationScaleAddToBag = new Animated.Value(0)
@@ -190,8 +190,8 @@ class ProductScreen extends React.Component {
         Animated.parallel([
             Animated.timing(this.animationAddToBag, {
                 toValue: {
-                    x: positionCartButton.pageX - Size.Icon.width,
-                    y: positionCartButton.pageY - Size.Icon.height
+                    x: positionCartButton.pageX - Size.Icon.width + 1,
+                    y: positionCartButton.pageY - Size.Icon.height - 2
                 },
                 duration: 500,
                 easing: Easing.linear

@@ -12,6 +12,7 @@ import styles from '../theme/components/LoginFacebookButton';
 
 // Import Facebook Login
 import { AccessToken, LoginManager, GraphRequest, GraphRequestManager } from 'react-native-fbsdk';
+import imagesRes from '../util/images'
 
 // Import redux
 import * as actions from '../redux/actions/index';
@@ -65,7 +66,7 @@ class LoginFacebookButton extends Component {
           onPress={this.onLoginFB}>
           <Image
             style={styles.fbIcon}
-            source={require('../../res/img/fb.png')} />
+            source={imagesRes.FACEBOOK_ICON} />
         </TouchableOpacity>
     )
   }

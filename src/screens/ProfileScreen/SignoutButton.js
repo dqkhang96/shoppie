@@ -9,17 +9,12 @@ import { withNavigation } from 'react-navigation';
 import CustomI18n from '../../util/i18n';
 
 // Import styles
-import styles from '../../theme/screens/ProfileScreen/SignoutButton';
-
-// Import Facebook Login
-import { AccessToken, LoginManager, GraphRequest, GraphRequestManager, LoginButton } from 'react-native-fbsdk';
-// Import GG Login
-import { GoogleSignin, statusCodes } from 'react-native-google-signin';
+import styles from '../../theme/screens/ProfileScreen/SignoutButton'
 
 // Import redux
 import * as actions from '../../redux/actions/index';
 import { connect } from 'react-redux';
-import { logoutAPI } from '../../config/apis';
+import { logoutAPI } from '../../service/apis';
 
 class SignoutButton extends Component {
   onSignOut = async () => {
