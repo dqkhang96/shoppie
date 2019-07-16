@@ -44,11 +44,12 @@ import Profile from './Profile'
 import Close from './Close.js'
 import CaretDown from './CaretDown'
 import Like from './Like'
+import BackgroundCategory from './BackgroundCategory'
 
 const Icons={BackgroundColor,Checked,Location,Gift,Dress,Right,Home,
                 TextColor,TextStyle,Save,Pause,Back,Up,Circle,Percel,List,Bag,
                 Remove,More,Link,Document,Profile,Close,
-                Audio,Check,CaretDown,Like,
+                Audio,Check,CaretDown,Like,BackgroundCategory,
                 Normal,Event,Position,Play,Menu,Camera,Trash,Edit,Down,LeftArrow,
                 Sort,Filter,ShoppingBag,Search,Heart,ArrowRight,Cancel}
 
