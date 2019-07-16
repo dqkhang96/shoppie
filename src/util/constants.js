@@ -1,4 +1,4 @@
-import React from 'react';
+import {LayoutAnimation} from 'react-native'
 import Config from '../config/config';
 
 export const Url = {
@@ -38,6 +38,19 @@ export const MenuId = {
   logout: 'logout',
   separator: 'sep',
 };
+
+export const animationChangeListProduct={
+  duration:800,
+  create:{
+      type:LayoutAnimation.Types.easeInEaseOut,
+      property:LayoutAnimation.Properties.opacity,
+  },
+  update:{
+      type:LayoutAnimation.Types.spring,
+      property:LayoutAnimation.Properties.opacity,
+      springDamping:0.7
+  }
+}
 
 const Constant = {
   CODE_OK: '0',

@@ -1,16 +1,14 @@
 import {combineReducers} from 'redux';
-import currentIndexReducer from './currentIndexReducer';
-import inputFocusReducer from './inputFocusReducer';
-import userReducer from './userReducer';
-import wishlistReducer from './wishlistReducer.js'
-import bagReducer from './bagReducer'
-import appReducer from './appReducer'
+import CurrentIndexReducer from './CurrentIndexReducer';
+import UserReducer from './UserReducer';
+import WishlistReducer from './WishlistReducer.js'
+import BagReducer from './BagReducer'
+import AppReducer from './AppReducer'
 
 export default combineReducers({
-  currentIndex: currentIndexReducer,
-  user: userReducer,
-  inputFocus: inputFocusReducer,
-  wishList:wishlistReducer,
-  cart: bagReducer,
-  app:appReducer
+  currentIndex: CurrentIndexReducer,
+  user: UserReducer,
+  wishList:WishlistReducer,
+  cart: BagReducer,
+  app:AppReducer
 });

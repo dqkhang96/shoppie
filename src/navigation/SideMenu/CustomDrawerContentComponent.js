@@ -16,7 +16,7 @@ import Color from '../../theme/colors';
 import AsyncStorage from '@react-native-community/async-storage';
 import styles from '../../theme/SildeMenu/CustomDrawerContentComponent'
 // Import api
-import { logoutAPI, loginNormalAPI } from '../../config/apis';
+import { logoutAPI, loginNormalAPI } from '../../service/apis';
 
 // Import Facebook Login
 import { AccessToken, LoginManager, GraphRequest, GraphRequestManager, LoginButton } from 'react-native-fbsdk';

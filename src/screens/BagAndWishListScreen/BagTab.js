@@ -55,7 +55,7 @@ import CustomI18n from '../../util/i18n'
     render() {
         return (<View style={styles.container}>
             <ScrollView>
-                {this.props.cart.map((product,key)=><BagItem product={product} key={key}></BagItem>)}
+                {this.props.cart.map((product,key)=><BagItem product={product} key={product.id}></BagItem>)}
                 {this._renderCoupons()}
                 <CheckDelivery />
                 <View style={styles.gift}>

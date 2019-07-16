@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { Text, View, TouchableOpacity, Alert, Image } from 'react-native'
+import { Text, View, TouchableOpacity, Alert, Image ,LayoutAnimation} from 'react-native'
 import { removeLikeProduct, addToCart } from '../../redux/actions'
 import { connect } from 'react-redux';
 import CustomI18n from '../../util/i18n'
 import styles from '../../theme/screens/BagAndWishListScreen/Wishlist'
+import {animationChangeListProduct} from '../../util/constants'
 
 class Wishlist extends Component {
     render() {
@@ -47,10 +48,17 @@ class Wishlist extends Component {
         )
     }
 }
+
 const mapDispatchToProps = (dispatch) => {
     return {
-        remove: (id) => { dispatch(removeLikeProduct(id)) },
-        addToCart: (product) => dispatch(addToCart(product))
+        remove: (id) => { 
+            dispatch(removeLikeProduct(id)) 
+            LayoutAnimation.configureNext(animationChangeListProduct)
+        },
+        addToCart: (product) => {
+            dispatch(addToCart(product))
+            LayoutAnimation.configureNext(animationChangeListProduct)
+        }
     }
 }
 const mapStateToProps= state=>({

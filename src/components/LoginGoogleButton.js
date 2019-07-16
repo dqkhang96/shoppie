@@ -12,11 +12,12 @@ import styles from '../theme/components/LoginGoogleButton';
 
 // import GG Login
 import { GoogleSignin, statusCodes } from 'react-native-google-signin';
-
+import imagesRes from '../util/images'
 // Import redux
 import * as actions from '../redux/actions/index';
 import { connect } from 'react-redux';
 import Color from '../theme/colors';
+import {GOOGLE_ICON} from '../util/images'
 
 GoogleSignin.configure({
   scopes: ['https://www.googleapis.com/auth/plus.login', 'https://www.googleapis.com/auth/plus.me'],
@@ -67,7 +68,7 @@ class LoginGoogleButton extends Component {
           onPress={this.onLoginGG}>
           <Image
             style={styles.ggIcon}
-            source={require('../../res/img/gg.png')} />
+            source={imagesRes.GOOGLE_ICON} />
         </TouchableOpacity>
     )
   }

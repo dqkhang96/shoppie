@@ -50,8 +50,8 @@ class BagAndWishListButtons extends React.Component {
         <TouchableOpacity
           onPress={() => this.props.navigation.navigate("BagAndWishList", { index: 0 })}
         >
-          <View style={styles.viewButton} ref={viewButton => this.cartButton = viewButton}
-            onLayout={this.onLayoutCartButton}>
+          <View style={styles.viewButton}
+            onLayout={this.onLayoutCartButton} ref={viewButton => this.cartButton = viewButton}>
             <SimpleLineIcons name="bag" color='black' size={BUTTON_SIZE - Header.HEIGHT * 0.08} />
             {this.props.cart.length == 0 ? null : (
               <View style={styles.notiBox}>

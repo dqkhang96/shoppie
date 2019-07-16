@@ -16,7 +16,7 @@ export default styles = StyleSheet.create({
   },
   notiBox: {
     height: 15,
-    minWidth:15,
+    paddingHorizontal:3,
     backgroundColor: Color.primary,
     position: 'absolute',
     right: -Header.HEIGHT*0.1,

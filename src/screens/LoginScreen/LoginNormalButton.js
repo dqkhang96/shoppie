@@ -12,7 +12,7 @@ import CustomI18n from '../../util/i18n';
 import styles from '../../theme/screens/LoginScreen/LoginNormalButton';
 
 // Import api
-import { loginNormalAPI } from '../../config/apis';
+import { loginNormalAPI } from '../../service/apis';
 
 // Import redux
 import * as actions from '../../redux/actions/index';

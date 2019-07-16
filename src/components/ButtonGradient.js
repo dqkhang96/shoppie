@@ -2,8 +2,8 @@ import React from 'react'
 import { View, Text,TouchableOpacity } from 'react-native'
 import { Svg ,Defs, Stop, Rect  ,LinearGradient } from 'react-native-svg'
 
-export default ButtonGradient = ({fromColor, toColor ,title,style ,onPress}) => (
-   <TouchableOpacity onPress={onPress}>
+export default ButtonGradient = ({fromColor, toColor ,title,style ,onPress,disabled}) => (
+   <TouchableOpacity onPress={onPress} disabled={disabled}>
         <View
         style={[{
             justifyContent:'center',

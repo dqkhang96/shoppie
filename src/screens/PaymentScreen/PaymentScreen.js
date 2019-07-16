@@ -28,7 +28,7 @@ export default class PaymentScreen extends Component {
     _renderHeader() {
         return (
             <View style={{ width: SCREEN_WIDTH, padding: 10, marginTop: 15 }}>
-                <ImageBackground source={ImageRes.rectangle}
+                <ImageBackground source={ImageRes.RECTANGLE_GRADIENT}
                     style={styles.imagebackground}
                 >
                     <View style={styles.totalpayable}>

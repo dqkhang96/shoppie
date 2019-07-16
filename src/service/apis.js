@@ -1,6 +1,6 @@
 import axios from 'axios';
 import Utils from '../util/utils';
-import Config from './config';
+import Config from '../config/config';
 import Constant, { Url } from '../util/constants';
 
 import AsyncStorage from '@react-native-community/async-storage';
