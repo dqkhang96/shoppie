@@ -1,95 +1,42 @@
 {
   "project_info": {
-    "project_number": "690731803269",
-    "firebase_url": "https://gdb-mobile-app-s-1561134778903.firebaseio.com",
-    "project_id": "gdb-mobile-app-s-1561134778903",
-    "storage_bucket": "gdb-mobile-app-s-1561134778903.appspot.com"
+    "project_number": "934117762076",
+    "firebase_url": "https://nimble-park-238008.firebaseio.com",
+    "project_id": "nimble-park-238008",
+    "storage_bucket": "nimble-park-238008.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:690731803269:android:4363e45990f52101",
-        "android_client_info": {
-          "package_name": "com.gdb_mobile_app_react_native"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "690731803269-jc3c4e6q9kmn1n1bvdardvuqjv0f80g1.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.gdb_mobile_app_react_native",
-            "certificate_hash": "19b597bc027ab1a0410c198b8b6c41a4a8f33c77"
-          }
-        },
-        {
-          "client_id": "690731803269-vin8ljkifio6n2gc2rdjb866b5d4v2bi.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.gdb_mobile_app_react_native",
-            "certificate_hash": "5ec9749090bb81273ea2e09fc8b9c00360d0e8a5"
-          }
-        },
-        {
-          "client_id": "690731803269-jbi03h5j1upr03vlm7equsmo4tppg467.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBDYNTWdrecrLToxtPGmBg_wzsO_i-jsj4"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "690731803269-jbi03h5j1upr03vlm7equsmo4tppg467.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:690731803269:android:470f45aa19908675",
+        "mobilesdk_app_id": "1:934117762076:android:470f45aa19908675",
         "android_client_info": {
           "package_name": "com.shoppiee"
         }
       },
       "oauth_client": [
         {
-          "client_id": "690731803269-udv6vo3351a8bal5vbjf2bvojrd66773.apps.googleusercontent.com",
+          "client_id": "934117762076-6ahpf4s024053m03nvlh8mtnosv4v2ht.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.shoppiee",
-            "certificate_hash": "19b597bc027ab1a0410c198b8b6c41a4a8f33c77"
+            "certificate_hash": "52d235e7005afd73a62c53f12fda986d974f3af1"
           }
         },
         {
-          "client_id": "690731803269-thkb1ur9s437ibddketgahhn1em7icf6.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.shoppiee",
-            "certificate_hash": "5ec9749090bb81273ea2e09fc8b9c00360d0e8a5"
-          }
-        },
-        {
-          "client_id": "690731803269-jbi03h5j1upr03vlm7equsmo4tppg467.apps.googleusercontent.com",
+          "client_id": "934117762076-03j4thk26crr5r22t9et7tr8trq4unj0.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBDYNTWdrecrLToxtPGmBg_wzsO_i-jsj4"
+          "current_key": "AIzaSyA20af_cEECplaY6x4woCM1SjyHDTWkwGI"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "690731803269-jbi03h5j1upr03vlm7equsmo4tppg467.apps.googleusercontent.com",
+              "client_id": "934117762076-03j4thk26crr5r22t9et7tr8trq4unj0.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
